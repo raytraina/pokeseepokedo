@@ -1,4 +1,5 @@
-secrets.sh
 /venv/
 *.pyc
 /DNU/
+secrets.sh
+.DS_Store
