@@ -1,0 +1,671 @@
+{
+    "businesses": [
+        {
+            "coordinates": {
+                "longitude": -122.39831333801,
+                "latitude": 37.7840836132872
+            },
+            "price": "$$",
+            "rating": 5,
+            "url": "https://www.yelp.com/biz/wine-down-sf-san-francisco",
+            "review_count": 35,
+            "image_url": "http://s3-media2.fl.yelpcdn.com/bphoto/he-Yzbzuwisgi6L3LoK7rA/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "685 Folsom Street",
+                "address2": "",
+                "zip_code": "94107",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14158297005",
+            "id": "wine-down-sf-san-francisco",
+            "categories": [
+                {
+                    "alias": "wine_bars",
+                    "title": "Wine Bars"
+                },
+                {
+                    "alias": "beerbar",
+                    "title": "Beer Bar"
+                }
+            ],
+            "name": "Wine Down SF"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.3945935,
+                "latitude": 37.7801465
+            },
+            "rating": 5,
+            "url": "https://www.yelp.com/biz/avant-barre-san-francisco",
+            "review_count": 119,
+            "image_url": "http://s3-media2.fl.yelpcdn.com/bphoto/4s7ZIelXgOUQGjd8Cd43hQ/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "592 3rd St",
+                "address2": null,
+                "zip_code": "94107",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14157351928",
+            "id": "avant-barre-san-francisco",
+            "categories": [
+                {
+                    "alias": "barreclasses",
+                    "title": "Barre Classes"
+                }
+            ],
+            "name": "Avant-Barre"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.410720065236,
+                "latitude": 37.7897959388507
+            },
+            "price": "$",
+            "rating": 4.5,
+            "url": "https://www.yelp.com/biz/tacorea-san-francisco",
+            "review_count": 136,
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/TNkHvAH9s6ctXYHG-gNViw/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "809 Bush St",
+                "address2": "",
+                "zip_code": "94108",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": null
+            },
+            "id": "tacorea-san-francisco",
+            "categories": [
+                {
+                    "alias": "asianfusion",
+                    "title": "Asian Fusion"
+                },
+                {
+                    "alias": "mexican",
+                    "title": "Mexican"
+                },
+                {
+                    "alias": "korean",
+                    "title": "Korean"
+                }
+            ],
+            "name": "Tacorea"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.409755724473,
+                "latitude": 37.7890686725371
+            },
+            "price": "$$",
+            "rating": 4.5,
+            "url": "https://www.yelp.com/biz/pacific-cocktail-haven-san-francisco",
+            "review_count": 24,
+            "image_url": "http://s3-media2.fl.yelpcdn.com/bphoto/qUCtqMzEzFeIhKJ_QQ4vSg/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "580 Sutter St",
+                "address2": "",
+                "zip_code": "94108",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": null
+            },
+            "phone": "+14157445000",
+            "id": "pacific-cocktail-haven-san-francisco",
+            "categories": [
+                {
+                    "alias": "cocktailbars",
+                    "title": "Cocktail Bars"
+                }
+            ],
+            "name": "Pacific Cocktail Haven"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.411357760429,
+                "latitude": 37.7878531068563
+            },
+            "price": "$$",
+            "rating": 4.5,
+            "url": "https://www.yelp.com/biz/bar-587-san-francisco",
+            "review_count": 65,
+            "image_url": "http://s3-media3.fl.yelpcdn.com/bphoto/WnRfHjeZ7onan_pm5dySTQ/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "587 Post St",
+                "address2": "",
+                "zip_code": "94102",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14158171712",
+            "id": "bar-587-san-francisco",
+            "categories": [
+                {
+                    "alias": "lounges",
+                    "title": "Lounges"
+                },
+                {
+                    "alias": "cocktailbars",
+                    "title": "Cocktail Bars"
+                }
+            ],
+            "name": "Bar 587"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.392899,
+                "latitude": 37.781509
+            },
+            "price": "$$",
+            "rating": 4.5,
+            "url": "https://www.yelp.com/biz/jax-vineyards-san-francisco",
+            "review_count": 42,
+            "image_url": "http://s3-media4.fl.yelpcdn.com/bphoto/Fk2v77CzFoYPAfe75UtIWA/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "326 Brannan St",
+                "address2": "",
+                "zip_code": "94107",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14154469505",
+            "id": "jax-vineyards-san-francisco",
+            "categories": [
+                {
+                    "alias": "winetastingroom",
+                    "title": "Wine Tasting Room"
+                }
+            ],
+            "name": "JAX Vineyards"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.407424926758,
+                "latitude": 37.7851104736328
+            },
+            "price": "$",
+            "rating": 5,
+            "url": "https://www.yelp.com/biz/fnl-san-francisco-5",
+            "review_count": 34,
+            "image_url": "http://s3-media2.fl.yelpcdn.com/bphoto/g5qKYvX3c7FUKSWhUtz9aQ/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "870 Market St",
+                "address2": "Fl 10, Ste 1049",
+                "zip_code": "94102",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14156120728",
+            "id": "fnl-san-francisco-5",
+            "categories": [
+                {
+                    "alias": "professional",
+                    "title": "Professional Services"
+                },
+                {
+                    "alias": "notaries",
+                    "title": "Notaries"
+                }
+            ],
+            "name": "FNL"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.392651699483,
+                "latitude": 37.7824636931654
+            },
+            "price": "$$",
+            "rating": 4.5,
+            "url": "https://www.yelp.com/biz/lord-george-san-francisco",
+            "review_count": 138,
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/R4E2xgK19ZuF7QsKIjCmSw/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "555 2nd St",
+                "address2": "",
+                "zip_code": "94107",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14156607633",
+            "id": "lord-george-san-francisco",
+            "categories": [
+                {
+                    "alias": "cocktailbars",
+                    "title": "Cocktail Bars"
+                },
+                {
+                    "alias": "gastropubs",
+                    "title": "Gastropubs"
+                }
+            ],
+            "name": "Lord George"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.40044,
+                "latitude": 37.78704
+            },
+            "price": "$$",
+            "rating": 4.5,
+            "url": "https://www.yelp.com/biz/takoba-san-francisco",
+            "review_count": 108,
+            "image_url": "http://s3-media2.fl.yelpcdn.com/bphoto/GJBL9MxXsHWIXIlktWuT_w/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "John Colins Lounge",
+                "address2": "138 Minna St",
+                "zip_code": "94105",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14153610448",
+            "id": "takoba-san-francisco",
+            "categories": [
+                {
+                    "alias": "japanese",
+                    "title": "Japanese"
+                },
+                {
+                    "alias": "sushi",
+                    "title": "Sushi Bars"
+                }
+            ],
+            "name": "Takoba"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.394645086265,
+                "latitude": 37.7894273203872
+            },
+            "price": "$",
+            "rating": 4.5,
+            "url": "https://www.yelp.com/biz/fayala-san-francisco-2",
+            "review_count": 76,
+            "image_url": "http://s3-media3.fl.yelpcdn.com/bphoto/GBE7VDuX8QiixdGdwlzhWQ/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "215 Fremont St",
+                "address2": "Ste 2B",
+                "zip_code": "94105",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14157570444",
+            "id": "fayala-san-francisco-2",
+            "categories": [
+                {
+                    "alias": "mediterranean",
+                    "title": "Mediterranean"
+                },
+                {
+                    "alias": "mexican",
+                    "title": "Mexican"
+                },
+                {
+                    "alias": "french",
+                    "title": "French"
+                }
+            ],
+            "name": "Fayala"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.394355908036,
+                "latitude": 37.7798249454073
+            },
+            "price": "$$",
+            "rating": 4.5,
+            "url": "https://www.yelp.com/biz/local-tap-san-francisco",
+            "review_count": 49,
+            "image_url": "http://s3-media4.fl.yelpcdn.com/bphoto/0ODn0O_q_JanLzaq28Gisg/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "600 3rd St",
+                "address2": "",
+                "zip_code": "94107",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14158142257",
+            "id": "local-tap-san-francisco",
+            "categories": [
+                {
+                    "alias": "sportsbars",
+                    "title": "Sports Bars"
+                },
+                {
+                    "alias": "tradamerican",
+                    "title": "American (Traditional)"
+                },
+                {
+                    "alias": "sandwiches",
+                    "title": "Sandwiches"
+                }
+            ],
+            "name": "Local Tap"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.3927344,
+                "latitude": 37.7777232
+            },
+            "rating": 4.5,
+            "url": "https://www.yelp.com/biz/barrys-bootcamp-san-francisco",
+            "review_count": 160,
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/G2S-RwweR3nAEPA5g44dzg/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "236 King St",
+                "address2": "",
+                "zip_code": "94107",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14155463996",
+            "id": "barrys-bootcamp-san-francisco",
+            "categories": [
+                {
+                    "alias": "bootcamps",
+                    "title": "Boot Camps"
+                },
+                {
+                    "alias": "gyms",
+                    "title": "Gyms"
+                },
+                {
+                    "alias": "healthtrainers",
+                    "title": "Trainers"
+                }
+            ],
+            "name": "Barry's Bootcamp"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.4146194,
+                "latitude": 37.7866898
+            },
+            "price": "$$",
+            "rating": 4.5,
+            "url": "https://www.yelp.com/biz/resolute-san-francisco",
+            "review_count": 96,
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/2Y1867ttALvZNcHz89Oxqg/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "678 Geary St",
+                "address2": "",
+                "zip_code": "94102",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14158250741",
+            "id": "resolute-san-francisco",
+            "categories": [
+                {
+                    "alias": "wine_bars",
+                    "title": "Wine Bars"
+                },
+                {
+                    "alias": "lounges",
+                    "title": "Lounges"
+                },
+                {
+                    "alias": "beer_and_wine",
+                    "title": "Beer, Wine & Spirits"
+                }
+            ],
+            "name": "Resolute"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.407445758581,
+                "latitude": 37.7831605821848
+            },
+            "price": "$$$$",
+            "rating": 5,
+            "url": "https://www.yelp.com/biz/hashiri-san-francisco",
+            "review_count": 13,
+            "image_url": "http://s3-media3.fl.yelpcdn.com/bphoto/lJfejAMykIku5rH21c5bnw/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "4 Mint Plaza",
+                "address2": "",
+                "zip_code": "94103",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14159081919",
+            "id": "hashiri-san-francisco",
+            "categories": [
+                {
+                    "alias": "japanese",
+                    "title": "Japanese"
+                },
+                {
+                    "alias": "sushi",
+                    "title": "Sushi Bars"
+                }
+            ],
+            "name": "Hashiri"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.3916473,
+                "latitude": 37.7869148
+            },
+            "rating": 4.5,
+            "url": "https://www.yelp.com/biz/rincon-green-san-francisco",
+            "review_count": 73,
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/yOYLpFMKyab6Ho31rBFZfw/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "333 Harrison St",
+                "address2": "",
+                "zip_code": "94105",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14156304060",
+            "id": "rincon-green-san-francisco",
+            "categories": [
+                {
+                    "alias": "apartments",
+                    "title": "Apartments"
+                }
+            ],
+            "name": "Rincon Green"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.410740837442,
+                "latitude": 37.7838704221414
+            },
+            "price": "$$",
+            "rating": 4.5,
+            "url": "https://www.yelp.com/biz/pianofight-san-francisco",
+            "review_count": 111,
+            "image_url": "http://s3-media3.fl.yelpcdn.com/bphoto/vkzDet_0vkpovHcNiXNm8A/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "144 Taylor St",
+                "address2": "",
+                "zip_code": "94102",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14158163691",
+            "id": "pianofight-san-francisco",
+            "categories": [
+                {
+                    "alias": "bars",
+                    "title": "Bars"
+                },
+                {
+                    "alias": "newamerican",
+                    "title": "American (New)"
+                },
+                {
+                    "alias": "theater",
+                    "title": "Performing Arts"
+                }
+            ],
+            "name": "PianoFight"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.3904214,
+                "latitude": 37.7708782
+            },
+            "price": "$$",
+            "rating": 4.5,
+            "url": "https://www.yelp.com/biz/spark-social-sf-san-francisco",
+            "review_count": 37,
+            "image_url": "http://s3-media2.fl.yelpcdn.com/bphoto/mY8JHObNj1JCKKD8mDO3eQ/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "601 Mission Bay Blvd N",
+                "address2": "",
+                "zip_code": "94158",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": null
+            },
+            "id": "spark-social-sf-san-francisco",
+            "categories": [
+                {
+                    "alias": "streetvendors",
+                    "title": "Street Vendors"
+                },
+                {
+                    "alias": "venues",
+                    "title": "Venues & Event Spaces"
+                }
+            ],
+            "name": "Spark Social SF"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.407616778204,
+                "latitude": 37.787878728204
+            },
+            "rating": 5,
+            "url": "https://www.yelp.com/biz/wild-sf-walking-tours-san-francisco-2",
+            "review_count": 97,
+            "image_url": "http://s3-media2.fl.yelpcdn.com/bphoto/bywRdOj6VOnBmutS4lAlSQ/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "",
+                "address2": null,
+                "zip_code": "94102",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14155801849",
+            "id": "wild-sf-walking-tours-san-francisco-2",
+            "categories": [
+                {
+                    "alias": "walkingtours",
+                    "title": "Walking Tours"
+                },
+                {
+                    "alias": "historicaltours",
+                    "title": "Historical Tours"
+                },
+                {
+                    "alias": "architecturaltours",
+                    "title": "Architectural Tours"
+                }
+            ],
+            "name": "Wild SF Walking Tours"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.4057904,
+                "latitude": 37.7977056
+            },
+            "price": "$$",
+            "rating": 4.5,
+            "url": "https://www.yelp.com/biz/noc-noc-on-broadway-san-francisco-3",
+            "review_count": 25,
+            "image_url": "http://s3-media4.fl.yelpcdn.com/bphoto/qnCMeWc31b_kEuhLwPP5Ew/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "515 Broadway",
+                "address2": null,
+                "zip_code": "94133",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14159942806",
+            "id": "noc-noc-on-broadway-san-francisco-3",
+            "categories": [
+                {
+                    "alias": "champagne_bars",
+                    "title": "Champagne Bars"
+                },
+                {
+                    "alias": "lounges",
+                    "title": "Lounges"
+                },
+                {
+                    "alias": "beerbar",
+                    "title": "Beer Bar"
+                }
+            ],
+            "name": "Noc Noc On Broadway"
+        },
+        {
+            "coordinates": {
+                "longitude": -122.4149628,
+                "latitude": 37.7863731
+            },
+            "price": "$$",
+            "rating": 4.5,
+            "url": "https://www.yelp.com/biz/rx-san-francisco-3",
+            "review_count": 50,
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/V2XU-9_AtPP9dW1flCue-A/o.jpg",
+            "location": {
+                "state": "CA",
+                "address1": "701 Geary St",
+                "address2": null,
+                "zip_code": "94109",
+                "city": "San Francisco",
+                "country": "US",
+                "address3": ""
+            },
+            "phone": "+14152710896",
+            "id": "rx-san-francisco-3",
+            "categories": [
+                {
+                    "alias": "cocktailbars",
+                    "title": "Cocktail Bars"
+                }
+            ],
+            "name": "Rx"
+        }
+    ],
+    "total": 1151
+}

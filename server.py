@@ -7,12 +7,26 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 from model import connect_to_db, db, User, Movie, Rating
 
+from yelp.client import Client
+from yelp.oauth1_authenticator import Oauth1Authenticator
+
 
 app = Flask(__name__)
 
 app.secret_key = "SOMETHINGHERELATER"
 
 app.jinja_env.undefined = StrictUndefined
+
+#######YELP#######
+auth = Oauth1Authenticator(
+    consumer_key=YOUR_CONSUMER_KEY,
+    consumer_secret=YOUR_CONSUMER_SECRET,
+    token=YOUR_TOKEN,
+    token_secret=YOUR_TOKEN_SECRET
+)
+
+client = Client(auth)
+##################
 
 
 @app.route('/')
@@ -22,7 +36,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/poke-map')
+@app.route('/poke-map', methods=['GET'])
 def results():
     """Show map and directions based on user input."""
 
@@ -46,13 +60,13 @@ def register_process():
 
     #SOMETHINGHERELATER
 
-    # # Get form variables
-    # email = request.form["email"]
-    # password = request.form["password"]
-    # age = int(request.form["age"])
-    # zipcode = request.form["zipcode"]
+    # Get form variables
+    email = request.form['email']
+    password = request.form['new-password']
+    first_name = request.form['first-name']
+    last_name = request.form['last-name']
 
-    # new_user = User(email=email, password=password, age=age, zipcode=zipcode)
+    new_user = User(email=email, password=password, first_name=first_name, last_name=last_name)
 
     # db.session.add(new_user)
     # db.session.commit()

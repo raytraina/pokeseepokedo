@@ -1,0 +1,688 @@
+{
+    "businesses": [
+        {
+            "categories": [
+                {
+                    "alias": "asianfusion",
+                    "title": "Asian Fusion"
+                },
+                {
+                    "alias": "mexican",
+                    "title": "Mexican"
+                },
+                {
+                    "alias": "korean",
+                    "title": "Korean"
+                }
+            ],
+            "location": {
+                "address3": null,
+                "country": "US",
+                "zip_code": "94108",
+                "address2": "",
+                "address1": "809 Bush St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/tacorea-san-francisco",
+            "price": "$",
+            "rating": 4.5,
+            "id": "tacorea-san-francisco",
+            "review_count": 136,
+            "name": "Tacorea",
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/TNkHvAH9s6ctXYHG-gNViw/o.jpg",
+            "coordinates": {
+                "latitude": 37.7897959388507,
+                "longitude": -122.410720065236
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "seafood",
+                    "title": "Seafood"
+                },
+                {
+                    "alias": "seafoodmarkets",
+                    "title": "Seafood Markets"
+                },
+                {
+                    "alias": "raw_food",
+                    "title": "Live/Raw Food"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94111",
+                "address2": "Shop 11",
+                "address1": "1 Ferry Bldg",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/hog-island-oyster-co-san-francisco",
+            "price": "$$",
+            "phone": "+14153917117",
+            "rating": 4.5,
+            "id": "hog-island-oyster-co-san-francisco",
+            "review_count": 3788,
+            "name": "Hog Island Oyster Co",
+            "image_url": "http://s3-media2.fl.yelpcdn.com/bphoto/uXxVZfHdCF_qUlCvsxioJg/o.jpg",
+            "coordinates": {
+                "latitude": 37.7954575817651,
+                "longitude": -122.393317222595
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "coffee",
+                    "title": "Coffee & Tea"
+                },
+                {
+                    "alias": "sandwiches",
+                    "title": "Sandwiches"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94158",
+                "address2": "",
+                "address1": "201 Berry St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/philz-coffee-san-francisco-3",
+            "price": "$",
+            "phone": "+14158759943",
+            "rating": 4.5,
+            "id": "philz-coffee-san-francisco-3",
+            "review_count": 1325,
+            "name": "Philz Coffee",
+            "image_url": "http://s3-media3.fl.yelpcdn.com/bphoto/hG9NWfPbnnY-yrsX0FcqOA/o.jpg",
+            "coordinates": {
+                "latitude": 37.775558280936,
+                "longitude": -122.39338696954
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "mexican",
+                    "title": "Mexican"
+                },
+                {
+                    "alias": "burgers",
+                    "title": "Burgers"
+                },
+                {
+                    "alias": "gastropubs",
+                    "title": "Gastropubs"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94107",
+                "address2": "",
+                "address1": "475 3rd St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/garaje-san-francisco",
+            "price": "$$",
+            "phone": "+14156440838",
+            "rating": 4.5,
+            "id": "garaje-san-francisco",
+            "review_count": 1007,
+            "name": "Garaje",
+            "image_url": "http://s3-media2.fl.yelpcdn.com/bphoto/_nN_DhLXkfwEkwPNxne9hw/o.jpg",
+            "coordinates": {
+                "latitude": 37.7816626955148,
+                "longitude": -122.396104066043
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "korean",
+                    "title": "Korean"
+                },
+                {
+                    "alias": "asianfusion",
+                    "title": "Asian Fusion"
+                },
+                {
+                    "alias": "latin",
+                    "title": "Latin American"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94107",
+                "address2": null,
+                "address1": "521A 3rd St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/hrd-san-francisco-4",
+            "price": "$",
+            "phone": "+14155432355",
+            "rating": 4.5,
+            "id": "hrd-san-francisco-4",
+            "review_count": 1905,
+            "name": "HRD",
+            "image_url": "http://s3-media4.fl.yelpcdn.com/bphoto/ImvLt9I8ACHwfYthZw8vVw/o.jpg",
+            "coordinates": {
+                "latitude": 37.7810450986458,
+                "longitude": -122.395337771053
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "newamerican",
+                    "title": "American (New)"
+                },
+                {
+                    "alias": "asianfusion",
+                    "title": "Asian Fusion"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94105",
+                "address2": "",
+                "address1": "22 Hawthorne St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/benu-san-francisco-4",
+            "price": "$$$$",
+            "phone": "+14156854860",
+            "rating": 4.5,
+            "id": "benu-san-francisco-4",
+            "review_count": 764,
+            "name": "Benu",
+            "image_url": "http://s3-media3.fl.yelpcdn.com/bphoto/dYf7rfOom8imA7N2HTOjVQ/o.jpg",
+            "coordinates": {
+                "latitude": 37.785402,
+                "longitude": -122.399068
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "delis",
+                    "title": "Delis"
+                },
+                {
+                    "alias": "sandwiches",
+                    "title": "Sandwiches"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94103",
+                "address2": "",
+                "address1": "1058 Folsom St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/deli-board-san-francisco",
+            "price": "$$",
+            "phone": "+14155527687",
+            "rating": 4.5,
+            "id": "deli-board-san-francisco",
+            "review_count": 982,
+            "name": "Deli Board",
+            "image_url": "http://s3-media4.fl.yelpcdn.com/bphoto/wA6jJVj5-by8NzVCCuBlmQ/o.jpg",
+            "coordinates": {
+                "latitude": 37.7776799,
+                "longitude": -122.40709
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "cocktailbars",
+                    "title": "Cocktail Bars"
+                },
+                {
+                    "alias": "gastropubs",
+                    "title": "Gastropubs"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94107",
+                "address2": "",
+                "address1": "555 2nd St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/lord-george-san-francisco",
+            "price": "$$",
+            "phone": "+14156607633",
+            "rating": 4.5,
+            "id": "lord-george-san-francisco",
+            "review_count": 138,
+            "name": "Lord George",
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/R4E2xgK19ZuF7QsKIjCmSw/o.jpg",
+            "coordinates": {
+                "latitude": 37.7824636931654,
+                "longitude": -122.392651699483
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "coffee",
+                    "title": "Coffee & Tea"
+                },
+                {
+                    "alias": "sandwiches",
+                    "title": "Sandwiches"
+                },
+                {
+                    "alias": "nonprofit",
+                    "title": "Community Service/Non-Profit"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94107",
+                "address2": "",
+                "address1": "699 Delancey St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/crossroads-cafe-san-francisco-7",
+            "price": "$",
+            "phone": "+14155125111",
+            "rating": 4,
+            "id": "crossroads-cafe-san-francisco-7",
+            "review_count": 809,
+            "name": "Crossroads Cafe",
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/c6KbWUI7eud0HtgRFFruNg/o.jpg",
+            "coordinates": {
+                "latitude": 37.7831325,
+                "longitude": -122.3890356
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "steak",
+                    "title": "Steakhouses"
+                },
+                {
+                    "alias": "seafood",
+                    "title": "Seafood"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94108",
+                "address2": "",
+                "address1": "1177 California St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/osso-steakhouse-san-francisco",
+            "price": "$$$$",
+            "phone": "+14157716776",
+            "rating": 4,
+            "id": "osso-steakhouse-san-francisco",
+            "review_count": 351,
+            "name": "Osso Steakhouse",
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/7Im4wDh5KHHQxXT-AEfXRQ/o.jpg",
+            "coordinates": {
+                "latitude": 37.791026,
+                "longitude": -122.413648
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "french",
+                    "title": "French"
+                },
+                {
+                    "alias": "desserts",
+                    "title": "Desserts"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94107",
+                "address2": "",
+                "address1": "315 5th St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/mathilde-french-bistro-san-francisco",
+            "price": "$$$",
+            "phone": "+14155466128",
+            "rating": 4.5,
+            "id": "mathilde-french-bistro-san-francisco",
+            "review_count": 85,
+            "name": "Mathilde French Bistro",
+            "image_url": "http://s3-media4.fl.yelpcdn.com/bphoto/QPEGu7CwVks8meUziYHeng/o.jpg",
+            "coordinates": {
+                "latitude": 37.7800134026795,
+                "longitude": -122.402965373019
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "greek",
+                    "title": "Greek"
+                },
+                {
+                    "alias": "mediterranean",
+                    "title": "Mediterranean"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94111",
+                "address2": "",
+                "address1": "200 Jackson St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/kokkari-estiatorio-san-francisco",
+            "price": "$$$",
+            "phone": "+14159810983",
+            "rating": 4.5,
+            "id": "kokkari-estiatorio-san-francisco",
+            "review_count": 3637,
+            "name": "Kokkari Estiatorio",
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/hL5JQzUDA06eqvmUtdUqZA/o.jpg",
+            "coordinates": {
+                "latitude": 37.7969612181187,
+                "longitude": -122.399660646915
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "italian",
+                    "title": "Italian"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94107",
+                "address2": null,
+                "address1": "1099 Tennessee St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/marcellas-lasagneria-san-francisco-3",
+            "price": "$$",
+            "phone": "+14159202225",
+            "rating": 4.5,
+            "id": "marcellas-lasagneria-san-francisco-3",
+            "review_count": 236,
+            "name": "Marcella's Lasagneria",
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/J8XAYvv7NYgcPo5xdl3f3Q/o.jpg",
+            "coordinates": {
+                "latitude": 37.7580376,
+                "longitude": -122.3890915
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "moroccan",
+                    "title": "Moroccan"
+                },
+                {
+                    "alias": "newamerican",
+                    "title": "American (New)"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94105",
+                "address2": "Ste 1",
+                "address1": "140 New Montgomery St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/mourad-restaurant-san-francisco",
+            "price": "$$$",
+            "phone": "+14156602500",
+            "rating": 4,
+            "id": "mourad-restaurant-san-francisco",
+            "review_count": 387,
+            "name": "Mourad Restaurant",
+            "image_url": "http://s3-media3.fl.yelpcdn.com/bphoto/wlbRTdS4LXvR1vR4sVwirA/o.jpg",
+            "coordinates": {
+                "latitude": 37.7868336124639,
+                "longitude": -122.399986118193
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "icecream",
+                    "title": "Ice Cream & Frozen Yogurt"
+                },
+                {
+                    "alias": "sandwiches",
+                    "title": "Sandwiches"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94104",
+                "address2": "",
+                "address1": "14 Trinity Pl",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/caffe-ambrosia-san-francisco",
+            "price": "$",
+            "phone": "+14153620538",
+            "rating": 4.5,
+            "id": "caffe-ambrosia-san-francisco",
+            "review_count": 267,
+            "name": "Caffe Ambrosia",
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/QzQrz21NDWt-85giKcwtqQ/o.jpg",
+            "coordinates": {
+                "latitude": 37.7901872992516,
+                "longitude": -122.402629852295
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "coffee",
+                    "title": "Coffee & Tea"
+                },
+                {
+                    "alias": "sandwiches",
+                    "title": "Sandwiches"
+                },
+                {
+                    "alias": "vietnamese",
+                    "title": "Vietnamese"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94108",
+                "address2": "",
+                "address1": "882 Bush St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/fresh-brew-coffee-san-francisco",
+            "price": "$",
+            "phone": "+14155670915",
+            "rating": 4.5,
+            "id": "fresh-brew-coffee-san-francisco",
+            "review_count": 345,
+            "name": "Fresh Brew Coffee",
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/G0xDrpOQyXxrrKnQrYm7iQ/o.jpg",
+            "coordinates": {
+                "latitude": 37.79001,
+                "longitude": -122.41177
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "banks",
+                    "title": "Banks & Credit Unions"
+                },
+                {
+                    "alias": "internetcafe",
+                    "title": "Internet Cafes"
+                },
+                {
+                    "alias": "cafes",
+                    "title": "Cafes"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94108",
+                "address2": "",
+                "address1": "101 Post St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/capital-one-caf%C3%A9-san-francisco",
+            "price": "$",
+            "phone": "+14152484920",
+            "rating": 4.5,
+            "id": "capital-one-café-san-francisco",
+            "review_count": 263,
+            "name": "Capital One Café",
+            "image_url": "http://s3-media3.fl.yelpcdn.com/bphoto/ot3o7brKJa5Kmu1OVZFMWQ/o.jpg",
+            "coordinates": {
+                "latitude": 37.7886848449707,
+                "longitude": -122.403877258301
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "asianfusion",
+                    "title": "Asian Fusion"
+                },
+                {
+                    "alias": "newamerican",
+                    "title": "American (New)"
+                },
+                {
+                    "alias": "seafood",
+                    "title": "Seafood"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94109",
+                "address2": "",
+                "address1": "871 Sutter St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/liholiho-yacht-club-san-francisco-2",
+            "price": "$$$",
+            "phone": "+14154405446",
+            "rating": 4.5,
+            "id": "liholiho-yacht-club-san-francisco-2",
+            "review_count": 932,
+            "name": "Liholiho Yacht Club",
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/uUkGwA2rrwd24RUjIzWmsw/o.jpg",
+            "coordinates": {
+                "latitude": 37.7883678084094,
+                "longitude": -122.414625026286
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "latin",
+                    "title": "Latin American"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94104",
+                "address2": "",
+                "address1": "475 Pine St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/la-fusi%C3%B3n-san-francisco-2",
+            "price": "$$",
+            "phone": "+14157810894",
+            "rating": 4.5,
+            "id": "la-fusión-san-francisco-2",
+            "review_count": 846,
+            "name": "La Fusión",
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/7LZP0604HmgLFNeGre3rGw/o.jpg",
+            "coordinates": {
+                "latitude": 37.7916357455614,
+                "longitude": -122.403691572642
+            }
+        },
+        {
+            "categories": [
+                {
+                    "alias": "foodstands",
+                    "title": "Food Stands"
+                },
+                {
+                    "alias": "burgers",
+                    "title": "Burgers"
+                }
+            ],
+            "location": {
+                "address3": "",
+                "country": "US",
+                "zip_code": "94103",
+                "address2": null,
+                "address1": "431 Natoma St",
+                "city": "San Francisco",
+                "state": "CA"
+            },
+            "url": "https://www.yelp.com/biz/box-kitchen-san-francisco",
+            "price": "$",
+            "phone": "+14155807170",
+            "rating": 4.5,
+            "id": "box-kitchen-san-francisco",
+            "review_count": 390,
+            "name": "Box Kitchen",
+            "image_url": "http://s3-media1.fl.yelpcdn.com/bphoto/RgSY7vrLUfwWRh0-KuUpKQ/o.jpg",
+            "coordinates": {
+                "latitude": 37.7811510761365,
+                "longitude": -122.40636505138
+            }
+        }
+    ],
+    "total": 1203
+}

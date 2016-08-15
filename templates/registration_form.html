@@ -1,3 +1,24 @@
-registration_form.html
+<!-- registration_form.html
 
-on this page, user can register to save maps to account
+on this page, user can register to save maps to account -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form id='registration' action='/register' method='post'>
+        <label for='email'>email address:
+            <input type='text' name='email' value='SOMETHINGHERELATER FORDEFAULT'>
+        </label>
+        <label for='new-password'>password:
+            <input type='text' name='new-password' value='SOMETHINGHERELATER FORDEFAULT'>
+        </label>
+        <label for='first-name'>first name:
+            <input type='text' name='first-name' value='SOMETHINGHERELATER FORDEFAULT'>
+        </label>
+        <label for='last-name'>last name:
+            <input type='text' name='last-name' value='SOMETHINGHERELATER FORDEFAULT'>
+        </label>
+    </form>
+
+{% endblock %}

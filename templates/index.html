@@ -1,8 +1,27 @@
-index.html
+<!-- index.html
 
-welcome to pokesee, pokedo
+welcome to pokesee, pokedo -->
 
-on this page, we want to show a form:
+<!-- on this page, we want to show a form:
 - start point
 - end point
-- time of departure
+- time of departure -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form id='dest-details' action='/poke-map' method='get'>
+        <label for='start-point'>start point:
+            <input type='text' name='start-point' value='SOMETHINGHERELATER FORDEFAULT'>
+        </label><br>
+        <label for='end-point'>end point:
+            <input type='text' name='end-point' value='SOMETHINGHERELATER FORDEFAULT'>
+        </label><br>
+        <label for='departure'>time of departure from start point:
+            <input type='text' name='departure' value='SOMETHINGHERELATER FORDEFAULT'>
+        </label><br>
+        <input type='submit' value='take me there' id='submit-destination'>
+    </form>
+
+{% endblock %}

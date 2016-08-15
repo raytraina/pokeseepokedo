@@ -7,6 +7,8 @@
 </head>
 <body>
 
+<div id='navigation'> <!--SOMETHING-->
+
 PokeSee PokeDoo
 
 {% if "user_id" in session %}
@@ -15,15 +17,23 @@ PokeSee PokeDoo
     <a href="/login">Login</a>
 {% endif %}
 
-<hr>
+</div>
+
+<div class='flash-msg'> <!--SOMETHING-->
 
 {% for flash in get_flashed_messages() %}
   {{ flash }}
 {% endfor %}
 
+</div>
+
+<div class='container'>
+
 {% block content %}
-    Put your body here.
+    REAL CONTENT STARTS HERE.
 {% endblock %}
+
+</div>
 
 </body>
 </html>

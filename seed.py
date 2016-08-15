@@ -20,7 +20,7 @@ def load_encounters(): #TESTED
 
     print 'Encounters'
 
-    with open('encounter.json') as pokeloc_file:
+    with open('/seed_data/encounter.json') as pokeloc_file:
             pokeloc_data = json.load(pokeloc_file)
             data_list = pokeloc_data.get('data') #now this is a list instead of a dict w/ 'data' as key
 
@@ -40,6 +40,20 @@ def load_encounters(): #TESTED
 
             db.session.add(encounter1, encounter2, encounter3, encounter4, encounter5, encounter6, encounter7, encounter8, encounter9, encounter10)
             db.session.commit()
+
+
+def load_yelp():
+
+    print 'Yelp Locations'
+
+    with open('/seed_data/yelp_locations.json') as yelploc_file:
+            yelploc_data = json.load(yelploc_file)
+            data_list = yelploc_data.get('businesses')
+
+    #####TODO#####
+    #need to determine which restaurants are useful/viable, especially which are actual pokestops/gyms
+    #might actually want to do a restaurant/bar search to get best bars on the route
+
 
 
 ###############################################
