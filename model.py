@@ -15,8 +15,6 @@ class Encounter(db.Model):
 
     __tablename__='encounters'
 
-    {"latitude":37.777450,"pokemonId":118,"id":9,"longitude":-122.391696}
-
     encounter_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True)
@@ -40,22 +38,22 @@ class Location(db.Model):
     real_location_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True)
-    is_pokestop = db.Column(db.Boolean) #need to make some locations not pokestops, add attr to yelp data
+    # is_pokestop = db.Column(db.Boolean) #need to make some locations not pokestops, add attr to yelp data
     latitude = db.Column(db.Float(precision=(13,9))) #will need to get from LOCATION>COORDINATE attr
     longitude = db.Column(db.Float(precision=(13,9))) #same as above
     rating = db.Column(db.Integer)
-    review_count = db.Column(db.Integer)
+    # review_count = db.Column(db.Integer)
     name = db.Column(db.String(100), nullable=False)
-    snippet_image_url = db.Column(db.String(300))
+    # snippet_image_url = db.Column(db.String(300))
     url = db.Column(db.String(200))
-    display_phone = db.Column(db.String(15)) #poor handling if integer
+    # display_phone = db.Column(db.String(15)) #poor handling if integer
     category = db.Column(db.String(50)) #need to parse through list of categories and take first result as category
 
 
     def __repr__(self):
             """Provide helpful representation when printed."""
 
-            return "<Location name=%s is_pokestop=%s latitude=%s longitude=%s>" % (self.name, self.is_pokestop, self.latitude, self.longitude)
+            return "<Location name=%s rating=%s latitude=%s longitude=%s>" % (self.name, self.rating, self.latitude, self.longitude)
 
 
 class User(db.Model):
