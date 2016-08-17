@@ -1,14 +1,10 @@
-# """ADD SOME CONTEXT HERE"""
-# """VERIFY ALL IMPORTS ARE CORRECT"""
+#PokeSee, PokeDo - Seed File
 
 from sqlalchemy import func
 
-from pprint import pprint
-
 import json
-import csv
 
-from model import connect_to_db, db, Encounter, Location, User #(Gym?)
+from model import connect_to_db, db, Encounter, Location, User, Gym
 
 from server import app
 
@@ -42,40 +38,251 @@ def load_encounters(): #TESTED
             db.session.commit()
 
 
-def load_yelp():
+def load_b_rest():
+    """Loads data from yelp for B Restaurant."""
 
-    #want to figure out how to iterate over files in the yelp_locations directory
-    #longform code for now
+    print 'Locations'
 
-    print 'Yelp Locations'
+    with open('/seed_data/b_restaurant.json') as loc_file:
+        data=json.load(loc_file)
 
-    with open('/seed_data/yelp_locations.json') as yelploc_file:
-            yelploc_data = json.load(yelploc_file)
-            data_list = yelploc_data.get('businesses')
+    latitude = data['coordinates']['latitude']
+    longitude = data['coordinates']['longitude']
+
+    rating = data['rating'] #value for rating as integer
+    name = data['name'] #value unicode string
+    url = data['url'] #value unicode string
+
+    category = data['categories'][0]['title']
+
+    restaurant = Location(
+                latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
+
+    db.session.add(restaurant)
+    db.commit()
 
 
-    #####TODO#####
-    #need to determine which restaurants are useful/viable, especially which are actual pokestops/gyms
-    #might actually want to do a restaurant/bar search to get best bars on the route
+def load_brickhouse():
+    """Loads data from yelp for Brickhouse."""
+
+    print 'Locations'
+
+    with open('/seed_data/brickhouse.json') as loc_file:
+        data=json.load(loc_file)
+
+    latitude = data['coordinates']['latitude']
+    longitude = data['coordinates']['longitude']
+
+    rating = data['rating'] #value for rating as integer
+    name = data['name'] #value unicode string
+    url = data['url'] #value unicode string
+
+    category = data['categories'][0]['title']
+
+    restaurant = Location(
+                latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
+
+    db.session.add(restaurant)
+    db.commit()
 
 
-#######TEST FOR ALL FILES##########
+def load_lava_lounge():
+    """Loads data from yelp for Lava Lounge."""
 
-    with open('b_restaurant.json') as b_file:
-            b_data=json.load(b_file)
-            print b_data
+    print 'Locations'
 
-    b_coords = b_data['coordinates']
-    latitude = b_coords['latitude'] #plot value for map
-    longitude = b_coords['longitude'] #plot value for map
+    with open('/seed_data/lava_lounge.json') as loc_file:
+        data=json.load(loc_file)
 
-    rating = b_data['rating'] #value for rating as integer
-    name = b_data['name'] #value unicode string
-    url = b_data['url'] #value unicode string
+    latitude = data['coordinates']['latitude']
+    longitude = data['coordinates']['longitude']
 
-    all_cats = b_data['categories'] #list of dictionaries
-    first_cat_dict = all_cats[0]
-    cat_title = first_dict['title'] #value unicode string
+    rating = data['rating'] #value for rating as integer
+    name = data['name'] #value unicode string
+    url = data['url'] #value unicode string
+
+    category = data['categories'][0]['title']
+
+    restaurant = Location(
+                latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
+
+    db.session.add(restaurant)
+    db.commit()
+
+
+def load_local_tap():
+    """Loads data from yelp for Local Tap."""
+
+    print 'Locations'
+
+    with open('/seed_data/local_tap.json') as loc_file:
+        data=json.load(loc_file)
+
+    latitude = data['coordinates']['latitude']
+    longitude = data['coordinates']['longitude']
+
+    rating = data['rating'] #value for rating as integer
+    name = data['name'] #value unicode string
+    url = data['url'] #value unicode string
+
+    category = data['categories'][0]['title']
+
+    restaurant = Location(
+                latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
+
+    db.session.add(restaurant)
+    db.commit()
+
+
+def load_lucky_strike():
+    """Loads data from yelp for Lucky Strike."""
+
+    print 'Locations'
+
+    with open('/seed_data/lucky_strike.json') as loc_file:
+        data=json.load(loc_file)
+
+    latitude = data['coordinates']['latitude']
+    longitude = data['coordinates']['longitude']
+
+    rating = data['rating'] #value for rating as integer
+    name = data['name'] #value unicode string
+    url = data['url'] #value unicode string
+
+    category = data['categories'][0]['title']
+
+    restaurant = Location(
+                latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
+
+    db.session.add(restaurant)
+    db.commit()
+
+
+def load_momos():
+    """Loads data from yelp for Momo's."""
+
+    print 'Locations'
+
+    with open('/seed_data/momos.json') as loc_file:
+        data=json.load(loc_file)
+
+    latitude = data['coordinates']['latitude']
+    longitude = data['coordinates']['longitude']
+
+    rating = data['rating'] #value for rating as integer
+    name = data['name'] #value unicode string
+    url = data['url'] #value unicode string
+
+    category = data['categories'][0]['title']
+
+    restaurant = Location(
+                latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
+
+    db.session.add(restaurant)
+    db.commit()
+
+
+def load_osha_thai():
+    """Loads data from yelp for Osha Thai."""
+
+    print 'Locations'
+
+    with open('/seed_data/osha_thai.json') as loc_file:
+        data=json.load(loc_file)
+
+    latitude = data['coordinates']['latitude']
+    longitude = data['coordinates']['longitude']
+
+    rating = data['rating'] #value for rating as integer
+    name = data['name'] #value unicode string
+    url = data['url'] #value unicode string
+
+    category = data['categories'][0]['title']
+
+    restaurant = Location(
+                latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
+
+    db.session.add(restaurant)
+    db.commit()
+
+
+def load_victory_hall():
+    """Loads data from yelp for Victory Hall."""
+
+    print 'Locations'
+
+    with open('/seed_data/victory_hall.json') as loc_file:
+        data=json.load(loc_file)
+
+    latitude = data['coordinates']['latitude']
+    longitude = data['coordinates']['longitude']
+
+    rating = data['rating'] #value for rating as integer
+    name = data['name'] #value unicode string
+    url = data['url'] #value unicode string
+
+    category = data['categories'][0]['title']
+
+    restaurant = Location(
+                latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
+
+    db.session.add(restaurant)
+    db.commit()
+
+
+def load_wine_down():
+    """Loads data from yelp for Wine Down."""
+
+    print 'Locations'
+
+    with open('/seed_data/wine_down.json') as loc_file:
+        data=json.load(loc_file)
+
+    latitude = data['coordinates']['latitude']
+    longitude = data['coordinates']['longitude']
+
+    rating = data['rating'] #value for rating as integer
+    name = data['name'] #value unicode string
+    url = data['url'] #value unicode string
+
+    category = data['categories'][0]['title']
+
+    restaurant = Location(
+                latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
+
+    db.session.add(restaurant)
+    db.commit()
+
+
+def yerba_buena_gym():
+    """Add gym to database."""
+
+    print 'Gyms'
+
+    latitude = #GET THIS
+    longitude = #GET THIS
+    name = 'Yerba Buena Gardens Gym'
+
+    gym = Gym(latitude=latitude, longitude=longitude, name=name)
+
+    db.session.add(gym)
+    db.commit()
+
+
+#################
+
+
+# def load_yelp(): #TODO SECOND SPRINT
+#     """Iterates through yelp_locations directory and adds to database."""
+
+#     #TODO
+#     #want to figure out how to iterate over files in the yelp_locations directory
+#     #longform code for now
+
+#     #####TODO#####
+#     #need to determine which restaurants are useful/viable, especially which are actual pokestops/gyms
+#     #might actually want to do a restaurant/bar search to get best bars on the route
+
 
 
 
@@ -87,6 +294,14 @@ def load_yelp():
 #     db.create_all()
 
     # load_encounters()
-    # load_users()
-    # load_yelp()
-    # set_val_user_id()
+    # load_b_rest()
+    # load_brickhouse()
+    # load_lava_lounge()
+    # load_local_tap()
+    # load_lucky_strike()
+    # load_momos()
+    # load_osha_thai()
+    # load_victory_hall()
+    # load_wine_down()
+    # yerba_buena_gym()
+    # load_yelp() - second sprint

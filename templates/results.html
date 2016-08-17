@@ -1,7 +1,32 @@
-results.html
+<!-- results.html
 
 on the page, we show the map the user has created, as well as the directions
 we want to show directions as a list within a div
 
 create a for loop that creates lines in the list once the direction list has loaded
-to do -- need to determine if i can parse directions and have each directions show as a <li>
+to do - - need to determine if i can parse directions and have each directions show as a <li>
+ -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div id='map' style='height:100%'></div>
+        <!--API KEY HERE/NEED TO KEEP SECRET-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQ64X5N_GbU7B-n_rpC8tQJXnoUqeS6to&callback=initMap"
+        async defer></script>
+        <script src='../google-maps.js'></script>
+
+<meta id='something' data-name='{{ SOMETHING }}' data-other='{{ OTHER }}'>
+<!-- VARIABLES TO WORK WITH -->
+<!-- {{ start_point }}
+{{ end_point }}
+{{ departure }}
+{{ encounters??? }} //coerce data with jquery!!!
+{{ yelp_locations??? }} //coerce data with jquery!!! -->
+
+
+
+{% endblock %}
+
+

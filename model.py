@@ -1,10 +1,18 @@
+#PokeSee, PokeDo - Data Model
 from flask_sqlalchemy import SQLAlchemy
-from random import random, choice, randint
 
 db = SQLAlchemy()
 
 
 ###########################################
+#TODO:
+#Add Pokemons, Types to data model?
+#Add Gyms
+
+# class Pokemon(db.model):
+#     """An instance of a Pokemon."""
+
+#     __tablename__='pokemon'
 
 
 class Encounter(db.Model):
@@ -25,7 +33,7 @@ class Encounter(db.Model):
     def __repr__(self):
             """Provide helpful representation when printed."""
 
-            return "<Encounter encounter_id=%s pokemon_id=%s latitude=%s longitude=%s>" % (self.encounter_id, self.pokemon_id, self.latitude, self.longitude)
+            return '<Encounter encounter_id=%s pokemon_id=%s latitude=%s longitude=%s>' % (self.encounter_id, self.pokemon_id, self.latitude, self.longitude)
 
 
 class Location(db.Model):
@@ -35,31 +43,45 @@ class Location(db.Model):
 
     __tablename__='locations'
 
-    real_location_id = db.Column(db.Integer,
+    location_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True)
-    # is_pokestop = db.Column(db.Boolean) #need to make some locations not pokestops, add attr to yelp data
-    latitude = db.Column(db.Float(precision=(13,9))) #will need to get from LOCATION>COORDINATE attr
-    longitude = db.Column(db.Float(precision=(13,9))) #same as above
+    latitude = db.Column(db.Float(precision=(13,9)))
+    longitude = db.Column(db.Float(precision=(13,9)))
     rating = db.Column(db.Integer)
-    # review_count = db.Column(db.Integer)
     name = db.Column(db.String(100), nullable=False)
-    # snippet_image_url = db.Column(db.String(300))
     url = db.Column(db.String(200))
     # display_phone = db.Column(db.String(15)) #poor handling if integer
-    category = db.Column(db.String(50)) #need to parse through list of categories and take first result as category
-
+    category = db.Column(db.String(50))
 
     def __repr__(self):
             """Provide helpful representation when printed."""
 
-            return "<Location name=%s rating=%s latitude=%s longitude=%s>" % (self.name, self.rating, self.latitude, self.longitude)
+            return '<Location name=%s rating=%s latitude=%s longitude=%s>' % (self.name, self.rating, self.latitude, self.longitude)
+
+
+class Gym(db.Model):
+    """Location for Pokemon Gym."""
+
+    __tablename__='gyms'
+
+    location_id = db.Column(db.Integer,
+                        autoincrement=True,
+                        primary_key=True)
+    latitude = db.Column(db.Float(precision=(13,9)))
+    longitude = db.Column(db.Float(precision=(13,9)))
+    name = db.Column(db.String(100), nullable=False)
+
+    def __repr__(self):
+            """Provide helpful representation when printed."""
+
+            return '<Gym name=%s latitude=%s longitude=%s>' % (self.name, self.latitude, self.longitude)
 
 
 class User(db.Model):
     """User of PokeSee PokeDo."""
 
-    __tablename__ = "users"
+    __tablename__ = 'users'
 
     user_id = db.Column(db.Integer,
                         autoincrement=True,
@@ -72,7 +94,8 @@ class User(db.Model):
     def __repr__(self):
         """Provide helpful representation when printed."""
 
-        return "<User user_id=%s email=%s first_name=%s last_name=%s>" % (self.user_id, self.email, self.first_name, self.last_name)
+        return '<User user_id=%s email=%s first_name=%s last_name=%s>' % (self.user_id, self.email, self.first_name, self.last_name)
+
 
 
 #####################################################################

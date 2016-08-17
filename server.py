@@ -1,3 +1,5 @@
+#PokeSee, PokeDo - Server
+
 """pokeseepokedo"""
 
 from jinja2 import StrictUndefined
@@ -5,10 +7,7 @@ from jinja2 import StrictUndefined
 from flask import Flask, render_template, request, flash, redirect, session
 from flask_debugtoolbar import DebugToolbarExtension
 
-from model import connect_to_db, db, User, Movie, Rating
-
-# from yelp.client import Client
-# from yelp.oauth1_authenticator import Oauth1Authenticator
+from model import connect_to_db, db, User
 
 
 app = Flask(__name__)
@@ -16,17 +15,6 @@ app = Flask(__name__)
 app.secret_key = "SOMETHINGHERELATER"
 
 app.jinja_env.undefined = StrictUndefined
-
-# #######YELP#######
-# auth = Oauth1Authenticator(
-#     consumer_key=YOUR_CONSUMER_KEY,
-#     consumer_secret=YOUR_CONSUMER_SECRET,
-#     token=YOUR_TOKEN,
-#     token_secret=YOUR_TOKEN_SECRET
-# )
-
-# client = Client(auth)
-# ##################
 
 
 @app.route('/')
@@ -40,16 +28,24 @@ def index():
 def results():
     """Show map and directions based on user input."""
 
-    #SOMETHINGHERELATER
+    #TODO - work on map
 
-    return render_template('results.html')
+    start_point = request.args['start-point']
+    end_point = request.args['end-point']
+    departure = request.args['departure']
+
+    return render_template('results.html',
+                            start_point=start_point,
+                            end_point=end_point,
+                            departure=departure)
+
+
+# TODO - SECOND SPRINT #########################################################
 
 
 @app.route('/register', methods=['GET'])
 def register_form():
     """Show form for user signup."""
-
-    #SOMETHINGHERELATER
 
     return render_template("registration_form.html")
 
@@ -58,8 +54,6 @@ def register_form():
 def register_process():
     """Process registration."""
 
-    #SOMETHINGHERELATER
-
     email = request.form['email']
     password = request.form['new-password']
     first_name = request.form['first-name']
@@ -67,11 +61,12 @@ def register_process():
 
     new_user = User(email=email, password=password, first_name=first_name, last_name=last_name)
 
-    # db.session.add(new_user)
-    # db.session.commit()
+    db.session.add(new_user)
+    db.session.commit()
 
-    # flash("User %s added." % email)
-    # return redirect("/")
+    flash("Welcome, %s. Happy catching!" % first_name)
+    #return redirect("/")
+    #TODO - add a homepage for users that shows their information, maybe timestamp for when registered??
 
 
 @app.route('/login', methods=['GET'])
@@ -118,16 +113,6 @@ def logout():
     return redirect("/")
 
     #VERIFY
-
-####TEST#################
-
-@app.route('/maps-test')
-def map():
-    """Test map, DELETE PRE-PRODUCTION ."""
-
-    #SOMETHINGHERELATER
-
-    return render_template("gmaps-test.html")
     
 ############################################
 
