@@ -83,26 +83,28 @@ CREATE VIEW types AS
     poke_types.type_id,
     types_base.identifier
    FROM (poke_types
-     JOIN types_base ON ((poke_types.type_id = types_base.id)));
+     JOIN types_base ON ((poke_types.type_id = types_base.id)))
+  ORDER BY poke_types.pokemon_id;
 
 
 ALTER TABLE public.types OWNER TO vagrant;
 
 --
--- Name: pokemon; Type: VIEW; Schema: public; Owner: vagrant
+-- Name: pokemons; Type: VIEW; Schema: public; Owner: vagrant
 --
 
-CREATE VIEW pokemon AS
+CREATE VIEW pokemons AS
  SELECT poke_base.id,
     poke_base.identifier AS name,
     types.identifier AS type,
     poke_base.height,
     poke_base.weight
    FROM (poke_base
-     JOIN types ON ((poke_base.id = types.pokemon_id)));
+     JOIN types ON ((poke_base.id = types.pokemon_id)))
+  ORDER BY poke_base.id;
 
 
-ALTER TABLE public.pokemon OWNER TO vagrant;
+ALTER TABLE public.pokemons OWNER TO vagrant;
 
 --
 -- Data for Name: poke_base; Type: TABLE DATA; Schema: public; Owner: vagrant

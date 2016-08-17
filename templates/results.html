@@ -13,11 +13,45 @@ to do - - need to determine if i can parse directions and have each directions s
 
     <div id='map' style='height:100%'></div>
         <!--API KEY HERE/NEED TO KEEP SECRET-->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQ64X5N_GbU7B-n_rpC8tQJXnoUqeS6to&callback=initMap"
-        async defer></script>
-        <script src='../google-maps.js'></script>
+        <!-- Google maps API -->
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
 
-<meta id='something' data-name='{{ SOMETHING }}' data-other='{{ OTHER }}'>
+            <!-- what it looks like with a key -->
+        <!-- <script async defer
+        //       src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&callback=initMap">
+        </script> -->
+        <script type="text/javascript">
+            var map;
+            function initMap() {
+              map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 37.784988, lng: -122.400979}, //yerba buena gardens
+                zoom: 15
+              });
+            }
+
+            function addMarker() {
+              //want to get icon of pokeball as placeholder, then use images for each pokemon
+              var myImageURL = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+              var image = myImageURL;
+
+
+            //NEED TO USE STRING REPLACEMENT FOR LONGITUDE AND LATITURE HERE
+
+              var encounter1 = new google.maps.LatLng(37.784988, -122.400979)
+              var marker1 = new google.maps.Marker({
+                  position: encounter1,
+                  map: map,
+                  title: 'POKEMON #13',
+                  icon: image
+              });
+
+                return marker1;
+            };
+
+        </script>
+        <script src='google-maps.js'></script>
+
+<!-- <meta id='something' data-name='{{ SOMETHING }}' data-other='{{ OTHER }}'> -->
 <!-- VARIABLES TO WORK WITH -->
 <!-- {{ start_point }}
 {{ end_point }}
