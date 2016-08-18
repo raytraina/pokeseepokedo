@@ -6,13 +6,17 @@ db = SQLAlchemy()
 
 ###########################################
 #TODO:
-#Add Pokemons, Types to data model?
-#Add Gyms
+#MUST ADD Pokemons, Types to data model
 
 # class Pokemon(db.model):
 #     """An instance of a Pokemon."""
 
-#     __tablename__='pokemon'
+#     __tablename__='pokemons'
+
+# class Type(db.model):
+#     """An elemental type for Pokemon."""
+
+#     __tablename__='types'
 
 
 class Encounter(db.Model):
@@ -26,9 +30,9 @@ class Encounter(db.Model):
     encounter_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True)
-    latitude = db.Column(db.Float(precision=(13,9)))
+    latitude = db.Column(db.Float)
     pokemon_id = db.Column(db.Integer)
-    longitude = db.Column(db.Float(precision=(13,9)))
+    longitude = db.Column(db.Float)
 
     def __repr__(self):
             """Provide helpful representation when printed."""
@@ -46,8 +50,8 @@ class Location(db.Model):
     location_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True)
-    latitude = db.Column(db.Float(precision=(13,9)))
-    longitude = db.Column(db.Float(precision=(13,9)))
+    latitude = db.Column(db.Float)
+    longitude = db.Column(db.Float)
     rating = db.Column(db.Integer)
     name = db.Column(db.String(100), nullable=False)
     url = db.Column(db.String(200))
@@ -68,8 +72,8 @@ class Gym(db.Model):
     location_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True)
-    latitude = db.Column(db.Float(precision=(13,9)))
-    longitude = db.Column(db.Float(precision=(13,9)))
+    latitude = db.Column(db.Float)
+    longitude = db.Column(db.Float)
     name = db.Column(db.String(100), nullable=False)
 
     def __repr__(self):

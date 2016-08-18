@@ -10,32 +10,194 @@ from server import app
 
 #########################
 
-
-def load_encounters(): #TESTED
+def load_encounter1(): #TESTED
     """Load encounter locations with Pokemon."""
 
     print 'Encounters'
 
-    with open('/seed_data/encounter.json') as pokeloc_file:
-            pokeloc_data = json.load(pokeloc_file)
-            data_list = pokeloc_data.get('data') #now this is a list instead of a dict w/ 'data' as key
+    with open('/home/vagrant/src/project/seed_data/encounters/encounter1.json') as pokeloc_file:
+        data = json.load(pokeloc_file)
 
-            encounter1 = data_list[0]
-            encounter2 = data_list[1]
-            encounter3 = data_list[2]
-            encounter4 = data_list[3]
-            encounter5 = data_list[4]
-            encounter6 = data_list[5]
-            encounter7 = data_list[6]
-            encounter8 = data_list[7]
-            encounter9 = data_list[8]
-            encounter10 = data_list[9]
+    latitude = data['latitude']
+    pokemon_id = data['pokemonId']
+    encounter_id = data['id']
+    longitude = data['longitude']
 
-            encounter1, encounter2, encounter3, encounter4, encounter5, encounter6, encounter7, encounter8, encounter9, encounter10 = Encounter(
-                latitude=latitude, pokemon_id=pokemonId, encounter_id=id, longitude=longitude)
+    encounter = Encounter(latitude=latitude, pokemon_id=pokemon_id, encounter_id=encounter_id, longitude=longitude)
 
-            db.session.add(encounter1, encounter2, encounter3, encounter4, encounter5, encounter6, encounter7, encounter8, encounter9, encounter10)
-            db.session.commit()
+    db.session.add(encounter)
+    db.session.commit()
+
+
+def load_encounter2(): #TESTED
+    """Load encounter locations with Pokemon."""
+
+    print 'Encounters'
+
+    with open('/home/vagrant/src/project/seed_data/encounters/encounter2.json') as pokeloc_file:
+        data = json.load(pokeloc_file)
+
+    latitude = data['latitude']
+    pokemon_id = data['pokemonId']
+    encounter_id = data['id']
+    longitude = data['longitude']
+
+    encounter = Encounter(latitude=latitude, pokemon_id=pokemon_id, encounter_id=encounter_id, longitude=longitude)
+
+    db.session.add(encounter)
+    db.session.commit()
+
+
+def load_encounter3(): #TESTED
+    """Load encounter locations with Pokemon."""
+
+    print 'Encounters'
+
+    with open('/home/vagrant/src/project/seed_data/encounters/encounter3.json') as pokeloc_file:
+        data = json.load(pokeloc_file)
+
+    latitude = data['latitude']
+    pokemon_id = data['pokemonId']
+    encounter_id = data['id']
+    longitude = data['longitude']
+
+    encounter = Encounter(latitude=latitude, pokemon_id=pokemon_id, encounter_id=encounter_id, longitude=longitude)
+
+    db.session.add(encounter)
+    db.session.commit()
+
+
+def load_encounter4(): #TESTED
+    """Load encounter locations with Pokemon."""
+
+    print 'Encounters'
+
+    with open('/home/vagrant/src/project/seed_data/encounters/encounter4.json') as pokeloc_file:
+        data = json.load(pokeloc_file)
+
+    latitude = data['latitude']
+    pokemon_id = data['pokemonId']
+    encounter_id = data['id']
+    longitude = data['longitude']
+
+    encounter = Encounter(latitude=latitude, pokemon_id=pokemon_id, encounter_id=encounter_id, longitude=longitude)
+
+    db.session.add(encounter)
+    db.session.commit()
+
+
+def load_encounter5(): #TESTED
+    """Load encounter locations with Pokemon."""
+
+    print 'Encounters'
+
+    with open('/home/vagrant/src/project/seed_data/encounters/encounter5.json') as pokeloc_file:
+        data = json.load(pokeloc_file)
+
+    latitude = data['latitude']
+    pokemon_id = data['pokemonId']
+    encounter_id = data['id']
+    longitude = data['longitude']
+
+    encounter = Encounter(latitude=latitude, pokemon_id=pokemon_id, encounter_id=encounter_id, longitude=longitude)
+
+    db.session.add(encounter)
+    db.session.commit()
+
+
+def load_encounter6(): #TESTED
+    """Load encounter locations with Pokemon."""
+
+    print 'Encounters'
+
+    with open('/home/vagrant/src/project/seed_data/encounters/encounter6.json') as pokeloc_file:
+        data = json.load(pokeloc_file)
+
+    latitude = data['latitude']
+    pokemon_id = data['pokemonId']
+    encounter_id = data['id']
+    longitude = data['longitude']
+
+    encounter = Encounter(latitude=latitude, pokemon_id=pokemon_id, encounter_id=encounter_id, longitude=longitude)
+
+    db.session.add(encounter)
+    db.session.commit()
+
+
+def load_encounter7(): #TESTED
+    """Load encounter locations with Pokemon."""
+
+    print 'Encounters'
+
+    with open('/home/vagrant/src/project/seed_data/encounters/encounter7.json') as pokeloc_file:
+        data = json.load(pokeloc_file)
+
+    latitude = data['latitude']
+    pokemon_id = data['pokemonId']
+    encounter_id = data['id']
+    longitude = data['longitude']
+
+    encounter = Encounter(latitude=latitude, pokemon_id=pokemon_id, encounter_id=encounter_id, longitude=longitude)
+
+    db.session.add(encounter)
+    db.session.commit()
+
+
+def load_encounter8(): #TESTED
+    """Load encounter locations with Pokemon."""
+
+    print 'Encounters'
+
+    with open('/home/vagrant/src/project/seed_data/encounters/encounter8.json') as pokeloc_file:
+        data = json.load(pokeloc_file)
+
+    latitude = data['latitude']
+    pokemon_id = data['pokemonId']
+    encounter_id = data['id']
+    longitude = data['longitude']
+
+    encounter = Encounter(latitude=latitude, pokemon_id=pokemon_id, encounter_id=encounter_id, longitude=longitude)
+
+    db.session.add(encounter)
+    db.session.commit()
+
+
+def load_encounter9(): #TESTED
+    """Load encounter locations with Pokemon."""
+
+    print 'Encounters'
+
+    with open('/home/vagrant/src/project/seed_data/encounters/encounter9.json') as pokeloc_file:
+        data = json.load(pokeloc_file)
+
+    latitude = data['latitude']
+    pokemon_id = data['pokemonId']
+    encounter_id = data['id']
+    longitude = data['longitude']
+
+    encounter = Encounter(latitude=latitude, pokemon_id=pokemon_id, encounter_id=encounter_id, longitude=longitude)
+
+    db.session.add(encounter)
+    db.session.commit()
+
+
+def load_encounter10(): #TESTED
+    """Load encounter locations with Pokemon."""
+
+    print 'Encounters'
+
+    with open('/home/vagrant/src/project/seed_data/encounters/encounter10.json') as pokeloc_file:
+        data = json.load(pokeloc_file)
+
+    latitude = data['latitude']
+    pokemon_id = data['pokemonId']
+    encounter_id = data['id']
+    longitude = data['longitude']
+
+    encounter = Encounter(latitude=latitude, pokemon_id=pokemon_id, encounter_id=encounter_id, longitude=longitude)
+
+    db.session.add(encounter)
+    db.session.commit()
 
 
 def load_b_rest():
@@ -43,7 +205,7 @@ def load_b_rest():
 
     print 'Locations'
 
-    with open('/seed_data/b_restaurant.json') as loc_file:
+    with open('/home/vagrant/src/project/seed_data/locations/b_restaurant.json') as loc_file:
         data=json.load(loc_file)
 
     latitude = data['coordinates']['latitude']
@@ -59,7 +221,7 @@ def load_b_rest():
                 latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
 
     db.session.add(restaurant)
-    db.commit()
+    db.session.commit()
 
 
 def load_brickhouse():
@@ -67,7 +229,7 @@ def load_brickhouse():
 
     print 'Locations'
 
-    with open('/seed_data/brickhouse.json') as loc_file:
+    with open('/home/vagrant/src/project/seed_data/locations/brickhouse.json') as loc_file:
         data=json.load(loc_file)
 
     latitude = data['coordinates']['latitude']
@@ -83,7 +245,7 @@ def load_brickhouse():
                 latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
 
     db.session.add(restaurant)
-    db.commit()
+    db.session.commit()
 
 
 def load_lava_lounge():
@@ -91,7 +253,7 @@ def load_lava_lounge():
 
     print 'Locations'
 
-    with open('/seed_data/lava_lounge.json') as loc_file:
+    with open('/home/vagrant/src/project/seed_data/locations/lava_lounge.json') as loc_file:
         data=json.load(loc_file)
 
     latitude = data['coordinates']['latitude']
@@ -107,7 +269,7 @@ def load_lava_lounge():
                 latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
 
     db.session.add(restaurant)
-    db.commit()
+    db.session.commit()
 
 
 def load_local_tap():
@@ -115,7 +277,7 @@ def load_local_tap():
 
     print 'Locations'
 
-    with open('/seed_data/local_tap.json') as loc_file:
+    with open('/home/vagrant/src/project/seed_data/locations/local_tap.json') as loc_file:
         data=json.load(loc_file)
 
     latitude = data['coordinates']['latitude']
@@ -131,7 +293,7 @@ def load_local_tap():
                 latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
 
     db.session.add(restaurant)
-    db.commit()
+    db.session.commit()
 
 
 def load_lucky_strike():
@@ -139,7 +301,7 @@ def load_lucky_strike():
 
     print 'Locations'
 
-    with open('/seed_data/lucky_strike.json') as loc_file:
+    with open('/home/vagrant/src/project/seed_data/locations/lucky_strike.json') as loc_file:
         data=json.load(loc_file)
 
     latitude = data['coordinates']['latitude']
@@ -155,7 +317,7 @@ def load_lucky_strike():
                 latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
 
     db.session.add(restaurant)
-    db.commit()
+    db.session.commit()
 
 
 def load_momos():
@@ -163,7 +325,7 @@ def load_momos():
 
     print 'Locations'
 
-    with open('/seed_data/momos.json') as loc_file:
+    with open('/home/vagrant/src/project/seed_data/locations/momos.json') as loc_file:
         data=json.load(loc_file)
 
     latitude = data['coordinates']['latitude']
@@ -179,7 +341,7 @@ def load_momos():
                 latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
 
     db.session.add(restaurant)
-    db.commit()
+    db.session.commit()
 
 
 def load_osha_thai():
@@ -187,7 +349,7 @@ def load_osha_thai():
 
     print 'Locations'
 
-    with open('/seed_data/osha_thai.json') as loc_file:
+    with open('/home/vagrant/src/project/seed_data/locations/osha_thai.json') as loc_file:
         data=json.load(loc_file)
 
     latitude = data['coordinates']['latitude']
@@ -203,7 +365,7 @@ def load_osha_thai():
                 latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
 
     db.session.add(restaurant)
-    db.commit()
+    db.session.commit()
 
 
 def load_victory_hall():
@@ -211,7 +373,7 @@ def load_victory_hall():
 
     print 'Locations'
 
-    with open('/seed_data/victory_hall.json') as loc_file:
+    with open('/home/vagrant/src/project/seed_data/locations/victory_hall.json') as loc_file:
         data=json.load(loc_file)
 
     latitude = data['coordinates']['latitude']
@@ -227,7 +389,7 @@ def load_victory_hall():
                 latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
 
     db.session.add(restaurant)
-    db.commit()
+    db.session.commit()
 
 
 def load_wine_down():
@@ -235,7 +397,7 @@ def load_wine_down():
 
     print 'Locations'
 
-    with open('/seed_data/wine_down.json') as loc_file:
+    with open('/home/vagrant/src/project/seed_data/locations/wine_down.json') as loc_file:
         data=json.load(loc_file)
 
     latitude = data['coordinates']['latitude']
@@ -251,7 +413,7 @@ def load_wine_down():
                 latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
 
     db.session.add(restaurant)
-    db.commit()
+    db.session.commit()
 
 
 def yerba_buena_gym():
@@ -259,17 +421,30 @@ def yerba_buena_gym():
 
     print 'Gyms'
 
-    latitude = #GET THIS
-    longitude = #GET THIS
+    latitude = 37.7848382
+    longitude = -122.40267
     name = 'Yerba Buena Gardens Gym'
 
     gym = Gym(latitude=latitude, longitude=longitude, name=name)
 
     db.session.add(gym)
-    db.commit()
+    db.session.commit()
 
 
-#################
+#TODO SECOND SPRINT#################
+
+
+# def set_val_user_id(): #TODO SECOND SPRINT
+#     """Set value for the next user_id after seeding database"""
+
+#     # Get the Max user_id in the database
+#     result = db.session.query(func.max(User.user_id)).one()
+#     max_id = int(result[0])
+
+#     # Set the value for the next user_id to be max_id + 1
+#     query = "SELECT setval('users_user_id_seq', :new_id)"
+#     db.session.execute(query, {'new_id': max_id + 1})
+#     db.session.commit()
 
 
 # def load_yelp(): #TODO SECOND SPRINT
@@ -289,19 +464,30 @@ def yerba_buena_gym():
 ###############################################
 
 
-# if __name__ == "__main__":
-#     connect_to_db(app)
-#     db.create_all()
+if __name__ == "__main__":
+    connect_to_db(app)
+    db.create_all()
 
-    # load_encounters()
-    # load_b_rest()
-    # load_brickhouse()
-    # load_lava_lounge()
-    # load_local_tap()
-    # load_lucky_strike()
-    # load_momos()
-    # load_osha_thai()
-    # load_victory_hall()
-    # load_wine_down()
-    # yerba_buena_gym()
+    load_encounter1()
+    load_encounter2()
+    load_encounter3()
+    load_encounter4()
+    load_encounter5()
+    load_encounter6()
+    load_encounter7()
+    load_encounter8()
+    load_encounter9()
+    load_encounter10()
+    load_b_rest()
+    load_brickhouse()
+    load_lava_lounge()
+    load_local_tap()
+    load_lucky_strike()
+    load_momos()
+    load_osha_thai()
+    load_victory_hall()
+    load_wine_down()
+    yerba_buena_gym()
+    # set_val_user_id() - second sprint
+
     # load_yelp() - second sprint
