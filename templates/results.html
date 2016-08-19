@@ -11,6 +11,8 @@ to do - - need to determine if i can parse directions and have each directions s
 
 {% block content %}
 
+    <span id='start-point' style='display:none'>{{ start_point }}</span>
+    <span id='end-point' style='display:none'>{{ end_point }}</span>
 
     <form id='dest-details'>
         <label for='start-point'>start point:
@@ -35,6 +37,7 @@ to do - - need to determine if i can parse directions and have each directions s
     <script> 
     // var startPoint = {lat: 37.784097, lng: -122.402033};
     // var endPoint = {lat: 37.779268, lng: -122.390147};
+    document.getElementById("myP").style.visibility = "hidden";
     
     function initMap() {
       var directionsService = new google.maps.DirectionsService;
@@ -54,9 +57,9 @@ to do - - need to determine if i can parse directions and have each directions s
       var waypts = ['Oakland, CA', 'San Rafael, CA'];
 
       directionsService.route({
-        origin: document.getElementById('start').value,
-        destination: document.getElementById('end').value,
-        waypoints: waypts,
+        origin: document.getElementById('start-point').value,
+        destination: document.getElementById('end-point').value,
+        waypoints: none,
         optimizeWaypoints: true,
         travelMode: 'WALKING'
       }, function(response, status) {

@@ -1,6 +1,4 @@
-#PokeSee, PokeDo - Server
-
-"""pokeseepokedo"""
+"""PokeSee, PokeDo"""
 
 from jinja2 import StrictUndefined
 
@@ -11,8 +9,7 @@ from model import connect_to_db, db, Encounter, Location, Gym, User
 
 
 app = Flask(__name__)
-
-app.secret_key = "SOMETHINGHERELATER"
+app.secret_key = "XQRSK"
 
 app.jinja_env.undefined = StrictUndefined
 
@@ -21,23 +18,41 @@ app.jinja_env.undefined = StrictUndefined
 def index():
     """Render homepage."""
 
-    # return render_template('index.html')
+    return render_template('index.html')
 
 
-# @app.route('/poke-map', methods=['GET'])
-# def results():
-#     """Show map and directions based on user input."""
+@app.route('/poke-map', methods=['GET'])
+def results():
+    """Show map and directions based on user input."""
 
-#     #TODO - work on map
+    #TODO - work on map
 
-    # start_point = request.args['start-point']
-    # end_point = request.args['end-point']
-    # departure = request.args['departure']
+    #Form variables
+    start_point = request.args['start-point']
+    end_point = request.args['end-point']
+    departure = request.args['departure']
 
-    return render_template('results.html')
-                            # start_point=start_point,
-                            # end_point=end_point,
-                            # departure=departure)
+    #Query db for encounters/locations, pass to template
+    QUERY_1 = """SELECT * FROM encounters"""
+    QUERY_2 = """SELECT * FROM locations"""
+
+    encounters = []
+    locations = []
+
+    cursor_1 = db.session.execute(QUERY_1)
+    encounters = cursor_1.fetchall()
+
+    cursor_2 = db.session.execute(QUERY_2)
+    locations = cursor_2.fetchall()
+
+    #TO DO - ensure locations and encounters make it to template
+
+    return render_template('results.html',
+                            start_point=start_point,
+                            end_point=end_point,
+                            departure=departure,
+                            encounters=encounters,
+                            locations=locations)
 
 
 # TODO - SECOND SPRINT #########################################################
@@ -126,4 +141,5 @@ if __name__ == "__main__":
     #use the debug toolbar
     DebugToolbarExtension(app)
 
+    #run application
     app.run()

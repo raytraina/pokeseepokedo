@@ -1,23 +1,12 @@
-#PokeSee, PokeDo - Data Model
+"""Data Model for PokeSee, PokeDo"""
+
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
 
 ###########################################
-#TODO:
-#MUST ADD Pokemons, Types to data model
-
-# class Pokemon(db.model):
-#     """An instance of a Pokemon."""
-
-#     __tablename__='pokemons'
-
-# class Type(db.model):
-#     """An elemental type for Pokemon."""
-
-#     __tablename__='types'
-
+# Base Model declarations
 
 class Encounter(db.Model):
     """Create an encounter instance given a pokemon and a location.
@@ -31,8 +20,10 @@ class Encounter(db.Model):
                         autoincrement=True,
                         primary_key=True)
     latitude = db.Column(db.Float)
-    pokemon_id = db.Column(db.Integer)
+    pokemon_id = db.Column(db.Integer, db.ForeignKey('poke_base.pokemon_id'))
     longitude = db.Column(db.Float)
+
+    pokebase = db.relationship('PokeBase')
 
     def __repr__(self):
             """Provide helpful representation when printed."""
@@ -69,7 +60,7 @@ class Gym(db.Model):
 
     __tablename__='gyms'
 
-    location_id = db.Column(db.Integer,
+    gym_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True)
     latitude = db.Column(db.Float)
@@ -100,6 +91,126 @@ class User(db.Model):
 
         return '<User user_id=%s email=%s first_name=%s last_name=%s>' % (self.user_id, self.email, self.first_name, self.last_name)
 
+
+#####################################################################
+#CSV Models - Will be loaded directly into db
+
+class PokeType(db.Model):
+    """SOMETHING HERE LATER."""
+
+    __tablename__='poketypes'
+
+    poketype_id = db.Column(db.Integer, 
+                        autoincrement=True, 
+                        primary_key=True)
+    pokemon_id = db.Column(db.Integer, db.ForeignKey('poke_base.pokemon_id'))
+    type_id = db.Column(db.Integer, db.ForeignKey('type_base.type_id'))
+
+    pokebase = db.relationship('PokeBase')
+    typebase = db.relationship('TypeBase')
+
+    def __repr__(self):
+            """Provide helpful representation when printed."""
+
+            return '<PokeType pokemon_id=%s type_id=%s>' % (self.pokemon_id, self.type_id)
+
+    # CREATE TABLE poke_types (
+    # pokemon_id integer,
+    # type_id integer,
+    # slot integer
+    # );
+
+
+class PokeBase(db.Model):
+    """CSV Import"""
+
+    __tablename__='poke_base'
+
+    pokemon_id = db.Column(db.Integer, primary_key=True)
+    identifier = db.Column(db.String(60), nullable=False)
+    # species_id = db.Column(db.Integer)
+    height = db.Column(db.Integer, nullable=False)
+    weight = db.Column(db.Integer, nullable=False)
+
+    encounter = db.relationship('Encounter')
+    poketype = db.relationship('PokeType')
+
+    def __repr__(self):
+            """Provide helpful representation when printed."""
+
+            return '<PokeBase pokemon_id=%s identifier=%s>' % (self.pokemon_id, self.identifier)
+
+    # CREATE TABLE poke_base (
+    # id integer NOT NULL,
+    # identifier character varying(50),
+    # species_id integer,
+    # height integer,
+    # weight integer,
+    # base_experience integer,
+    # "order" integer,
+    # is_default integer
+    # );
+
+
+class TypeBase(db.Model):
+    """CSV Import"""
+
+    __tablename__='type_base'
+
+    type_id = db.Column(db.Integer, primary_key=True)
+    identifier = db.Column(db.String(60), nullable=False)
+    # generation_id = db.Column(db.Integer)
+    # damage_class_id = db.Column(db.Integer)
+
+    poketype = db.relationship('PokeType')
+
+    def __repr__(self):
+            """Provide helpful representation when printed."""
+
+            return '<TypeBase type_id=%s identifier=%s>' % (self.type_id, self.identifier)
+
+    # CREATE TABLE type_base (
+    # id integer NOT NULL,
+    # identifier character varying(50),
+    # generation_id integer,
+    # damage_class_id integer
+    # );
+
+
+#####################################################################
+#VIEW Models? Are these needed?
+
+# class Pokemon(db.model):
+#     """An instance of a Pokemon."""
+
+#     __tablename__='pokemons'
+
+#     name = db.Column
+
+
+#     CREATE VIEW pokemons AS
+#     SELECT poke_base._id,
+#     poke_base.identifier AS name,
+#     types.identifier AS type,
+#     poke_base.height,
+#     poke_base.weight
+#     FROM (poke_base
+#     JOIN types ON ((poke_base._id = types.pokemon_id)))
+#     ORDER BY poke_base._id;
+
+
+# class Type(db.model):
+#     """An elemental type for Pokemon."""
+
+#     __tablename__='types'
+
+#     CREATE VIEW types AS
+#     SELECT DISTINCT poke_types.pokemon_id,
+#     poke_types.type_id,
+#     type_base.identifier
+#     FROM (poke_types
+#     JOIN type_base ON ((poke_types.type_id = type_base._id)))
+#     ORDER BY poke_types.pokemon_id;
 
 
 #####################################################################

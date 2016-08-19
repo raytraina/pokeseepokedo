@@ -4,9 +4,69 @@ from sqlalchemy import func
 
 import json
 
-from model import connect_to_db, db, Encounter, Location, User, Gym
+from model import connect_to_db, db, Encounter, Location, User, Gym, PokeType, PokeBase, TypeBase
 
 from server import app
+
+#########################
+# Processing CSVs
+
+def load_pokebase():
+    """Load pokemon.csv"""
+
+    print 'PokeBase'
+
+    for i, row in enumerate(open('seed_data/csv/pokemon.csv')):
+        row = row.rstrip()
+        pokemon_id, identifier, species_id, height, weight = row.split(",") [:5]
+        
+        pokemon_id = int(pokemon_id)
+        height = int(height)
+        weight = int(weight)
+
+        pokebase = PokeBase(pokemon_id=pokemon_id, identifier=identifier, height=height, weight=weight)
+
+        db.session.add(pokebase)
+
+    db.session.commit()
+
+
+def load_poketype():
+    """Load pokemon_types.csv"""
+
+    print 'PokeType'
+
+    for i, row in enumerate(open('seed_data/csv/pokemon_types.csv')):
+        row = row.rstrip()
+        pokemon_id, type_id = row.split(",") [:2]
+        
+        pokemon_id = int(pokemon_id)
+        type_id = int(type_id)
+
+        poketype = PokeType(pokemon_id=pokemon_id, type_id=type_id)
+
+        db.session.add(poketype)
+
+    db.session.commit()
+
+
+def load_typebase():
+    """Load pokemon_types.csv"""
+
+    print 'TypeBase'
+
+    for i, row in enumerate(open('seed_data/csv/types.csv')):
+        row = row.rstrip()
+        type_id, identifier = row.split(",") [:2]
+        
+        type_id = int(type_id)
+
+        typebase = TypeBase(type_id=type_id, identifier=identifier)
+
+        db.session.add(typebase)
+
+    db.session.commit()
+
 
 #########################
 
@@ -468,6 +528,11 @@ if __name__ == "__main__":
     connect_to_db(app)
     db.create_all()
 
+    load_typebase()
+    load_pokebase()
+    load_poketype()
+
+
     load_encounter1()
     load_encounter2()
     load_encounter3()
@@ -478,6 +543,7 @@ if __name__ == "__main__":
     load_encounter8()
     load_encounter9()
     load_encounter10()
+
     load_b_rest()
     load_brickhouse()
     load_lava_lounge()
@@ -487,7 +553,9 @@ if __name__ == "__main__":
     load_osha_thai()
     load_victory_hall()
     load_wine_down()
+
     yerba_buena_gym()
+
     # set_val_user_id() - second sprint
 
     # load_yelp() - second sprint
