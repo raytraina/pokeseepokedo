@@ -2,7 +2,7 @@
 
 from jinja2 import StrictUndefined
 
-from flask import Flask, render_template, request, flash, redirect, session
+from flask import Flask, render_template, request, flash, redirect, session, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import connect_to_db, db, Encounter, Location, User, Gym, PokeType, PokeBase, TypeBase
@@ -18,41 +18,70 @@ app.jinja_env.undefined = StrictUndefined
 def index():
     """Render homepage."""
 
-    return render_template('index.html')
+    return render_template('results.html')
 
 
-@app.route('/poke-map', methods=['GET'])
+@app.route('/poke-map.json', methods=['GET'])
 def results():
     """Show map and directions based on user input."""
 
-    #TODO - work on map
+    # get form variables
+    start_point = request.args.get('start-point')
+    end_point = request.args.get('end-point')
+    departure = request.args.get('departure')
 
-    #Form variables
-    start_point = request.args['start-point']
-    end_point = request.args['end-point']
-    departure = request.args['departure']
+    ##########
 
-    #Query db for encounters/locations, pass to template
-    QUERY_1 = """SELECT * FROM encounters"""
-    QUERY_2 = """SELECT * FROM locations"""
+    # query all encounters in db
+    encounters = Encounter.query.all() #yields a list of objects
 
-    encounters = []
-    locations = []
+    # loop through encounters and add items to encounter_dict
+    encounter_dict = {}
+    for encounter in encounters:
+        encounter_dict[encounter.encounter_id] = {"pokemon_id":encounter.pokemon_id,
+                                                    "latitude":encounter.latitude,
+                                                    "longitude":encounter.longitude}
 
-    cursor_1 = db.session.execute(QUERY_1)
-    encounters = cursor_1.fetchall()
+    ##########
 
-    cursor_2 = db.session.execute(QUERY_2)
-    locations = cursor_2.fetchall()
+    # query all locations in db
+    locations = Location.query.all() #yields a list of objects
 
-    #TO DO - ensure locations and encounters make it to template
+    # loop through locations and add items to location_dict
+    location_dict = {}
+    for location in locations:
+        location_dict[location.location_id] = {"name":location.name,
+                                                "latitude":location.latitude,
+                                                "longitude":location.longitude,
+                                                "rating":location.rating,
+                                                "url":location.url,
+                                                "category":location.category}
 
-    return render_template('results.html',
-                            start_point=start_point,
-                            end_point=end_point,
-                            departure=departure,
-                            encounters=encounters,
-                            locations=locations)
+    ##########
+
+    # query all gyms in db
+    gyms = Gym.query.all() #yields a list of objects
+
+    # loop through gyms and add items to gym_dict
+    gym_dict = {}
+    for gym in gyms:
+        gym_dict[gym.gym_id] = {"name":gym.name,
+                                "latitude":gym.latitude,
+                                "longitude":gym.longitude}
+
+    # gym_dict = {"gym1": {
+    #                 "gym_id":gym[0].gym_id,
+    #                 "name":gym[0].name,
+    #                 "latitude":gym[0].latitude,
+    #                 "longitude":gym[0].longitude
+    #                 }
+    #             }
+
+    # combine dictionaries into dictionary of dictionaries
+    dictionary = {"encounters": encounter_dict, "locations": location_dict, "gyms": gym_dict}
+
+    # return jsonified dictionary that will be accessible in JS
+    return jsonify(dictionary)
 
 
 # TODO - SECOND SPRINT #########################################################
@@ -127,7 +156,7 @@ def results():
 #     flash("Logged Out.")
 #     return redirect("/")
 
-#     #VERIFY
+##VERIFY ^^^
     
 ############################################
 
@@ -141,5 +170,8 @@ if __name__ == "__main__":
     #use the debug toolbar
     DebugToolbarExtension(app)
 
+    # doesn't work on localhost - REMOVE
+    # app.run()
+
     #run application
-    app.run()
+    app.run(host='0.0.0.0', port=5000)

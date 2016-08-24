@@ -11,82 +11,127 @@ to do - - need to determine if i can parse directions and have each directions s
 
 {% block content %}
 
-    <span id='start-point' style='display:none'>{{ start_point }}</span>
-    <span id='end-point' style='display:none'>{{ end_point }}</span>
 
-    <form id='dest-details'>
-        <label for='start-point'>start point:
-            <input type='text' name='start-point' value='730 Howard St San Francisco, CA 94103'>
-        </label><br>
-        <label for='end-point'>end point:
-            <input type='text' name='end-point' value='24 Willie Mays Plaza, San Francisco, CA 94107'>
-        </label><br>
-        <label for='departure'>time of departure:
-            <input type='text' name='departure' value='7:00 PM'>
-        </label><br>
-        <input type='submit' value='take me there' id='submit-destination'>
-    </form>
+<form id='dest-details' action='/poke-map.json' method='GET'>
+    <label for='start-point'>start point:
+        <input id='start-point' type='text' name='start-point' value='730 Howard St San Francisco, CA 94103'>
+    </label><br>
+    <label for='end-point'>end point:
+        <input id='end-point' type='text' name='end-point' value='24 Willie Mays Plaza, San Francisco, CA 94107'>
+    </label><br>
+    <label for='departure-time'>time of departure:
+        <select id='departure-time' name='departure-time'>
+            <option value='6:00 pm'>6:00 pm</option>
+            <option value='7:00 pm'>7:00 pm</option>
+            <option value='8:00 pm'>8:00 pm</option>
+            <option value='9:00 pm'>9:00 pm</option>
+            <option value='10:00 pm'>10:00 pm</option>
+            <option value='11:00 pm'>11:00 pm</option>
+            <option value='12:00 am'>12:00 am</option>
+        </select>
+    </label><br>
+    <input type='submit' id='submit-destination' href='#' value='take me there'>
+</form>
 
+<div id='show-data'></div>
+<div id='map'></div>
+<div id="directions-panel"></div>
 
-    
-    <div id='map' style='height:80%'></div>
-    <div id="directions-panel"></div>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places&key=AIzaSyDsAgJV6GObnh7-vt-hrQBm5beRdowkZxs&callback=initMap" async defer></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places&key=AIzaSyDsAgJV6GObnh7-vt-hrQBm5beRdowkZxs&callback=initMap" async defer></script>
+<!-- REMOVE CALLBACK AND ONLY RUN ON CLICK? -->
 
-    <script> 
-    // var startPoint = {lat: 37.784097, lng: -122.402033};
-    // var endPoint = {lat: 37.779268, lng: -122.390147};
-    document.getElementById("myP").style.visibility = "hidden";
-    
-    function initMap() {
-      var directionsService = new google.maps.DirectionsService;
-      var directionsDisplay = new google.maps.DirectionsRenderer;
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center: {lat: 37.781602, lng: -122.396885}
+<script>
+"use strict";
+
+  function initMap() {
+    // required google maps initiation f(x)
+    var directionsService = new google.maps.DirectionsService;
+    var directionsDisplay = new google.maps.DirectionsRenderer;
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 16,
+      center: {lat: 37.781602, lng: -122.396885}
+    });
+    // display map
+    directionsDisplay.setMap(map);
+
+    console.log('show map');
+
+    // declare empty array to hold latlng objects that are created
+    var waypoints = new Array();
+
+    // on click, get json from server (automatically parsed)
+    $('#submit-destination').click( function(evt) {
+      evt.preventDefault();
+
+      $.get('poke-map.json', function(data) {
+        var locObject = data['locations']; // declare location object from data
+        var gymObject = data['gyms']; // declare gym object
+        var encObject = data['encounters']; // declare encounter object
+
+        // $('#show-data').html(locObject); // PLACEHOLDER, REMOVE
+
+        $.each(locObject, function(key, value) { 
+          var keyLat = locObject[key]['latitude'] // get each latitude from obj
+          var keyLng = locObject[key]['longitude'] // get each longitude from obj
+          waypoints.push({lat:keyLat, lng:keyLng});
+          console.log(waypoints);
+        });
+
+        $.each(gymObject, function(key, value){
+          var keyLat = gymObject[key]['latitude']
+          var keyLng = gymObject[key]['longitude']
+          waypoints.push({lat:keyLat, lng:keyLng});
+          console.log(waypoints);
+        });
+
+          // for (var i=0; i<waypoints.length; i++)
+          // {}
+
       });
-      directionsDisplay.setMap(map);
+    });
+  }
 
-      document.getElementById('submit-destination').addEventListener('click', function() {
-        calculateAndDisplayRoute(directionsService, directionsDisplay);
-      });
-    }
+  //////////////////////////
 
-    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-      var waypts = ['Oakland, CA', 'San Rafael, CA'];
+  // TO DO - function getData(evt):
+  // ONCE RUNNING, DEFINE INDEPENDENT f(x)s, ELIMINATE UNNECESSARY ANONYMOUS f(x)s?
+  // TO DO - need to determine why map is no longer appearing!
 
-      directionsService.route({
-        origin: document.getElementById('start-point').value,
-        destination: document.getElementById('end-point').value,
-        waypoints: none,
-        optimizeWaypoints: true,
-        travelMode: 'WALKING'
-      }, function(response, status) {
-        if (status === 'OK') {
-          directionsDisplay.setDirections(response);
-          var route = response.routes[0];
-          var summaryPanel = document.getElementById('directions-panel');
-          summaryPanel.innerHTML = '';
-          // For each route, display summary information.
-          for (var i = 0; i < route.legs.length; i++) {
-            var routeSegment = i + 1;
-            summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
-                '</b><br>';
-            summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
-            summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
-            summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
-          }
-        } else {
-          window.alert('Directions request failed due to ' + status);
+  function calculateAndDisplayRoute(directionsService, directionsDisplay, data) {
+    var waypts = []
+
+    directionsService.route({
+      origin: new google.maps.LatLng(37.784097,-122.402033),
+      destination: new google.maps.LatLng(37.779268,-122.390147),
+      // origin: document.getElementById('start-point').value,
+      // destination: document.getElementById('end-point').value,
+      waypoints: waypts,
+      optimizeWaypoints: true,
+      travelMode: 'WALKING'
+    }, function(response, status) {
+      if (status === 'OK') {
+        directionsDisplay.setDirections(response);
+        var route = response.routes[0];
+        var summaryPanel = document.getElementById('directions-panel');
+        summaryPanel.innerHTML = '';
+        // For each route, display summary information.
+        for (var i = 0; i < route.legs.length; i++) {
+          var routeSegment = i + 1;
+          summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+              '</b><br>';
+          summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+          summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+          summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
         }
-      });
-    }
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
+  }
 
-    </script>
-
-
-
+</script>
 
 {% endblock %}
 
