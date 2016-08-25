@@ -91,16 +91,20 @@ to do - - need to determine if i can parse directions and have each directions s
           var encLng = encObject[key]['longitude'] // get each longitude from obj
           var encPoke = encObject[key]['pokemon_id'] // get each pokemon_id
           // markers.push({lat:encLat, lng:encLng});
-          var marker = new google.maps.LatLng(encLat, encLng);
-          markers.push({location:marker, stopover:false});
-          // NEXT - add these objects to markers array, determine what format needed
+          // var marker = new google.maps.LatLng(encLat, encLng);
+          var myPosition = {lat:encLat, lng:encLng};
+          var marker = new google.maps.Marker({position: myPosition, 
+                              map: map, 
+                              title: "Test"});
+          markers.push(marker);
+
           // NEXT - determine how to get pokemon data into info boxes
         });
 
         // console.log(waypoints); // should return 8 objects (locations)
         // console.log(markers); // should return 11 objects (encounters & gyms)
 
-        calculateAndDisplayRoute(directionsService, directionsDisplay, waypoints); // add waypoints
+        calculateAndDisplayRoute(directionsService, directionsDisplay, waypoints, markers); // add waypoints, markers
 
           // for (var i=0; i<waypoints.length; i++)
           // {}
@@ -111,13 +115,10 @@ to do - - need to determine if i can parse directions and have each directions s
 
   //////////////////////////
 
-  // TO DO - function getData(evt):
-  // ONCE RUNNING, DEFINE INDEPENDENT f(x)s, ELIMINATE UNNECESSARY ANONYMOUS f(x)s?
-  // TO DO - need to determine why map is no longer appearing!
+  function calculateAndDisplayRoute(directionsService, directionsDisplay, waypoints, markers) {
 
-  function calculateAndDisplayRoute(directionsService, directionsDisplay, waypoints) {
-
-    console.log(waypoints); // should return 8 objects (locations)
+    // console.log(waypoints); // should return 8 objects (locations)
+    console.log(markers);
 
     directionsService.route({
       origin: new google.maps.LatLng(37.784097,-122.402033),
@@ -146,6 +147,10 @@ to do - - need to determine if i can parse directions and have each directions s
     });
 
   }
+
+  //////////////////////////
+
+
 
 </script>
 
