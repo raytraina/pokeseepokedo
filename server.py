@@ -86,6 +86,8 @@ def results():
 
 # TODO - SECOND SPRINT #########################################################
 
+# possible way to implement
+# @app.route('/#anchor-point')
 
 # @app.route('/register', methods=['GET'])
 # def register_form():
@@ -168,7 +170,7 @@ if __name__ == "__main__":
     connect_to_db(app)
 
     #use the debug toolbar
-    DebugToolbarExtension(app)
+    # DebugToolbarExtension(app)
 
     # doesn't work on localhost - REMOVE
     # app.run()

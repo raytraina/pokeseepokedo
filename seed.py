@@ -260,30 +260,6 @@ def load_encounter10(): #TESTED
     db.session.commit()
 
 
-def load_b_rest():
-    """Loads data from yelp for B Restaurant."""
-
-    print 'Locations'
-
-    with open('/home/vagrant/src/project/seed_data/locations/b_restaurant.json') as loc_file:
-        data=json.load(loc_file)
-
-    latitude = data['coordinates']['latitude']
-    longitude = data['coordinates']['longitude']
-
-    rating = data['rating'] #value for rating as integer
-    name = data['name'] #value unicode string
-    url = data['url'] #value unicode string
-
-    category = data['categories'][0]['title']
-
-    restaurant = Location(
-                latitude=latitude, longitude=longitude, rating=rating, name=name, url=url, category=category)
-
-    db.session.add(restaurant)
-    db.session.commit()
-
-
 def load_brickhouse():
     """Loads data from yelp for Brickhouse."""
 
@@ -544,7 +520,6 @@ if __name__ == "__main__":
     load_encounter9()
     load_encounter10()
 
-    load_b_rest()
     load_brickhouse()
     load_lava_lounge()
     load_local_tap()
