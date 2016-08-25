@@ -33,7 +33,7 @@ to do - - need to determine if i can parse directions and have each directions s
     <input type='submit' id='submit-destination' href='#' value='take me there'>
 </form>
 
-<div id='map' style='height:700px'></div>
+<div id='map' style='height:600px'></div>
 <div id="directions-panel"></div>
 
 <script src="https://code.jquery.com/jquery.js"></script>
@@ -47,7 +47,7 @@ to do - - need to determine if i can parse directions and have each directions s
   function initMap() {
     // required google maps initiation f(x)
     var directionsService = new google.maps.DirectionsService;
-    var directionsDisplay = new google.maps.DirectionsRenderer;
+    var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers:true});
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 16,
       center: {lat: 37.781602, lng: -122.396885}
@@ -76,6 +76,16 @@ to do - - need to determine if i can parse directions and have each directions s
           // waypoints.push({lat:locLat, lng:locLng});
           var waypoint = new google.maps.LatLng(locLat, locLng);
           waypoints.push({location:waypoint, stopover:true});
+
+          //create marker for waypoints to show custom info
+          var myPosition = {lat:locLat, lng:locLng};
+          var locImage = {url: "https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/pokestop-2.png", 
+            scaledSize: new google.maps.Size(50,50)}
+          var marker = new google.maps.Marker({position: myPosition, 
+                              map: map,
+                              icon: locImage, 
+                              title: "Location"});
+
         });
 
         $.each(gymObject, function(key, value){
@@ -84,7 +94,7 @@ to do - - need to determine if i can parse directions and have each directions s
 
           var myPosition = {lat:gymLat, lng:gymLng};
           var gymImage = {url:"https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/battle.png", 
-            scaledSize: new google.maps.Size(42,42)};
+            scaledSize: new google.maps.Size(50,50)};
           var marker = new google.maps.Marker({position: myPosition, 
                               map: map,
                               icon: gymImage, 
@@ -126,7 +136,7 @@ to do - - need to determine if i can parse directions and have each directions s
   function calculateAndDisplayRoute(directionsService, directionsDisplay, waypoints, markers) {
 
     // console.log(waypoints); // should return 8 objects (locations)
-    console.log(markers);
+    // console.log(markers); // should return 11 objects (encounters & gyms)
 
     directionsService.route({
       origin: new google.maps.LatLng(37.784097,-122.402033),
