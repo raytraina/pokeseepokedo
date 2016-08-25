@@ -91,6 +91,24 @@ to do - - need to determine if i can parse directions and have each directions s
                               map: map,
                               icon: locImage, 
                               title: "Location"});
+
+          // content for infoWindow
+          var contentString = '<h2>Name: ' + locName + '</h2>' + 
+          '<h3>Yelp Rating: ' + locRating + '</h3>' + 
+          '<h3>Category: ' + locCategory + '</h3>' +
+          '<h3>Learn More: ' + locUrl + '</h3>' +
+          '<p>More testing.</p>'+
+          '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Phasellus vestibulum risus at quam varius dictum. Integer et mi dolor. Curabitur risus erat, facilisis et pharetra ut, eleifend non nibh. Donec placerat commodo diam. Sed erat turpis, malesuada vel enim vel, mollis maximus orci. Aenean ultricies mauris ut odio consequat, ut ullamcorper arcu maximus. Maecenas porta dignissim sem, et elementum dolor iaculis non. Cras et ex aliquam, placerat ex non, ultricies urna. Nulla accumsan elit tortor, sit amet tincidunt odio ultrices vel. Aenean sed neque odio.</p>';
+
+          var infoWindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+
+          // want to use jquery here, just a placeholder
+          marker.addListener('click', function() {
+            infoWindow.open(map, marker);
+          });
+
           markers.push(marker);
         });
 
@@ -107,6 +125,7 @@ to do - - need to determine if i can parse directions and have each directions s
                               icon: gymImage, 
                               title: "Gym"});
 
+          // content for infoWindow
           var contentString = '<h2>Name: ' + gymName + '</h2>' + 
           '<p>More testing.</p>'+
           '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Phasellus vestibulum risus at quam varius dictum. Integer et mi dolor. Curabitur risus erat, facilisis et pharetra ut, eleifend non nibh. Donec placerat commodo diam. Sed erat turpis, malesuada vel enim vel, mollis maximus orci. Aenean ultricies mauris ut odio consequat, ut ullamcorper arcu maximus. Maecenas porta dignissim sem, et elementum dolor iaculis non. Cras et ex aliquam, placerat ex non, ultricies urna. Nulla accumsan elit tortor, sit amet tincidunt odio ultrices vel. Aenean sed neque odio.</p>';
@@ -136,7 +155,7 @@ to do - - need to determine if i can parse directions and have each directions s
                               icon: encImage, 
                               title: "Encounter"});
 
-          //content for infoWindow
+          // content for infoWindow
           var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+

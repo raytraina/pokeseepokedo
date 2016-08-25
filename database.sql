@@ -370,15 +370,14 @@ SELECT pg_catalog.setval('gyms_gym_id_seq', 1, true);
 --
 
 COPY locations (location_id, latitude, longitude, rating, name, url, category) FROM stdin;
-1	37.7844180000000023	-122.401628000000002	4	B Restaurant & Bar	https://www.yelp.com/biz/b-restaurant-and-bar-san-francisco	American (New)
-2	37.7796554565429972	-122.395233154297003	4	Brickhouse Cafe	https://www.yelp.com/biz/brickhouse-cafe-san-francisco-2	American (Traditional)
-3	37.7805747985839986	-122.396392822265994	4	Lava Lounge	https://www.yelp.com/biz/lava-lounge-san-francisco	Lounges
-4	37.7798249454072987	-122.394355908036005	5	Local Tap	https://www.yelp.com/biz/local-tap-san-francisco	Sports Bars
-5	37.7781856000000005	-122.392186899999999	3	Lucky Strike	https://www.yelp.com/biz/lucky-strike-san-francisco	Bowling
-6	37.7798420000000021	-122.390213000000003	3	MoMo's	https://www.yelp.com/biz/momos-san-francisco	American (New)
-7	37.7875149999999991	-122.398723000000004	4	Osha Thai	https://www.yelp.com/biz/osha-thai-san-francisco	Thai
-8	37.7788279999999972	-122.394065999999995	4	Victory Hall & Parlor	https://www.yelp.com/biz/victory-hall-and-parlor-san-francisco	Comfort Food
-9	37.7840836132872013	-122.398313338009999	5	Wine Down SF	https://www.yelp.com/biz/wine-down-sf-san-francisco	Wine Bars
+1	37.7796554565429972	-122.395233154297003	4	Brickhouse Cafe	https://www.yelp.com/biz/brickhouse-cafe-san-francisco-2	American (Traditional)
+2	37.7805747985839986	-122.396392822265994	4	Lava Lounge	https://www.yelp.com/biz/lava-lounge-san-francisco	Lounges
+3	37.7798249454072987	-122.394355908036005	5	Local Tap	https://www.yelp.com/biz/local-tap-san-francisco	Sports Bars
+4	37.7781856000000005	-122.392186899999999	3	Lucky Strike	https://www.yelp.com/biz/lucky-strike-san-francisco	Bowling
+5	37.7798420000000021	-122.390213000000003	3	MoMo's	https://www.yelp.com/biz/momos-san-francisco	American (New)
+6	37.7841774486315032	-122.402068620684005	4	Samovar Tea Lounge	https://www.yelp.com/biz/samovar-tea-lounge-san-francisco-2	Tea Rooms
+7	37.7788279999999972	-122.394065999999995	4	Victory Hall & Parlor	https://www.yelp.com/biz/victory-hall-and-parlor-san-francisco	Comfort Food
+8	37.7840836132872013	-122.398313338009999	5	Wine Down SF	https://www.yelp.com/biz/wine-down-sf-san-francisco	Wine Bars
 \.
 
 
@@ -386,7 +385,7 @@ COPY locations (location_id, latitude, longitude, rating, name, url, category) F
 -- Name: locations_location_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('locations_location_id_seq', 9, true);
+SELECT pg_catalog.setval('locations_location_id_seq', 8, true);
 
 
 --
