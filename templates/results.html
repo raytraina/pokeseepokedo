@@ -81,21 +81,29 @@ to do - - need to determine if i can parse directions and have each directions s
         $.each(gymObject, function(key, value){
           var gymLat = gymObject[key]['latitude'] // get each latitude from obj
           var gymLng = gymObject[key]['longitude'] // get each longitude from obj
-          // waypoints.push({lat:gymLat, lng:gymLng}); // might need to add pipe?
-          var marker = new google.maps.LatLng(gymLat, gymLng);
-          markers.push({location:marker, stopover:false}); // won't do stopover, going to add as marker
+
+          var myPosition = {lat:gymLat, lng:gymLng};
+          var gymImage = {url:"https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/battle.png", 
+            scaledSize: new google.maps.Size(42,42)};
+          var marker = new google.maps.Marker({position: myPosition, 
+                              map: map,
+                              icon: gymImage, 
+                              title: "Gym"});
+          markers.push(marker);
         });
 
         $.each(encObject, function(key, value){
           var encLat = encObject[key]['latitude'] // get each latitude from obj
           var encLng = encObject[key]['longitude'] // get each longitude from obj
           var encPoke = encObject[key]['pokemon_id'] // get each pokemon_id
-          // markers.push({lat:encLat, lng:encLng});
-          // var marker = new google.maps.LatLng(encLat, encLng);
+
           var myPosition = {lat:encLat, lng:encLng};
+          var encImage = {url:"https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/pokeball.png",
+            scaledSize: new google.maps.Size(35,35)};
           var marker = new google.maps.Marker({position: myPosition, 
-                              map: map, 
-                              title: "Test"});
+                              map: map,
+                              icon: encImage, 
+                              title: "Encounter"});
           markers.push(marker);
 
           // NEXT - determine how to get pokemon data into info boxes
