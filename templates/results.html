@@ -73,11 +73,17 @@ to do - - need to determine if i can parse directions and have each directions s
         $.each(locObject, function(key, value) { 
           var locLat = locObject[key]['latitude'] // get each latitude from obj
           var locLng = locObject[key]['longitude'] // get each longitude from obj
-          // waypoints.push({lat:locLat, lng:locLng});
+          
+          var locName = locObject[key]['name']
+          var locRating = locObject[key]['rating']
+          var locUrl = locObject[key]['url']
+          var locCategory = locObject[key]['category']
+          
+          // create waypoint for stopover points
           var waypoint = new google.maps.LatLng(locLat, locLng);
           waypoints.push({location:waypoint, stopover:true});
 
-          //create marker for waypoints to show custom info
+          //create marker for waypoints so they show custom info
           var myPosition = {lat:locLat, lng:locLng};
           var locImage = {url: "https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/pokestop-2.png", 
             scaledSize: new google.maps.Size(50,50)}
@@ -85,12 +91,13 @@ to do - - need to determine if i can parse directions and have each directions s
                               map: map,
                               icon: locImage, 
                               title: "Location"});
-
+          markers.push(marker);
         });
 
         $.each(gymObject, function(key, value){
           var gymLat = gymObject[key]['latitude'] // get each latitude from obj
           var gymLng = gymObject[key]['longitude'] // get each longitude from obj
+          var gymName = gymObject[key]['name']
 
           var myPosition = {lat:gymLat, lng:gymLng};
           var gymImage = {url:"https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/battle.png", 
@@ -99,13 +106,27 @@ to do - - need to determine if i can parse directions and have each directions s
                               map: map,
                               icon: gymImage, 
                               title: "Gym"});
+
+          var contentString = '<h2>Name: ' + gymName + '</h2>' + 
+          '<p>More testing.</p>'+
+          '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Phasellus vestibulum risus at quam varius dictum. Integer et mi dolor. Curabitur risus erat, facilisis et pharetra ut, eleifend non nibh. Donec placerat commodo diam. Sed erat turpis, malesuada vel enim vel, mollis maximus orci. Aenean ultricies mauris ut odio consequat, ut ullamcorper arcu maximus. Maecenas porta dignissim sem, et elementum dolor iaculis non. Cras et ex aliquam, placerat ex non, ultricies urna. Nulla accumsan elit tortor, sit amet tincidunt odio ultrices vel. Aenean sed neque odio.</p>';
+
+          var infoWindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+
+          // want to use jquery here, just a placeholder
+          marker.addListener('click', function() {
+            infoWindow.open(map, marker);
+          });
+
           markers.push(marker);
         });
 
         $.each(encObject, function(key, value){
           var encLat = encObject[key]['latitude'] // get each latitude from obj
           var encLng = encObject[key]['longitude'] // get each longitude from obj
-          var encPoke = encObject[key]['pokemon_id'] // get each pokemon_id
+          var encPoke = encObject[key]['pokemon_id']
 
           var myPosition = {lat:encLat, lng:encLng};
           var encImage = {url:"https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/pokeball.png",
@@ -115,6 +136,7 @@ to do - - need to determine if i can parse directions and have each directions s
                               icon: encImage, 
                               title: "Encounter"});
 
+          //content for infoWindow
           var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+

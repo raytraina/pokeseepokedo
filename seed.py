@@ -260,6 +260,9 @@ def load_encounter10(): #TESTED
     db.session.commit()
 
 
+#########################
+
+
 def load_brickhouse():
     """Loads data from yelp for Brickhouse."""
 
@@ -380,12 +383,12 @@ def load_momos():
     db.session.commit()
 
 
-def load_osha_thai():
-    """Loads data from yelp for Osha Thai."""
+def load_samovar_tea():
+    """Loads data from yelp for Samovar Tea, the start point for map."""
 
     print 'Locations'
 
-    with open('/home/vagrant/src/project/seed_data/locations/osha_thai.json') as loc_file:
+    with open('/home/vagrant/src/project/seed_data/locations/samovar_tea.json') as loc_file:
         data=json.load(loc_file)
 
     latitude = data['coordinates']['latitude']
@@ -525,7 +528,7 @@ if __name__ == "__main__":
     load_local_tap()
     load_lucky_strike()
     load_momos()
-    load_osha_thai()
+    load_samovar_tea()
     load_victory_hall()
     load_wine_down()
 
