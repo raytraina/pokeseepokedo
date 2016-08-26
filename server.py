@@ -34,13 +34,27 @@ def results():
 
     # query all encounters in db
     encounters = Encounter.query.all() #yields a list of objects
+    pokemon = PokeBase.query.all() #get all pokemon
+    poke_types = PokeType.query.all() #get all poketypes for cross-ref
+    types = TypeBase.query.all() #get all types
 
     # loop through encounters and add items to encounter_dict
+
+    ### on server, need to do lookup for pokemon based on pokemon_id
     encounter_dict = {}
     for encounter in encounters:
-        encounter_dict[encounter.encounter_id] = {"pokemon_id":encounter.pokemon_id,
+        ### do lookup here?
+        poke_id = encounter.pokemon_id
+        enc_poke = pokemon[poke_id] #index pokemon for encountered pokemon
+        type_id = poke_types[poke_id].type_id
+        poke_type = types[type_id].identifier
+        encounter_dict[encounter.encounter_id] = {"pokemon_id":poke_id,
+                                                    "name":enc_poke.identifier,
                                                     "latitude":encounter.latitude,
-                                                    "longitude":encounter.longitude}
+                                                    "longitude":encounter.longitude,
+                                                    "height":enc_poke.height,
+                                                    "weight":enc_poke.weight,
+                                                    "type":poke_type}
 
     ##########
 

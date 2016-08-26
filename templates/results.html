@@ -97,8 +97,8 @@ to do - - need to determine if i can parse directions and have each directions s
           '<h3>Yelp Rating: ' + locRating + '</h3>' + 
           '<h3>Category: ' + locCategory + '</h3>' +
           '<h3>Learn More: ' + locUrl + '</h3>' +
-          '<p>More testing.</p>'+
-          '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Phasellus vestibulum risus at quam varius dictum. Integer et mi dolor. Curabitur risus erat, facilisis et pharetra ut, eleifend non nibh. Donec placerat commodo diam. Sed erat turpis, malesuada vel enim vel, mollis maximus orci. Aenean ultricies mauris ut odio consequat, ut ullamcorper arcu maximus. Maecenas porta dignissim sem, et elementum dolor iaculis non. Cras et ex aliquam, placerat ex non, ultricies urna. Nulla accumsan elit tortor, sit amet tincidunt odio ultrices vel. Aenean sed neque odio.</p>';
+          '<p>Testing.</p>'+
+          '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Phasellus vestibulum risus at quam varius dictum.</p>';
 
           var infoWindow = new google.maps.InfoWindow({
             content: contentString
@@ -146,6 +146,10 @@ to do - - need to determine if i can parse directions and have each directions s
           var encLat = encObject[key]['latitude'] // get each latitude from obj
           var encLng = encObject[key]['longitude'] // get each longitude from obj
           var encPoke = encObject[key]['pokemon_id']
+          var pokemon = encObject[key]['name']
+          var pokeHeight = encObject[key]['height']
+          var pokeWeight = encObject[key]['weight']
+          var pokeType = encObject[key]['type']
 
           var myPosition = {lat:encLat, lng:encLng};
           var encImage = {url:"https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/pokeball.png",
@@ -156,26 +160,33 @@ to do - - need to determine if i can parse directions and have each directions s
                               title: "Encounter"});
 
           // content for infoWindow
-          var contentString = '<div id="content">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-            '<div id="bodyContent">'+
-            '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-            'sandstone rock formation in the southern part of the '+
-            'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-            'south west of the nearest large town, Alice Springs; 450&#160;km '+
-            '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-            'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-            'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-            'Aboriginal people of the area. It has many springs, waterholes, '+
-            'rock caves and ancient paintings. Uluru is listed as a World '+
-            'Heritage Site.</p>'+
-            '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-            'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-            '(last visited June 22, 2009).</p>'+
-            '</div>'+
-            '</div>';
+          var contentString = '<h2>Name: ' + pokemon + '</h2>' + 
+          '<h3>Type: ' + pokeType + '</h3>' +
+          '<h3>Height: ' + pokeHeight + '</h3>' +
+          '<h3>Weight: ' + pokeWeight + '</h3>' +
+          '<p>More testing.</p>'+
+          '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Phasellus vestibulum risus at quam varius dictum. Integer et mi dolor. Curabitur risus erat, facilisis et pharetra ut, eleifend non nibh. Donec placerat commodo diam. Sed erat turpis, malesuada vel enim vel, mollis maximus orci. Aenean ultricies mauris ut odio consequat, ut ullamcorper arcu maximus. Maecenas porta dignissim sem, et elementum dolor iaculis non. Cras et ex aliquam, placerat ex non, ultricies urna. Nulla accumsan elit tortor, sit amet tincidunt odio ultrices vel. Aenean sed neque odio.</p>';
+
+          // var contentString = '<div id="content">'+
+          //   '<div id="siteNotice">'+
+          //   '</div>'+
+          //   '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+          //   '<div id="bodyContent">'+
+          //   '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+          //   'sandstone rock formation in the southern part of the '+
+          //   'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+          //   'south west of the nearest large town, Alice Springs; 450&#160;km '+
+          //   '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+          //   'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+          //   'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+          //   'Aboriginal people of the area. It has many springs, waterholes, '+
+          //   'rock caves and ancient paintings. Uluru is listed as a World '+
+          //   'Heritage Site.</p>'+
+          //   '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+          //   'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+          //   '(last visited June 22, 2009).</p>'+
+          //   '</div>'+
+          //   '</div>';
 
           // testing infowindow class creation to see if it can be done in initMap
           var infoWindow = new google.maps.InfoWindow({

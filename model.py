@@ -96,7 +96,7 @@ class User(db.Model):
 #CSV Models - Will be loaded directly into db
 
 class PokeType(db.Model):
-    """SOMETHING HERE LATER."""
+    """CSV Import"""
 
     __tablename__='poketypes'
 
