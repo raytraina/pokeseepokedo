@@ -118,7 +118,7 @@ to do - - need to determine if i can parse directions and have each directions s
           var gymName = gymObject[key]['name']
 
           var myPosition = {lat:gymLat, lng:gymLng};
-          var gymImage = {url:"https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/battle.png", 
+          var gymImage = {url:"https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/fight.png", 
             scaledSize: new google.maps.Size(50,50)};
           var marker = new google.maps.Marker({position: myPosition, 
                               map: map,
@@ -160,12 +160,13 @@ to do - - need to determine if i can parse directions and have each directions s
                               title: "Encounter"});
 
           // content for infoWindow
-          var contentString = '<h2>Name: ' + pokemon + '</h2>' + 
+          var contentString = '<div id="poke-info"><h2>Name: ' + pokemon + '</h2>' + 
           '<h3>Type: ' + pokeType + '</h3>' +
           '<h3>Height: ' + pokeHeight + '</h3>' +
           '<h3>Weight: ' + pokeWeight + '</h3>' +
-          '<p>More testing.</p>'+
-          '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Phasellus vestibulum risus at quam varius dictum. Integer et mi dolor. Curabitur risus erat, facilisis et pharetra ut, eleifend non nibh. Donec placerat commodo diam. Sed erat turpis, malesuada vel enim vel, mollis maximus orci. Aenean ultricies mauris ut odio consequat, ut ullamcorper arcu maximus. Maecenas porta dignissim sem, et elementum dolor iaculis non. Cras et ex aliquam, placerat ex non, ultricies urna. Nulla accumsan elit tortor, sit amet tincidunt odio ultrices vel. Aenean sed neque odio.</p>';
+          '<img src="https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/' + pokemon + '.png" alt=' + pokemon + ' height="65" width="auto">' +
+          '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>' +
+          '<img src="https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/gotcha.png">';
 
           // var contentString = '<div id="content">'+
           //   '<div id="siteNotice">'+

@@ -93,7 +93,7 @@ class User(db.Model):
 
 
 #####################################################################
-#CSV Models - Will be loaded directly into db
+# CSV Handling
 
 class PokeType(db.Model):
     """CSV Import"""
@@ -113,12 +113,6 @@ class PokeType(db.Model):
             """Provide helpful representation when printed."""
 
             return '<PokeType pokemon_id=%s type_id=%s>' % (self.pokemon_id, self.type_id)
-
-    # CREATE TABLE poke_types (
-    # pokemon_id integer,
-    # type_id integer,
-    # slot integer
-    # );
 
 
 class PokeBase(db.Model):
@@ -140,17 +134,6 @@ class PokeBase(db.Model):
 
             return '<PokeBase pokemon_id=%s identifier=%s>' % (self.pokemon_id, self.identifier)
 
-    # CREATE TABLE poke_base (
-    # id integer NOT NULL,
-    # identifier character varying(50),
-    # species_id integer,
-    # height integer,
-    # weight integer,
-    # base_experience integer,
-    # "order" integer,
-    # is_default integer
-    # );
-
 
 class TypeBase(db.Model):
     """CSV Import"""
@@ -169,53 +152,9 @@ class TypeBase(db.Model):
 
             return '<TypeBase type_id=%s identifier=%s>' % (self.type_id, self.identifier)
 
-    # CREATE TABLE type_base (
-    # id integer NOT NULL,
-    # identifier character varying(50),
-    # generation_id integer,
-    # damage_class_id integer
-    # );
-
-
-#####################################################################
-#VIEW Models? Are these needed?
-
-# class Pokemon(db.model):
-#     """An instance of a Pokemon."""
-
-#     __tablename__='pokemons'
-
-#     name = db.Column
-
-
-#     CREATE VIEW pokemons AS
-#     SELECT poke_base._id,
-#     poke_base.identifier AS name,
-#     types.identifier AS type,
-#     poke_base.height,
-#     poke_base.weight
-#     FROM (poke_base
-#     JOIN types ON ((poke_base._id = types.pokemon_id)))
-#     ORDER BY poke_base._id;
-
-
-# class Type(db.model):
-#     """An elemental type for Pokemon."""
-
-#     __tablename__='types'
-
-#     CREATE VIEW types AS
-#     SELECT DISTINCT poke_types.pokemon_id,
-#     poke_types.type_id,
-#     type_base.identifier
-#     FROM (poke_types
-#     JOIN type_base ON ((poke_types.type_id = type_base._id)))
-#     ORDER BY poke_types.pokemon_id;
-
 
 #####################################################################
 # Helper functions
-
 
 def connect_to_db(app):
     """Connect the database to Flask app."""

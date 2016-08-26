@@ -45,7 +45,7 @@ def results():
     for encounter in encounters:
         ### do lookup here?
         poke_id = encounter.pokemon_id
-        enc_poke = pokemon[poke_id] #index pokemon for encountered pokemon
+        enc_poke = pokemon[poke_id - 1] #index pokemon for encountered pokemon
         type_id = poke_types[poke_id].type_id
         poke_type = types[type_id].identifier
         encounter_dict[encounter.encounter_id] = {"pokemon_id":poke_id,
