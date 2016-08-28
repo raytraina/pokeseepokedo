@@ -9,7 +9,7 @@ from model import connect_to_db, db, Encounter, Location, User, Gym, PokeType, P
 
 
 app = Flask(__name__)
-app.secret_key = "XQRSK"
+app.secret_key = '%g%y1\xf5\xa9\x91R\xc9\x88\x97\xdf$\xab\x86\xe9\x84\xb8<m:\xcb\xbf\xb0\x83\x93'
 
 app.jinja_env.undefined = StrictUndefined
 
@@ -18,14 +18,22 @@ app.jinja_env.undefined = StrictUndefined
 def index():
     """Render homepage."""
 
-    return render_template('results.html')
+    # username = request.cookies.get('username')
+
+    # if 'username' in session:
+    #     return flash('Logged in as %s') % escape(session.get('username'))
+
+    return render_template('index.html')
 
 
 @app.route('/poke-map.json', methods=['GET'])
 def results():
-    """Show map and directions based on user input."""
+    """Show map and directions based on user input.
 
-    # get form variables
+    This function will also jsonify data to pass pokemon and locations
+    to front end."""
+
+    # get form variables (not using them in this demo)
     start_point = request.args.get('start-point')
     end_point = request.args.get('end-point')
     departure = request.args.get('departure')
@@ -40,14 +48,20 @@ def results():
 
     # loop through encounters and add items to encounter_dict
 
-    ### on server, need to do lookup for pokemon based on pokemon_id
     encounter_dict = {}
     for encounter in encounters:
-        ### do lookup here?
         poke_id = encounter.pokemon_id
         enc_poke = pokemon[poke_id - 1] #index pokemon for encountered pokemon
-        type_id = poke_types[poke_id].type_id
-        poke_type = types[type_id].identifier
+
+        # NEED HELP HERE ITERATING THROUGH LIST INDEXING STRING
+        # USE ENUMERATE OR RANGE SOMEHOW?
+        # for i in poke_types:
+        #     type_id = poke_types[i].type_id
+        #     poke_type = types[type_id - 1].identifier
+
+        type_id = poke_types[poke_id - 1].type_id
+        poke_type = types[type_id - 1].identifier
+
         encounter_dict[encounter.encounter_id] = {"pokemon_id":poke_id,
                                                     "name":enc_poke.identifier,
                                                     "latitude":encounter.latitude,
@@ -83,14 +97,6 @@ def results():
                                 "latitude":gym.latitude,
                                 "longitude":gym.longitude}
 
-    # gym_dict = {"gym1": {
-    #                 "gym_id":gym[0].gym_id,
-    #                 "name":gym[0].name,
-    #                 "latitude":gym[0].latitude,
-    #                 "longitude":gym[0].longitude
-    #                 }
-    #             }
-
     # combine dictionaries into dictionary of dictionaries
     dictionary = {"encounters": encounter_dict, "locations": location_dict, "gyms": gym_dict}
 
@@ -103,40 +109,86 @@ def results():
 # possible way to implement
 # @app.route('/#anchor-point')
 
-# @app.route('/register', methods=['GET'])
-# def register_form():
-#     """Show form for user signup."""
+###################
 
-#     return render_template("registration_form.html")
+@app.route('/login', methods=['GET'])
+def login_form():
+    """Show login form."""
 
+    # session handling for login
+    # if not session.get('username'):
+    #     return render_template("login.html")
 
-# @app.route('/register', methods=['POST'])
-# def register_process():
-#     """Process registration."""
+    # else:
+    #     flash('You are already logged in, %s.') % escape(session.get('username'))
+    #     return redirect('/')
 
-#     email = request.form['email']
-#     password = request.form['new-password']
-#     first_name = request.form['first-name']
-#     last_name = request.form['last-name']
-
-#     new_user = User(email=email, password=password, first_name=first_name, last_name=last_name)
-
-#     db.session.add(new_user)
-#     db.session.commit()
-
-#     flash("Welcome, %s. Happy catching!" % first_name)
-#     #return redirect("/")
-#     #TODO - add a homepage for users that shows their information, maybe timestamp for when registered??
+    return render_template("login.html")
 
 
-# @app.route('/login', methods=['GET'])
-# def login_form():
-#     """Show login form."""
+@app.route('/login', methods=['POST'])
+def login():
+    """Processes login from login.html."""
 
-#     #SOMETHINGHERELATER
+    # get form variables
+    username = request.form.get('username')
+    password = request.form.get('password')
 
-#     return render_template("login_form.html")
+    # query db for user matching the username entered
+    user = User.query.filter_by(username=username).first()
 
+    # if the user's credentials are incorrect
+    if not user:
+        flash('We are sorry, your username/password do not match our records. Please try again, or register.')
+        return redirect('/login')
+
+    session['user_id'] = user.user_id
+
+    flash('Welcome back, %s!' % username) 
+    return redirect('/')
+
+
+@app.route('/logout')
+def logout():
+    """Log out user."""
+
+    # remove the user_id from the session
+    del session['user_id']
+    flash('You have been logged out.')
+    return redirect('/')
+
+
+###########################
+
+@app.route('/register', methods=['GET'])
+def register_form():
+    """Show form for user signup."""
+
+    return render_template("registration_form.html")
+
+
+@app.route('/register', methods=['POST'])
+def register_process():
+    """Process registration."""
+
+    username = request.form['username']
+    email = request.form['email']
+    password = request.form['new-password']
+    first_name = request.form['first-name']
+    last_name = request.form['last-name']
+
+    new_user = User(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
+
+    db.session.add(new_user)
+    db.session.commit()
+
+    flash("Welcome, %s. Happy catching!" % username)
+    return redirect("/")
+    #TODO - add a homepage for users that shows their information, maybe timestamp for when registered??
+
+#VERIFY ^^^
+
+#######DNU#############
 
 # @app.route('/login', methods=['POST'])
 # def login_process():
@@ -144,35 +196,24 @@ def results():
 
 #     #SOMETHINGHERELATER
 
-#     # # Get form variables
-#     # email = request.form["email"]
-#     # password = request.form["password"]
+#     # Get form variables
+#     email = request.form["email"]
+#     password = request.form["password"]
 
-#     # user = User.query.filter_by(email=email).first()
+#     user = User.query.filter_by(email=email).first()
 
-#     # if not user:
-#     #     flash("No such user")
-#     #     return redirect("/login")
+#     if not user:
+#         flash("No such user")
+#         return redirect("/login")
 
-#     # if user.password != password:
-#     #     flash("Incorrect password")
-#     #     return redirect("/login")
+#     if user.password != password:
+#         flash("Incorrect password")
+#         return redirect("/login")
 
-#     # session["user_id"] = user.user_id
+#     session["user_id"] = user.user_id
 
-#     # flash("Logged in")
-#     # return redirect("/users/%s" % user.user_id)
-
-
-# @app.route('/logout')
-# def logout():
-#     """Log out."""
-
-#     del session["user_id"]
-#     flash("Logged Out.")
-#     return redirect("/")
-
-##VERIFY ^^^
+#     flash("Logged in")
+#     return redirect("/users/%s" % user.user_id)
     
 ############################################
 
@@ -190,4 +231,4 @@ if __name__ == "__main__":
     # app.run()
 
     #run application
-    app.run(host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5000)

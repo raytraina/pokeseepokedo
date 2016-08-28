@@ -6,12 +6,13 @@
     <title>PokeSee PokeDo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+    <link rel="shortcut icon" href="hhttps://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/pokeball.png" />
 </head>
-<body>
+<body style="background-color:#ff1a1a">
 
-<div id='navigation'> <!--SOMETHING-->
+<div id="navigation"> <!--SOMETHING-->
 
-PokeSee PokeDo
+<h1 id="site-title">PokeSee PokeDo</h1>
 
 {% if "user_id" in session %}
     <a href="/logout">Logout</a>
@@ -21,7 +22,7 @@ PokeSee PokeDo
 
 </div>
 
-<div class='flash-msg'> <!--TODO VERIFY THIS!-->
+<div class="flash-msg"> <!--TODO VERIFY THIS!-->
 
 {% for flash in get_flashed_messages() %}
   {{ flash }}
@@ -29,7 +30,7 @@ PokeSee PokeDo
 
 </div>
 
-<div class='container'>
+<div class="container">
 
 {% block content %}
     REAL CONTENT STARTS HERE.

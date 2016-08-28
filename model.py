@@ -81,6 +81,7 @@ class User(db.Model):
     user_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True)
+    username = db.Column(db.String(64), nullable=True)
     email = db.Column(db.String(64), nullable=True)
     password = db.Column(db.String(64), nullable=True)
     first_name = db.Column(db.String(64), nullable=True)
@@ -89,7 +90,7 @@ class User(db.Model):
     def __repr__(self):
         """Provide helpful representation when printed."""
 
-        return '<User user_id=%s email=%s first_name=%s last_name=%s>' % (self.user_id, self.email, self.first_name, self.last_name)
+        return '<User user_id=%s username=%s email=%s first_name=%s last_name=%s>' % (self.user_id, self.username, self.email, self.first_name, self.last_name)
 
 
 #####################################################################
@@ -142,8 +143,6 @@ class TypeBase(db.Model):
 
     type_id = db.Column(db.Integer, primary_key=True)
     identifier = db.Column(db.String(60), nullable=False)
-    # generation_id = db.Column(db.Integer)
-    # damage_class_id = db.Column(db.Integer)
 
     poketype = db.relationship('PokeType')
 
