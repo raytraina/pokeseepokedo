@@ -18,11 +18,6 @@ app.jinja_env.undefined = StrictUndefined
 def index():
     """Render homepage."""
 
-    # username = request.cookies.get('username')
-
-    # if 'username' in session:
-    #     return flash('Logged in as %s') % escape(session.get('username'))
-
     return render_template('index.html')
 
 
@@ -115,14 +110,6 @@ def results():
 def login_form():
     """Show login form."""
 
-    # session handling for login
-    # if not session.get('username'):
-    #     return render_template("login.html")
-
-    # else:
-    #     flash('You are already logged in, %s.') % escape(session.get('username'))
-    #     return redirect('/')
-
     return render_template("login.html")
 
 
@@ -186,37 +173,8 @@ def register_process():
     return redirect("/")
     #TODO - add a homepage for users that shows their information, maybe timestamp for when registered??
 
-#VERIFY ^^^
-
-#######DNU#############
-
-# @app.route('/login', methods=['POST'])
-# def login_process():
-#     """Process login."""
-
-#     #SOMETHINGHERELATER
-
-#     # Get form variables
-#     email = request.form["email"]
-#     password = request.form["password"]
-
-#     user = User.query.filter_by(email=email).first()
-
-#     if not user:
-#         flash("No such user")
-#         return redirect("/login")
-
-#     if user.password != password:
-#         flash("Incorrect password")
-#         return redirect("/login")
-
-#     session["user_id"] = user.user_id
-
-#     flash("Logged in")
-#     return redirect("/users/%s" % user.user_id)
     
 ############################################
-
 
 if __name__ == "__main__":
     #must be true for debug toolbar
