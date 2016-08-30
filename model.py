@@ -126,6 +126,7 @@ class PokeBase(db.Model):
     # species_id = db.Column(db.Integer)
     height = db.Column(db.Integer, nullable=False)
     weight = db.Column(db.Integer, nullable=False)
+    nature = db.Column(db.String(60), nullable=False)
 
     encounter = db.relationship('Encounter')
     poketype = db.relationship('PokeType')

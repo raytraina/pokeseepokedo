@@ -7,6 +7,8 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 from model import connect_to_db, db, Encounter, Location, User, Gym, PokeType, PokeBase, TypeBase
 
+from random import choice
+
 
 app = Flask(__name__)
 app.secret_key = '%g%y1\xf5\xa9\x91R\xc9\x88\x97\xdf$\xab\x86\xe9\x84\xb8<m:\xcb\xbf\xb0\x83\x93'
@@ -63,7 +65,8 @@ def results():
                                                     "longitude":encounter.longitude,
                                                     "height":enc_poke.height,
                                                     "weight":enc_poke.weight,
-                                                    "type":poke_type}
+                                                    "type":poke_type,
+                                                    "nature":enc_poke.nature}
 
     ##########
 
@@ -143,6 +146,61 @@ def logout():
     del session['user_id']
     flash('You have been logged out.')
     return redirect('/')
+
+
+@app.route('/catch-pokemon/<int:id>', methods=['GET'])
+def catch_pokemon(id):
+    """Add pokemon to caught list."""
+
+    # check if catch_em list already exists in session; if not, add it to session
+    if 'catch_em' in session:
+        catch_em = session['catch_em']
+    else:
+        catch_em = session['catch_em'] = []
+
+    # add pokemon to user's caught list
+    catch_em.append(id)
+
+    # show success message upon adding/catching pokemon
+    flash('Congratulations!')
+
+    # return results from query/do not change pages
+    return redirect('/caught')
+
+
+@app.route('/caught')
+def show_caught():
+    """Display all pokemon the user has caught."""
+
+    # initiate total counter at 0
+    pokemon_total = 0
+
+    # get all caught pokemon, or bind to empty list if none added yet
+    raw_poke_ids = session.get('catch_em', [])
+
+    # dictionary where ids of caught pokemon will be added
+    caught = {}
+
+    for poke_id in raw_poke_ids:
+        if poke_id in caught:
+            pokemon_info = caught[poke_id]
+        else:
+            pokemon = PokeBase.query.get(poke_id)
+            species_info = caught[poke_id] = {'name':pokemon.identifier,
+                                        'height':pokemon.height,
+                                        'weight':pokemon.weight,
+                                        'nature':pokemon.nature,
+                                        'num_caught':0}
+        
+        # increase num_caught for this pokemon by 1
+        species_info['num_caught'] += 1
+        # increase the amount of pokemon caught by the num_caught
+        pokemon_total += species_info['num_caught']
+
+    caught = caught.values()
+
+    return render_template('caught.html', caught=caught, pokemon_total=pokemon_total)
+
 
 
 ###########################

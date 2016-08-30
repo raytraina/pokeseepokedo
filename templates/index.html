@@ -161,6 +161,7 @@ to do - - need to determine if i can parse directions and have each directions s
           var pokeHeight = encObject[key]['height']
           var pokeWeight = encObject[key]['weight']
           var pokeType = encObject[key]['type']
+          var pokeNature = encObject[key]['nature']
 
           var myPosition = {lat:encLat, lng:encLng};
           var encImage = {url:"https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/pokeball.png",
@@ -176,8 +177,12 @@ to do - - need to determine if i can parse directions and have each directions s
           '<h3>Type: ' + pokeType + '</h3>' +
           '<h3>Height: ' + pokeHeight + '</h3>' +
           '<h3>Weight: ' + pokeWeight + '</h3>' +
-          '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>' +
-          '<img src="https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/gotcha.png" alt="user caught this pokemon" height="50" width="auto">';
+          '<h3>Nature: ' + pokeNature + '</h3>' +
+          '<form method="get" id="catch-poke" action="/catch-pokemon/' + 
+          encPoke + '">' + '<input id="add-to-caught" type="image" ' +
+          'src="https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/gotcha.png" ' + 
+          'alt="add to caught pokemon" height="50" width="auto">' + 
+          '</form>';
 
           // create new InfoWindow object for use on marker click
           var infoWindow = new google.maps.InfoWindow({

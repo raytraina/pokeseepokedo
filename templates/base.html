@@ -12,7 +12,7 @@
 
 <div id="navigation"> <!--SOMETHING-->
 
-<h1 id="site-title">PokeSee PokeDo</h1>
+<h1 id="site-title"><a href="/">PokeSee PokeDo</a></h1>
 
 {% if "user_id" in session %}
     <a href="/logout">Logout</a>
@@ -22,16 +22,16 @@
 
 </div>
 
-<div class="flash-msg"> <!--TODO VERIFY THIS!-->
-
-{% for flash in get_flashed_messages() %}
-  {{ flash }}
-{% endfor %}
-
-</div>
-
 <div class="container">
 
+<!-- FLASH MESSAGES -->
+{% with messages = get_flashed_messages() %}
+    {% for message in messages %}
+        <div>{{ message }}</div>
+    {% endfor %}
+{% endwith %}
+
+<!-- BODY -->
 {% block content %}
     REAL CONTENT STARTS HERE.
 {% endblock %}

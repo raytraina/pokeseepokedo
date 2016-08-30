@@ -1,12 +1,15 @@
 #PokeSee, PokeDo - Seed File
 
 from sqlalchemy import func
-
+from random import choice
 import json
 
 from model import connect_to_db, db, Encounter, Location, User, Gym, PokeType, PokeBase, TypeBase
-
 from server import app
+
+# list of possible pokemon natures, to be assigned at random
+NATURES = ['bashful','docile','hardy','quirky','serious','adamant',
+    'lonely','modest','mild','bold','relaxed','calm','sassy','jolly','hasty']
 
 
 #########################
@@ -25,7 +28,9 @@ def load_pokebase():
         height = int(height)
         weight = int(weight)
 
-        pokebase = PokeBase(pokemon_id=pokemon_id, identifier=identifier, height=height, weight=weight)
+        nature = choice(NATURES)
+
+        pokebase = PokeBase(pokemon_id=pokemon_id, identifier=identifier, height=height, weight=weight, nature=nature)
 
         db.session.add(pokebase)
 

@@ -1,0 +1,33 @@
+<!-- caught.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <th>Species</th>
+                <th>Nature</th>
+                <th>Height</th>
+                <th>Weight</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pokemon in caught %}
+            <tr>
+                <td>{{ pokemon['name'] }}</td>
+                <td>{{ pokemon['nature'] }}</td>
+                <td>{{ pokemon['height'] }}</td>
+                <td>{{ pokemon['weight'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h4>Pokemon Caught: {{ pokemon_total }}</h4>
+
+    <h4><a href="/">Ready to catch more?</a></h4>
+
+{% endblock %}
+
+name,height,weight,nature
