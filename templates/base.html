@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="shortcut icon" href="hhttps://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/pokeball.png" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body style="background-color:#ff1a1a">
 
-<div id="navigation"> <!--SOMETHING-->
+<div> <!--SOMETHING-->
 
-<h1 id="site-title"><a href="/">PokeSee PokeDo</a></h1>
+<h1><a href="/">PokeSee PokeDo</a></h1>
 
 {% if "user_id" in session %}
     <a href="/logout">Logout</a>
@@ -22,7 +23,7 @@
 
 </div>
 
-<div class="container">
+<div>
 
 <!-- FLASH MESSAGES -->
 {% with messages = get_flashed_messages() %}

@@ -6,25 +6,37 @@ on this page, user can register to save maps to account -->
 
 {% block content %}
 
-    <form id='registration' action='/register' method='post'>
-        <label for='email'>email address:
-            <input type='text' name='email' value='rachel@rtg.com'>
-        </label>
-        <label for='username'>desired username:
-            <input type='text' name='username' value='designsbytraina'>
-        </label>
-        <label for='new-password'>new password:
-            <input type='password' name='new-password' value='secret'>
-        </label>
-        <label for='first-name'>first name:
-            <input type='text' name='first-name' value='Rachel'>
-        </label>
-        <label for='last-name'>last name:
-            <input type='text' name='last-name' value='Traina-Grandon'>
-        </label>
-        <label for="submit-register">
-            <input type="submit" value="register" class="submit-btn" name="submit-register">
-        </label>
+    <form id='registration' action='/register' method='post' class="form-horizontal">
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">email address:
+                <input type="email" id="email" class="form-control" value="rachel@rtg.com">
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="username" class="col-sm-2 control-label">desired username:
+                <input type="text" id="username" class="form-control" value="designsbytraina">
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="new-password" class="col-sm-2 control-label">new password:
+                <input type="password" id="new-password" class="form-control" value="secret">
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="first-name" class="col-sm-2 control-label">first name:
+                <input type="text" id="first-name" class="form-control" value="Rachel">
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="last-name" class="col-sm-2 control-label">last name:
+                <input type="text" id="last-name" class="form-control" value="Traina-Grandon">
+            </label>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">register</button>
+            </div>
+        </div>
     </form>
 
 {% endblock %}

@@ -49,13 +49,16 @@ def results():
     for encounter in encounters:
         poke_id = encounter.pokemon_id
         enc_poke = pokemon[poke_id - 1] #index pokemon for encountered pokemon
-
-        # NEED HELP HERE ITERATING THROUGH LIST INDEXING STRING
+        
+        # type_id = enc_poke.type_id
+        # NEED ITERATING THROUGH LIST INDEXING STRING
         # USE ENUMERATE OR RANGE SOMEHOW?
         # for i in poke_types:
         #     type_id = poke_types[i].type_id
         #     poke_type = types[type_id - 1].identifier
 
+        # join on type_id = pokemon.types(orsomething).type_id
+        # COME BACK TO THIS ^
         type_id = poke_types[poke_id - 1].type_id
         poke_type = types[type_id - 1].identifier
 
