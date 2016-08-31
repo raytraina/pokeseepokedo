@@ -1,39 +1,44 @@
 <!-- index.html
-
-on the page, we show the map the user has created, as well as the directions
-we want to show directions as a list within a div
-
-create a for loop that creates lines in the list once the direction list has loaded
-to do - - need to determine if i can parse directions and have each directions show as a <li>
+Add context here later
  -->
 
 {% extends 'base.html' %}
 
 {% block content %}
 
+<style type="text/css"> body {background-color:#ff3939;} </style>
 
 <form id="dest-details" action="/poke-map.json" method="GET">
-    <label for='start-point'>start point:
+    <label for='start-point'>Start Point:
         <input id='start-point' type='text' name='start-point' value='730 Howard St San Francisco, CA 94103'>
     </label><br>
-    <label for='end-point'>end point:
+    <label for='end-point'>End Point:
         <input id='end-point' type='text' name='end-point' value='24 Willie Mays Plaza, San Francisco, CA 94107'>
     </label><br>
-    <label for='departure-time'>time of departure:
-        <select id='departure-time' name='departure-time'>
-            <option value='6:00 pm'>6:00 pm</option>
-            <option value='7:00 pm'>7:00 pm</option>
-            <option value='8:00 pm'>8:00 pm</option>
-            <option value='9:00 pm'>9:00 pm</option>
-            <option value='10:00 pm'>10:00 pm</option>
-            <option value='11:00 pm'>11:00 pm</option>
-            <option value='12:00 am'>12:00 am</option>
-        </select>
+    <label for='user-activity'>Activity:
+      <select id='user-activity' name='user-activity'>
+          <option value='Drinking'>Drinking</option>
+          <option value='Dancing'>Dancing</option>
+          <option value='Eating'>Eating</option>
+          <option value='Laughing'>Laughing</option>
+          <option value='Making'>Making</option>
+      </select>
     </label><br>
-    <input type='submit' id='submit-destination' href='#' value='take me there'>
-</form>
+    <label for='departure-time'>Time of Departure:
+      <select id='departure-time' name='departure-time'>
+          <option value='6:00 pm'>6:00 pm</option>
+          <option value='7:00 pm'>7:00 pm</option>
+          <option value='8:00 pm'>8:00 pm</option>
+          <option value='9:00 pm'>9:00 pm</option>
+          <option value='10:00 pm'>10:00 pm</option>
+          <option value='11:00 pm'>11:00 pm</option>
+          <option value='12:00 am'>12:00 am</option>
+      </select>
+    </label><br>
+    <input type='submit' id='submit-destination' href='#' value='Let&#39;s GO!'>
+</form><br>
 
-<div id='map' style='height:600px'></div>
+<div id='map' style='height:550px'></div>
 <div id="directions-panel"></div>
 
 <script src="https://code.jquery.com/jquery.js"></script>
@@ -66,6 +71,7 @@ to do - - need to determine if i can parse directions and have each directions s
 
     // display map
     directionsDisplay.setMap(map);
+    directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
     console.log('show map');
 
@@ -196,17 +202,12 @@ to do - - need to determine if i can parse directions and have each directions s
 
           markers.push(marker);
 
-          // NEXT - determine how to get pokemon data into info boxes ^^^
-          //https://developers.google.com/maps/documentation/javascript/examples/infowindow-simple
         });
 
         // console.log(waypoints); // should return 8 objects (locations)
         // console.log(markers); // should return 11 objects (encounters & gyms)
 
         calculateAndDisplayRoute(directionsService, directionsDisplay, waypoints, markers); // add waypoints, markers
-
-          // for (var i=0; i<waypoints.length; i++)
-          // {}
 
       });
     });
@@ -215,22 +216,6 @@ to do - - need to determine if i can parse directions and have each directions s
   //////////////////////////
 
   function calculateAndDisplayRoute(directionsService, directionsDisplay, waypoints, markers) {
-
-    // for (marker in markers) {
-
-    //   // testing infowindow class creation to see if it can be done in initMap
-    //   var infoWindow = new google.maps.InfoWindow({
-    //     content: contentString
-    //   });
-
-    //   // want to use jquery here, just a placeholder
-    //   marker.addListener('click', function() {
-    //     infoWindow.open(map, marker);
-    //   });
-    // }
-
-    // console.log(waypoints); // should return 8 objects (locations)
-    // console.log(markers); // should return 11 objects (encounters & gyms)
 
     directionsService.route({
       origin: new google.maps.LatLng(37.784097,-122.402033),
@@ -241,18 +226,6 @@ to do - - need to determine if i can parse directions and have each directions s
     }, function(response, status) {
       if (status === 'OK') {
         directionsDisplay.setDirections(response);
-        var route = response.routes[0];
-        var summaryPanel = document.getElementById('directions-panel');
-        summaryPanel.innerHTML = '';
-        // For each route, display summary information.
-        for (var i = 0; i < route.legs.length; i++) {
-          var routeSegment = i + 1;
-          summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
-              '</b><br>';
-          summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
-          summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
-          summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
-        }
       } else {
         window.alert('Directions request failed due to ' + status);
       }

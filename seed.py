@@ -1,4 +1,4 @@
-#PokeSee, PokeDo - Seed File
+"""Pokesee Pokedo - Seed File"""
 
 from sqlalchemy import func
 from random import choice
@@ -12,8 +12,9 @@ NATURES = ['bashful','docile','hardy','quirky','serious','adamant',
     'lonely','modest','mild','bold','relaxed','calm','sassy','jolly','hasty']
 
 
-#########################
-# Processing CSVs
+###########################
+#PROCESS CSV FILES
+###########################
 
 def load_pokebase():
     """Load pokemon.csv"""
@@ -74,7 +75,9 @@ def load_typebase():
     db.session.commit()
 
 
-#########################
+###########################
+#SEED ENCOUNTERS
+###########################
 
 def load_encounters(): #TESTED
     """Load encounter locations with Pokemon."""
@@ -97,7 +100,9 @@ def load_encounters(): #TESTED
     db.session.commit()
 
 
-#########################
+###########################
+#SEED LOCATIONS
+###########################
 
 def load_locations():
     """Loads data from yelp for Brickhouse."""
@@ -123,7 +128,9 @@ def load_locations():
     db.session.commit()
 
 
-#########################
+###########################
+#SEED GYMS
+###########################
 
 def yerba_buena_gym():
     """Add gym to database."""

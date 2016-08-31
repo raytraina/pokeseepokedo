@@ -1,7 +1,10 @@
+"""Pokesee Pokedo - Tests"""
+
 from model import connect_to_db, db, Encounter, Location, User, Gym, PokeType, PokeBase, TypeBase
 
 import unittest
 import server
+
 
 class IntegrationTest(unittest.TestCase):
     """ Testing """
@@ -10,6 +13,10 @@ class IntegrationTest(unittest.TestCase):
         # setting up a testing client
         self.client = server.app.test_client()
         server.app.config['TESTING'] = True
+
+###########################
+#TEST - HOMEPAGE + MAP
+###########################
 
     def test_home(self):
         # result contains the html returned from the '/' route
@@ -21,11 +28,29 @@ class IntegrationTest(unittest.TestCase):
         result = self.client.get("/poke-map.json")
         self.assertIn('"encounters"', result.data)
 
+###########################
+#TEST - LOGIN/LOGOUT
+###########################
+
     def test_login(self):
 
     def test_logout(self):
 
+###########################
+#TEST - REGISTER
+###########################
+
     def test_register(self):
+
+###########################
+#TEST - USER PROFILE
+###########################
+
+    def test_user_profile(self):
+
+###########################
+#TEST - CATCHING
+###########################
 
     def test_catching(self):
 

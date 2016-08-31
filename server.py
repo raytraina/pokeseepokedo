@@ -1,13 +1,12 @@
-"""PokeSee, PokeDo"""
-
-from jinja2 import StrictUndefined
+"""Pokesee Pokedo"""
 
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
+from jinja2 import StrictUndefined
+from random import choice
+import hashlib
 
 from model import connect_to_db, db, Encounter, Location, User, Gym, PokeType, PokeBase, TypeBase
-
-from random import choice
 
 
 app = Flask(__name__)
@@ -15,6 +14,10 @@ app.secret_key = '%g%y1\xf5\xa9\x91R\xc9\x88\x97\xdf$\xab\x86\xe9\x84\xb8<m:\xcb
 
 app.jinja_env.undefined = StrictUndefined
 
+
+###########################
+#RENDER HOMEPAGE + MAP
+###########################
 
 @app.route('/')
 def index():
@@ -33,6 +36,7 @@ def results():
     # get form variables (not using them in this demo)
     start_point = request.args.get('start-point')
     end_point = request.args.get('end-point')
+    activity = request.args.get('user-activity')
     departure = request.args.get('departure')
 
     ##########
@@ -105,12 +109,9 @@ def results():
     return jsonify(dictionary)
 
 
-# TODO - SECOND SPRINT #########################################################
-
-# possible way to implement
-# @app.route('/#anchor-point')
-
-###################
+###########################
+#HANDLE LOGIN/LOGOUT
+###########################
 
 @app.route('/login', methods=['GET'])
 def login_form():
@@ -138,7 +139,7 @@ def login():
     session['user_id'] = user.user_id
 
     flash('Welcome back, %s!' % username) 
-    return redirect('/')
+    return redirect('/user-profile')
 
 
 @app.route('/logout')
@@ -150,6 +151,59 @@ def logout():
     flash('You have been logged out.')
     return redirect('/')
 
+
+###########################
+#REGISTER NEW USER
+###########################
+
+@app.route('/register', methods=['GET'])
+def register_form():
+    """Show form for user signup."""
+
+    return render_template("registration_form.html")
+
+
+@app.route('/register', methods=['POST'])
+def register_process():
+    """Process registration."""
+
+    username = request.form['username']
+    email = request.form['email']
+    password = request.form['new-password']
+    first_name = request.form['first-name']
+    last_name = request.form['last-name']
+
+    # hash password for storing in db
+    h = hashlib.md5(password.encode())
+    h_password = h.hexdigest()
+
+    new_user = User(username=username, email=email, password=h_password, first_name=first_name, last_name=last_name)
+
+    db.session.add(new_user)
+    db.session.commit()
+
+    session['user_id'] = new_user.user_id
+
+    flash("Welcome, %s. Happy catching!" % username)
+    return redirect("/")
+
+
+###########################
+#USER PROFILE
+###########################
+
+#TODO - add a profile page for users that shows their information, maybe timestamp for when registered??
+
+@app.route('/user-profile')
+def show_user_info():
+    """Show user's information on a splash page."""
+
+    return render_template('user_profile.html')
+
+
+###########################
+#CATCH POKEMON
+###########################
 
 @app.route('/catch-pokemon/<int:id>', methods=['GET'])
 def catch_pokemon(id):
@@ -205,36 +259,6 @@ def show_caught():
     return render_template('caught.html', caught=caught, pokemon_total=pokemon_total)
 
 
-
-###########################
-
-@app.route('/register', methods=['GET'])
-def register_form():
-    """Show form for user signup."""
-
-    return render_template("registration_form.html")
-
-
-@app.route('/register', methods=['POST'])
-def register_process():
-    """Process registration."""
-
-    username = request.form['username']
-    email = request.form['email']
-    password = request.form['new-password']
-    first_name = request.form['first-name']
-    last_name = request.form['last-name']
-
-    new_user = User(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
-
-    db.session.add(new_user)
-    db.session.commit()
-
-    flash("Welcome, %s. Happy catching!" % username)
-    return redirect("/")
-    #TODO - add a homepage for users that shows their information, maybe timestamp for when registered??
-
-    
 ############################################
 
 if __name__ == "__main__":

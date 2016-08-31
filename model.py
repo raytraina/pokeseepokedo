@@ -1,12 +1,13 @@
-"""Data Model for PokeSee, PokeDo"""
+"""Pokesee Pokedo - Data Model"""
 
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
 
-###########################################
-# Base Model declarations
+###########################
+#DECLARE BASE MODELS
+###########################
 
 class Encounter(db.Model):
     """Create an encounter instance given a pokemon and a location.
@@ -93,8 +94,9 @@ class User(db.Model):
         return '<User user_id=%s username=%s email=%s first_name=%s last_name=%s>' % (self.user_id, self.username, self.email, self.first_name, self.last_name)
 
 
-#####################################################################
-# CSV Handling
+###########################
+#HANDLE CSV FILES
+###########################
 
 class PokeType(db.Model):
     """CSV Import"""
@@ -154,7 +156,6 @@ class TypeBase(db.Model):
 
 
 #####################################################################
-# Helper functions
 
 def connect_to_db(app):
     """Connect the database to Flask app."""

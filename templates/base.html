@@ -1,4 +1,6 @@
-<!--#SOMETHINGHERELATER-->
+<!--
+Add context here later
+-->
 
 <!DOCTYPE html>
 <html>
@@ -6,29 +8,49 @@
     <title>PokeSee PokeDo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="hhttps://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/pokeball.png" />
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/pokeball.png" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body style="background-color:#ff1a1a">
 
-<div> <!--SOMETHING-->
+<body>
 
-<h1><a href="/">PokeSee PokeDo</a></h1>
+<nav class="navbar navbar-default navbar-static-top" style="background-color:rgba(255,255,255,.9);">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <img class="navbar-brand" src="https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/compass.png">
+      <a class="navbar-brand" href="/">Pok&eacute;see Pok&eacute;do</a>
+    </div>
 
-{% if "user_id" in session %}
-    <a href="/logout">Logout</a>
-{% else %}
-    <a href="/login">Login</a>
-{% endif %}
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <form class="navbar-form navbar-right">
 
-</div>
+        {% if "user_id" in session %}
+          <a class="btn btn-default" href="/logout">Logout</a>
+        {% else %}
+          <a class="btn btn-default" href="/login">Login</a>
+        {% endif %}
 
-<div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/caught">Caught</a></li>
+
+        {% if "user_id" in session %}
+        <li><a href="/user-profile">My Profile</a></li>
+        {% else %}
+        <li><a href="/register">Register</a></li>
+        {% endif %}
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
 <!-- FLASH MESSAGES -->
 {% with messages = get_flashed_messages() %}
     {% for message in messages %}
-        <div>{{ message }}</div>
+        <div class="alert alert-warning">{{ message }}</div>
     {% endfor %}
 {% endwith %}
 
@@ -37,7 +59,6 @@
     REAL CONTENT STARTS HERE.
 {% endblock %}
 
-</div>
 
 </body>
 </html>
