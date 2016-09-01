@@ -6,7 +6,7 @@ Add context here later
 
 {% block content %}
 
-<style type="text/css"> body {background-color:#ff3939;} </style>
+<style type="text/css"> body {background-color:#ff3939; color:#fff;} </style>
 
 <form id="dest-details" action="/poke-map.json" method="GET">
     <label for='start-point'>Start Point:
@@ -35,10 +35,10 @@ Add context here later
           <option value='12:00 am'>12:00 am</option>
       </select>
     </label><br>
-    <input type='submit' id='submit-destination' href='#' value='Let&#39;s GO!'>
+    <input type="submit" id="submit-destination" href="#" value="Let&#39;s GO!" class="btn btn-info">
 </form><br>
 
-<div id='map' style='height:550px'></div>
+<div id='map' style='height:500px'></div>
 <div id="directions-panel"></div>
 
 <script src="https://code.jquery.com/jquery.js"></script>

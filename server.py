@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, flash, redirect, session, jso
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 from random import choice
-import hashlib
+import hashlib, datetime
 
 from model import connect_to_db, db, Encounter, Location, User, Gym, PokeType, PokeBase, TypeBase
 
@@ -167,6 +167,7 @@ def register_form():
 def register_process():
     """Process registration."""
 
+    # get form variables
     username = request.form['username']
     email = request.form['email']
     password = request.form['new-password']
@@ -177,7 +178,9 @@ def register_process():
     h = hashlib.md5(password.encode())
     h_password = h.hexdigest()
 
-    new_user = User(username=username, email=email, password=h_password, first_name=first_name, last_name=last_name)
+    user_since = datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S')
+
+    new_user = User(username=username, email=email, password=h_password, first_name=first_name, last_name=last_name, user_since=user_since)
 
     db.session.add(new_user)
     db.session.commit()
@@ -198,7 +201,20 @@ def register_process():
 def show_user_info():
     """Show user's information on a splash page."""
 
-    return render_template('user_profile.html')
+    # query db for session['user_id'], then chain attributes
+    user_id = session['user_id']
+    current_user = User.query.get(user_id)
+
+    username = current_user.username
+    first_name = current_user.first_name
+    last_name = current_user.last_name
+    user_since = current_user.user_since
+
+    return render_template('user_profile.html',
+                            username=username,
+                            first_name=first_name,
+                            last_name=last_name,
+                            user_since=user_since)
 
 
 ###########################

@@ -7,7 +7,7 @@ import server
 
 
 class IntegrationTest(unittest.TestCase):
-    """ Testing """
+    """Testing Flask Routes"""
 
     def setUp(self):
         # setting up a testing client
@@ -25,36 +25,65 @@ class IntegrationTest(unittest.TestCase):
         self.assertIn('<form id="dest-details" action="/poke-map.json" method="GET">', result.data)
 
     def test_json(self):
-        result = self.client.get("/poke-map.json")
+        result = self.client.get('/poke-map.json')
         self.assertIn('"encounters"', result.data)
 
 ###########################
 #TEST - LOGIN/LOGOUT
 ###########################
 
-    def test_login(self):
+    def test_login_page(self):
+        result = self.client.get('/login')
+        self.assertIn('', result.data)
+
+    def test_login_action(self):
+        result = self.client.post('/login') #is this correct notation? need to verify
+        self.assertIn('', result.data)  
+
+    def test_flash_login(self):
+        ######################      
 
     def test_logout(self):
+        result = self.client.get('/logout')
+        self.assertIn('', result.data)
+
+    def test_flash_logout(self):
+        ######################
 
 ###########################
 #TEST - REGISTER
 ###########################
 
-    def test_register(self):
+    def test_register_page(self):
+        result = self.client.get('/register')
+        self.assertIn('', result.data)
+
+    def test_register_action(self):
+        result = self.client.post('/register') #is this correct notation? need to verify
+        self.assertIn('', result.data)  
 
 ###########################
 #TEST - USER PROFILE
 ###########################
 
     def test_user_profile(self):
+        result = self.client.get('/user-profile')
+        self.assertIn('', result.data)
 
 ###########################
 #TEST - CATCHING
 ###########################
 
     def test_catching(self):
+        result = self.client.get('/catch-pokemon<int:id>') #is this correct notation? need to verify
+        self.assertIn('', result.data)
+
+    def test_flash_catch(self):
+        ######################
 
     def test_caught(self):
+        result = self.client.post('/caught')
+        self.assertIn('', result.data)  
 
 
 ##########################################

@@ -15,10 +15,10 @@ Add context here later
 
 <style type="text/css"> body {background-color:#f4ed38;} </style>
 
-    <div>
-        <h3>Username: placeholder</h3>
-        <h4>Name: placeholder</h4>
-        <h4>Date Joined: 00-00-00</h4>
+    <div style="background-color:rgba(255,255,255,.9);">
+        <h3>Username: {{ username }}</h3>
+        <h4>Name: {{ first_name }} {{ last_name }}</h4>
+        <h4>Date Joined: {{ user_since }}</h4>
         <h4><a href="/caught">Pokemon Caught To-Date</a></h4>
     </div>
 
