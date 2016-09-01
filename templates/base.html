@@ -9,9 +9,9 @@ Add context here later
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <link rel="shortcut icon" href="https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/pokeball.png" />
-    <link rel="stylesheet" type="text/css" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway+Dots|Raleway:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 
 <body style="font-family: 'Raleway', sans-serif;">
@@ -20,8 +20,8 @@ Add context here later
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <img class="navbar-brand" src="https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/compass.png">
-      <a class="navbar-brand" href="/">Pok&eacute;see Pok&eacute;do</a>
+<!--       <img id="title-compass" class="navbar-brand" src="https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/compass.png"> -->
+      <a id="site-title" class="navbar-brand" href="/">Pok&eacute;see Pok&eacute;do</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
