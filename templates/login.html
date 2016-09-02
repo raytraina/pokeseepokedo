@@ -6,16 +6,22 @@
 
 <style type="text/css"> body {background-color:#1caff6;} </style>
 
-    <form action="/login" method="POST" id="login-form" style="background-color:rgba(255,255,255,.9);">
-        <label class="login-field" for="username">
-            <input type="text" class="login-field" placeholder="username" name="username" value="designsbytraina">
-        </label>
-        <label class="login-field" for="login-password">
-            <input type="password" class="login-field" placeholder="password" name="login-password" value="secret">
-        </label>
-        <label for="submit-login">
-            <input type="submit" value="login" class="submit-btn" name="submit-register">
-        </label>
+    <form action="/login" method="POST" class="form-inline" style="background-color:rgba(255,255,255,.9); width:35%; margin: 0 auto; padding:2%;">
+        <div class="form-group" style="padding-bottom:5%;">
+            <label class="col-sm-2 control-label" for="username">Username:
+                <input type="text" placeholder="username" name="username" value="designsbytraina" class="form-control">
+            </label>
+        </div>
+        <div class="form-group" style="padding-bottom:5%;">
+            <label class="col-sm-2 control-label" for="login-password">Password:
+                <input type="password" placeholder="password" name="login-password" value="secret" class="form-control">
+            </label>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-warning">Login</button>
+            </div>
+        </div>
     </form>
 
 
