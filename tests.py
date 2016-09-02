@@ -1,9 +1,10 @@
 """Pokesee Pokedo - Tests"""
 
 from model import connect_to_db, db, Encounter, Location, User, Gym, PokeType, PokeBase, TypeBase
-
 import unittest
+from server import app
 import server
+import json
 
 
 class IntegrationTest(unittest.TestCase):

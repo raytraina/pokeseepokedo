@@ -195,8 +195,6 @@ def register_process():
 #USER PROFILE
 ###########################
 
-#TODO - add a profile page for users that shows their information, maybe timestamp for when registered??
-
 @app.route('/user-profile')
 def show_user_info():
     """Show user's information on a splash page."""
