@@ -81,8 +81,6 @@
     directionsDisplay.setMap(map);
     directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
-    console.log('show map');
-
     // declare empty arrays to hold latlng objects that are created
     var waypoints = [];
     var markers = [];
@@ -212,9 +210,6 @@
           markers.push(marker);
 
         });
-
-        // console.log(waypoints); // should return 8 objects (locations)
-        // console.log(markers); // should return 11 objects (encounters & gyms)
 
         calculateAndDisplayRoute(directionsService, directionsDisplay, waypoints, markers); // add waypoints, markers
 

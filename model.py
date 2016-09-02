@@ -26,7 +26,7 @@ class Encounter(db.Model):
 
     pokebase = db.relationship('PokeBase')
 
-    def __repr__(self):
+    def __repr__(self): # pragma: no cover
             """Provide helpful representation when printed."""
 
             return '<Encounter encounter_id=%s pokemon_id=%s latitude=%s longitude=%s>' % (self.encounter_id, self.pokemon_id, self.latitude, self.longitude)
@@ -50,7 +50,7 @@ class Location(db.Model):
     # display_phone = db.Column(db.String(15)) #poor handling if integer
     category = db.Column(db.String(50))
 
-    def __repr__(self):
+    def __repr__(self): # pragma: no cover
             """Provide helpful representation when printed."""
 
             return '<Location name=%s rating=%s latitude=%s longitude=%s>' % (self.name, self.rating, self.latitude, self.longitude)
@@ -68,7 +68,7 @@ class Gym(db.Model):
     longitude = db.Column(db.Float)
     name = db.Column(db.String(100), nullable=False)
 
-    def __repr__(self):
+    def __repr__(self): # pragma: no cover
             """Provide helpful representation when printed."""
 
             return '<Gym name=%s latitude=%s longitude=%s>' % (self.name, self.latitude, self.longitude)
@@ -89,7 +89,7 @@ class User(db.Model):
     last_name = db.Column(db.String(64), nullable=True)
     user_since = db.Column(db.DateTime, nullable=False)
 
-    def __repr__(self):
+    def __repr__(self): # pragma: no cover
         """Provide helpful representation when printed."""
 
         return '<User user_id=%s username=%s email=%s first_name=%s last_name=%s>' % (self.user_id, self.username, self.email, self.first_name, self.last_name)
@@ -113,7 +113,7 @@ class PokeType(db.Model):
     pokebase = db.relationship('PokeBase')
     typebase = db.relationship('TypeBase')
 
-    def __repr__(self):
+    def __repr__(self): # pragma: no cover
             """Provide helpful representation when printed."""
 
             return '<PokeType pokemon_id=%s type_id=%s>' % (self.pokemon_id, self.type_id)
@@ -134,7 +134,7 @@ class PokeBase(db.Model):
     encounter = db.relationship('Encounter')
     poketype = db.relationship('PokeType')
 
-    def __repr__(self):
+    def __repr__(self): # pragma: no cover
             """Provide helpful representation when printed."""
 
             return '<PokeBase pokemon_id=%s identifier=%s>' % (self.pokemon_id, self.identifier)
@@ -150,7 +150,7 @@ class TypeBase(db.Model):
 
     poketype = db.relationship('PokeType')
 
-    def __repr__(self):
+    def __repr__(self): # pragma: no cover
             """Provide helpful representation when printed."""
 
             return '<TypeBase type_id=%s identifier=%s>' % (self.type_id, self.identifier)
