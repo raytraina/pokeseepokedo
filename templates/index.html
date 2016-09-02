@@ -1,6 +1,4 @@
-<!-- index.html
-Add context here later
- -->
+<!-- index.html -->
 
 {% extends 'base.html' %}
 
@@ -8,59 +6,53 @@ Add context here later
 
 <style type="text/css"> body {background-color:#ff3939;} </style>
 
-<!-- <div class="jumbotron" style="background-color:transparent;"> -->
-  <form id="dest-details" action="/poke-map.json" method="GET" class="form-inline">
-    <div class="form-group">
-      <label class="index-label" for="start-point">Start Point:
-          <input id="start-point" type="text" class="form-control" name="start-point" value="samovar tea lounge sf">
-      </label>
-    </div>
-    <div class="form-group">
-      <label class="index-label" for="end-point">End Point:
-          <input id="end-point" type="text" class="form-control" name="end-point" value="at&amp;t park">
-      </label>
-    </div>
-    <div class="form-group">
-      <label class="index-label" for="user-activity">Activity:
-        <select id="user-activity" class="form-control" name="user-activity">
-            <option value="Dancing">Dancing</option>
-            <option value="Eating">Eating</option>
-            <option value="Drinking">Drinking</option>
-            <option value="Laughing">Laughing</option>
-            <option value="Making">Making</option>
-        </select>
-      </label>
-    </div>
-    <div class="form-group">
-      <label class="index-label" for="departure-time">Time of Departure:
-        <select id="departure-time" class="form-control" name="departure-time">
-            <option value="6:00 pm">6:00 pm</option>
-            <option value="7:00 pm">7:00 pm</option>
-            <option value="8:00 pm">8:00 pm</option>
-            <option value="9:00 pm">9:00 pm</option>
-            <option value="10:00 pm">10:00 pm</option>
-            <option value="11:00 pm">11:00 pm</option>
-            <option value="12:00 am">12:00 am</option>
-        </select>
-      </label>
-    </div>
-    <input type="submit" id="submit-destination" href="#" value="Let&#39;s GO!" class="btn btn-info">
-  </form>
-<!-- </div> -->
+<form id="dest-details" action="/poke-map.json" method="GET" class="form-inline">
+  <div class="form-group">
+    <label class="index-label" for="start-point">Start Point:
+        <input id="start-point" type="text" class="form-control" name="start-point" value="samovar tea lounge sf">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="index-label" for="end-point">End Point:
+        <input id="end-point" type="text" class="form-control" name="end-point" value="at&amp;t park">
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="index-label" for="user-activity">Activity:
+      <select id="user-activity" class="form-control" name="user-activity">
+          <option value="Dancing">Dancing</option>
+          <option value="Eating">Eating</option>
+          <option value="Drinking">Drinking</option>
+          <option value="Laughing">Laughing</option>
+          <option value="Making">Making</option>
+      </select>
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="index-label" for="departure-time">Time of Departure:
+      <select id="departure-time" class="form-control" name="departure-time">
+          <option value="6:00 pm">6:00 pm</option>
+          <option value="7:00 pm">7:00 pm</option>
+          <option value="8:00 pm">8:00 pm</option>
+          <option value="9:00 pm">9:00 pm</option>
+          <option value="10:00 pm">10:00 pm</option>
+          <option value="11:00 pm">11:00 pm</option>
+          <option value="12:00 am">12:00 am</option>
+      </select>
+    </label>
+  </div>
+  <input type="submit" id="submit-destination" href="#" value="Let&#39;s GO!" class="btn btn-info">
+</form>
 
+<!-- google maps -->
 <div id="map" style="height:500px"></div>
 
-<div class="panel" style="background-color:transparent; text-align:center;">
-<!--   <h4 id="directions-label">Directions</h4> -->
-  <img id="down-arrow" src="https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/white-arrow.png" style="margin:auto; display:block;">
-</div>
-
-<div id="directions-panel" class="panel"></div>
+<!-- directions will be hidden on page load, will display header and directions on click -->
+<h4 id="directions-label" style="text-align:center; font-family: 'Raleway Dots', cursive; font-size:30px; text-transform:uppercase; color:#fff; margin:2% 0 2% 0; display:none;">Directions</h4>
+<div id="directions-panel" style="background-color:rgba(255,255,255,.9); width:30%; margin: 0 auto; text-align:center;"></div>
 
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places&key=AIzaSyDsAgJV6GObnh7-vt-hrQBm5beRdowkZxs&callback=initMap" async defer></script>
-
-<!-- REMOVE CALLBACK AND ONLY RUN ON CLICK? -->
 
 <script>
 "use strict";
@@ -99,6 +91,8 @@ Add context here later
     $('#submit-destination').click( function(evt) {
       evt.preventDefault();
 
+      $('#directions-label').toggle();
+
       $.get('poke-map.json', function(data) {
         var locObject = data['locations']; // declare location object from data
         var gymObject = data['gyms']; // declare gym object
@@ -127,11 +121,10 @@ Add context here later
                               title: "Location"});
 
           // content for infoWindow
-          var contentString = '<h2>Name: ' + locName + '</h2>' + 
-          '<h3>Yelp Rating: ' + locRating + '</h3>' + 
-          '<h3>Category: ' + locCategory + '</h3>' +
-          '<h3>Learn More: ' + locUrl + '</h3>' +
-          '<p>Testing.</p>'+
+          var contentString = '<h4 style="text-align:center;">' + locName + '</h4>' + 
+          '<h5>Yelp Rating: ' + locRating + '</h5>' + 
+          '<h5>Category: ' + locCategory + '</h5>' +
+          '<h5>Learn More: ' + locUrl + '</h5>' +
           '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Phasellus vestibulum risus at quam varius dictum.</p>';
 
           var infoWindow = new google.maps.InfoWindow({
@@ -160,8 +153,8 @@ Add context here later
                               title: "Gym"});
 
           // content for infoWindow
-          var contentString = '<h2>Name: ' + gymName + '</h2>' + 
-          '<p>More testing.</p>';
+          var contentString = '<h4 style="text-align:center;">Gym: ' + gymName + '</h4>' + 
+          '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Phasellus vestibulum risus at quam varius dictum.</p>';
 
           var infoWindow = new google.maps.InfoWindow({
             content: contentString
@@ -194,16 +187,16 @@ Add context here later
                               title: "Encounter"});
 
           // content for infoWindow
-          var contentString = '<div id="poke-info"><h2>Name: ' + pokemon + '</h2>' + 
-          '<img src="https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/' + pokemon + '.png" alt=' + pokemon + ' height="65" width="auto">' +
-          '<h3>Type: ' + pokeType + '</h3>' +
-          '<h3>Height: ' + pokeHeight + '</h3>' +
-          '<h3>Weight: ' + pokeWeight + '</h3>' +
-          '<h3>Nature: ' + pokeNature + '</h3>' +
+          var contentString = '<div id="poke-info"><h4 style="text-align:center;">Species: <span style="text-transform:capitalize;">' + pokemon + '</span></h4>' + 
+          '<img style="margin-left:36px;" src="https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/' + pokemon + '.png" alt=' + pokemon + ' height="65" width="auto">' +
+          '<h5 style="text-align:center;">type: ' + pokeType + '</h5>' +
+          '<h5 style="text-align:center;">height: ' + pokeHeight + '</h5>' +
+          '<h5 style="text-align:center;">weight: ' + pokeWeight + '</h5>' +
+          '<h5 style="text-align:center;">nature: ' + pokeNature + '</h5>' +
           '<form method="get" id="catch-poke" action="/catch-pokemon/' + 
           encPoke + '">' + '<input id="add-to-caught" type="image" ' +
           'src="https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/assets_icons/gotcha.png" ' + 
-          'alt="add to caught pokemon" height="50" width="auto">' + 
+          'alt="add to caught pokemon" height="50" width="auto" style="margin-left:39px;">' + 
           '</form>';
 
           // create new InfoWindow object for use on marker click
