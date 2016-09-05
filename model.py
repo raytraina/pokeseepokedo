@@ -1,6 +1,7 @@
 """Pokesee Pokedo - Data Model"""
 
 from flask_sqlalchemy import SQLAlchemy
+import datetime
 
 db = SQLAlchemy()
 
@@ -158,11 +159,34 @@ class TypeBase(db.Model):
 
 #####################################################################
 
-def connect_to_db(app):
+def example_data():
+    """Sample data for testing."""
+
+    # in case this is run more than once, empty out existing data
+    Encounter.query.delete()
+    User.query.delete()
+
+    user_since = datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S')
+
+    # add sample encounters, users, and pokemon
+    encounter1 = Encounter(latitude=37.777450, longitude=-122.391696, pokemon_id=54)
+    encounter2 = Encounter(latitude=37.784160, longitude=-122.398884, pokemon_id=13)
+
+    user2 = User(username='testuser2', email='test2@ex.com', password='secretthing', first_name='Jen', last_name='Dough', user_since=user_since)
+    user3 = User(username='testuser3', email='test3@ex.com', password='secretthing', first_name='Jan', last_name='Doh', user_since=user_since)
+
+    pokemon1 = PokeBase(pokemon_id=54, identifier='Psyduck', height=10, weight=60, nature='well-tempered')
+    pokemon2 = PokeBase(pokemon_id=13, identifier='Weedle', height=5, weight=40, nature='kind')
+
+    db.session.add_all([encounter1, encounter2, user2, user3, pokemon1, pokemon2])
+    db.session.commit()
+
+
+def connect_to_db(app, db_uri='postgresql:///pokeseedo'):
     """Connect the database to Flask app."""
 
-    # Configure to use PostgreSQL database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///pokeseedo'
+    # configure to use postgreSQL database
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     db.app = app
     db.init_app(app)
 

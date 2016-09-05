@@ -23,7 +23,7 @@ app.jinja_env.undefined = StrictUndefined
 def index():
     """Render homepage."""
 
-    return render_template('index.html')
+    return render_template('index.html') # pragma: no cover
 
 
 @app.route('/poke-map.json', methods=['GET'])
@@ -33,7 +33,7 @@ def results():
     This function will also jsonify data to pass pokemon and locations
     to front end."""
 
-    # get form variables (not using them in this demo)
+    # get form variables (not using them in demo)
     start_point = request.args.get('start-point')
     end_point = request.args.get('end-point')
     activity = request.args.get('user-activity')
@@ -48,21 +48,21 @@ def results():
     types = TypeBase.query.all() #get all types
 
     # loop through encounters and add items to encounter_dict
-
     encounter_dict = {}
     for encounter in encounters:
         poke_id = encounter.pokemon_id
         enc_poke = pokemon[poke_id - 1] #index pokemon for encountered pokemon
         
-        # type_id = enc_poke.type_id
-        # NEED ITERATING THROUGH LIST INDEXING STRING
-        # USE ENUMERATE OR RANGE SOMEHOW?
-        # for i in poke_types:
-        #     type_id = poke_types[i].type_id
-        #     poke_type = types[type_id - 1].identifier
+        # COME BACK TO THIS:
+        # TODO: need to iterate through list
+        # [type_id = enc_poke.type_id
 
         # join on type_id = pokemon.types(orsomething).type_id
-        # COME BACK TO THIS ^
+        # for i in poke_types:
+        #     type_id = poke_types[i].type_id
+        #     poke_type = types[type_id - 1].identifier]
+
+
         type_id = poke_types[poke_id - 1].type_id
         poke_type = types[type_id - 1].identifier
 
@@ -105,7 +105,7 @@ def results():
     # combine dictionaries into dictionary of dictionaries
     dictionary = {"encounters": encounter_dict, "locations": location_dict, "gyms": gym_dict}
 
-    # return jsonified dictionary that will be accessible in JS
+    # return jsonified dictionary that will be accessible at front-end
     return jsonify(dictionary)
 
 
@@ -117,7 +117,7 @@ def results():
 def login_form():
     """Show login form."""
 
-    return render_template("login.html")
+    return render_template('login.html') # pragma: no cover
 
 
 @app.route('/login', methods=['POST'])
@@ -160,7 +160,7 @@ def logout():
 def register_form():
     """Show form for user signup."""
 
-    return render_template("registration_form.html")
+    return render_template('registration_form.html') # pragma: no cover
 
 
 @app.route('/register', methods=['POST'])
@@ -187,8 +187,8 @@ def register_process():
 
     session['user_id'] = new_user.user_id
 
-    flash("Welcome, %s. Happy catching!" % username)
-    return redirect("/")
+    flash('Welcome, %s. Happy catching!' % username)
+    return redirect('/')
 
 
 ###########################
@@ -275,7 +275,7 @@ def show_caught():
 
 ############################################
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     #must be true for debug toolbar
     app.debug = True
 

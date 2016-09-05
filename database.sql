@@ -145,7 +145,8 @@ CREATE TABLE poke_base (
     pokemon_id integer NOT NULL,
     identifier character varying(60) NOT NULL,
     height integer NOT NULL,
-    weight integer NOT NULL
+    weight integer NOT NULL,
+    nature character varying(60) NOT NULL
 );
 
 
@@ -245,10 +246,12 @@ ALTER SEQUENCE type_base_type_id_seq OWNED BY type_base.type_id;
 
 CREATE TABLE users (
     user_id integer NOT NULL,
+    username character varying(64),
     email character varying(64),
     password character varying(64),
     first_name character varying(64),
-    last_name character varying(64)
+    last_name character varying(64),
+    user_since timestamp without time zone NOT NULL
 );
 
 
@@ -333,12 +336,12 @@ COPY encounters (encounter_id, latitude, pokemon_id, longitude) FROM stdin;
 2	37.7841149999999999	19	-122.400426999999993
 3	37.78416	41	-122.398883999999995
 4	37.7828599999999994	133	-122.397441999999998
-5	37.7816910000000021	41	-122.395854999999997
+5	37.7816910000000021	48	-122.395854999999997
 6	37.7809230000000014	54	-122.396632999999994
-7	37.7791179999999969	135	-122.393389999999997
-8	37.7781939999999992	35	-122.393469999999994
-9	37.7774500000000018	118	-122.391695999999996
-10	37.7788520000000005	54	-122.389962999999995
+7	37.7791179999999969	10	-122.393389999999997
+8	37.7781939999999992	39	-122.393469999999994
+9	37.7774500000000018	16	-122.391695999999996
+10	37.7788520000000005	147	-122.389962999999995
 \.
 
 
@@ -392,818 +395,818 @@ SELECT pg_catalog.setval('locations_location_id_seq', 8, true);
 -- Data for Name: poke_base; Type: TABLE DATA; Schema: public; Owner: vagrant
 --
 
-COPY poke_base (pokemon_id, identifier, height, weight) FROM stdin;
-1	bulbasaur	7	69
-2	ivysaur	10	130
-3	venusaur	20	1000
-4	charmander	6	85
-5	charmeleon	11	190
-6	charizard	17	905
-7	squirtle	5	90
-8	wartortle	10	225
-9	blastoise	16	855
-10	caterpie	3	29
-11	metapod	7	99
-12	butterfree	11	320
-13	weedle	3	32
-14	kakuna	6	100
-15	beedrill	10	295
-16	pidgey	3	18
-17	pidgeotto	11	300
-18	pidgeot	15	395
-19	rattata	3	35
-20	raticate	7	185
-21	spearow	3	20
-22	fearow	12	380
-23	ekans	20	69
-24	arbok	35	650
-25	pikachu	4	60
-26	raichu	8	300
-27	sandshrew	6	120
-28	sandslash	10	295
-29	nidoran-f	4	70
-30	nidorina	8	200
-31	nidoqueen	13	600
-32	nidoran-m	5	90
-33	nidorino	9	195
-34	nidoking	14	620
-35	clefairy	6	75
-36	clefable	13	400
-37	vulpix	6	99
-38	ninetales	11	199
-39	jigglypuff	5	55
-40	wigglytuff	10	120
-41	zubat	8	75
-42	golbat	16	550
-43	oddish	5	54
-44	gloom	8	86
-45	vileplume	12	186
-46	paras	3	54
-47	parasect	10	295
-48	venonat	10	300
-49	venomoth	15	125
-50	diglett	2	8
-51	dugtrio	7	333
-52	meowth	4	42
-53	persian	10	320
-54	psyduck	8	196
-55	golduck	17	766
-56	mankey	5	280
-57	primeape	10	320
-58	growlithe	7	190
-59	arcanine	19	1550
-60	poliwag	6	124
-61	poliwhirl	10	200
-62	poliwrath	13	540
-63	abra	9	195
-64	kadabra	13	565
-65	alakazam	15	480
-66	machop	8	195
-67	machoke	15	705
-68	machamp	16	1300
-69	bellsprout	7	40
-70	weepinbell	10	64
-71	victreebel	17	155
-72	tentacool	9	455
-73	tentacruel	16	550
-74	geodude	4	200
-75	graveler	10	1050
-76	golem	14	3000
-77	ponyta	10	300
-78	rapidash	17	950
-79	slowpoke	12	360
-80	slowbro	16	785
-81	magnemite	3	60
-82	magneton	10	600
-83	farfetchd	8	150
-84	doduo	14	392
-85	dodrio	18	852
-86	seel	11	900
-87	dewgong	17	1200
-88	grimer	9	300
-89	muk	12	300
-90	shellder	3	40
-91	cloyster	15	1325
-92	gastly	13	1
-93	haunter	16	1
-94	gengar	15	405
-95	onix	88	2100
-96	drowzee	10	324
-97	hypno	16	756
-98	krabby	4	65
-99	kingler	13	600
-100	voltorb	5	104
-101	electrode	12	666
-102	exeggcute	4	25
-103	exeggutor	20	1200
-104	cubone	4	65
-105	marowak	10	450
-106	hitmonlee	15	498
-107	hitmonchan	14	502
-108	lickitung	12	655
-109	koffing	6	10
-110	weezing	12	95
-111	rhyhorn	10	1150
-112	rhydon	19	1200
-113	chansey	11	346
-114	tangela	10	350
-115	kangaskhan	22	800
-116	horsea	4	80
-117	seadra	12	250
-118	goldeen	6	150
-119	seaking	13	390
-120	staryu	8	345
-121	starmie	11	800
-122	mr-mime	13	545
-123	scyther	15	560
-124	jynx	14	406
-125	electabuzz	11	300
-126	magmar	13	445
-127	pinsir	15	550
-128	tauros	14	884
-129	magikarp	9	100
-130	gyarados	65	2350
-131	lapras	25	2200
-132	ditto	3	40
-133	eevee	3	65
-134	vaporeon	10	290
-135	jolteon	8	245
-136	flareon	9	250
-137	porygon	8	365
-138	omanyte	4	75
-139	omastar	10	350
-140	kabuto	5	115
-141	kabutops	13	405
-142	aerodactyl	18	590
-143	snorlax	21	4600
-144	articuno	17	554
-145	zapdos	16	526
-146	moltres	20	600
-147	dratini	18	33
-148	dragonair	40	165
-149	dragonite	22	2100
-150	mewtwo	20	1220
-151	mew	4	40
-152	chikorita	9	64
-153	bayleef	12	158
-154	meganium	18	1005
-155	cyndaquil	5	79
-156	quilava	9	190
-157	typhlosion	17	795
-158	totodile	6	95
-159	croconaw	11	250
-160	feraligatr	23	888
-161	sentret	8	60
-162	furret	18	325
-163	hoothoot	7	212
-164	noctowl	16	408
-165	ledyba	10	108
-166	ledian	14	356
-167	spinarak	5	85
-168	ariados	11	335
-169	crobat	18	750
-170	chinchou	5	120
-171	lanturn	12	225
-172	pichu	3	20
-173	cleffa	3	30
-174	igglybuff	3	10
-175	togepi	3	15
-176	togetic	6	32
-177	natu	2	20
-178	xatu	15	150
-179	mareep	6	78
-180	flaaffy	8	133
-181	ampharos	14	615
-182	bellossom	4	58
-183	marill	4	85
-184	azumarill	8	285
-185	sudowoodo	12	380
-186	politoed	11	339
-187	hoppip	4	5
-188	skiploom	6	10
-189	jumpluff	8	30
-190	aipom	8	115
-191	sunkern	3	18
-192	sunflora	8	85
-193	yanma	12	380
-194	wooper	4	85
-195	quagsire	14	750
-196	espeon	9	265
-197	umbreon	10	270
-198	murkrow	5	21
-199	slowking	20	795
-200	misdreavus	7	10
-201	unown	5	50
-202	wobbuffet	13	285
-203	girafarig	15	415
-204	pineco	6	72
-205	forretress	12	1258
-206	dunsparce	15	140
-207	gligar	11	648
-208	steelix	92	4000
-209	snubbull	6	78
-210	granbull	14	487
-211	qwilfish	5	39
-212	scizor	18	1180
-213	shuckle	6	205
-214	heracross	15	540
-215	sneasel	9	280
-216	teddiursa	6	88
-217	ursaring	18	1258
-218	slugma	7	350
-219	magcargo	8	550
-220	swinub	4	65
-221	piloswine	11	558
-222	corsola	6	50
-223	remoraid	6	120
-224	octillery	9	285
-225	delibird	9	160
-226	mantine	21	2200
-227	skarmory	17	505
-228	houndour	6	108
-229	houndoom	14	350
-230	kingdra	18	1520
-231	phanpy	5	335
-232	donphan	11	1200
-233	porygon2	6	325
-234	stantler	14	712
-235	smeargle	12	580
-236	tyrogue	7	210
-237	hitmontop	14	480
-238	smoochum	4	60
-239	elekid	6	235
-240	magby	7	214
-241	miltank	12	755
-242	blissey	15	468
-243	raikou	19	1780
-244	entei	21	1980
-245	suicune	20	1870
-246	larvitar	6	720
-247	pupitar	12	1520
-248	tyranitar	20	2020
-249	lugia	52	2160
-250	ho-oh	38	1990
-251	celebi	6	50
-252	treecko	5	50
-253	grovyle	9	216
-254	sceptile	17	522
-255	torchic	4	25
-256	combusken	9	195
-257	blaziken	19	520
-258	mudkip	4	76
-259	marshtomp	7	280
-260	swampert	15	819
-261	poochyena	5	136
-262	mightyena	10	370
-263	zigzagoon	4	175
-264	linoone	5	325
-265	wurmple	3	36
-266	silcoon	6	100
-267	beautifly	10	284
-268	cascoon	7	115
-269	dustox	12	316
-270	lotad	5	26
-271	lombre	12	325
-272	ludicolo	15	550
-273	seedot	5	40
-274	nuzleaf	10	280
-275	shiftry	13	596
-276	taillow	3	23
-277	swellow	7	198
-278	wingull	6	95
-279	pelipper	12	280
-280	ralts	4	66
-281	kirlia	8	202
-282	gardevoir	16	484
-283	surskit	5	17
-284	masquerain	8	36
-285	shroomish	4	45
-286	breloom	12	392
-287	slakoth	8	240
-288	vigoroth	14	465
-289	slaking	20	1305
-290	nincada	5	55
-291	ninjask	8	120
-292	shedinja	8	12
-293	whismur	6	163
-294	loudred	10	405
-295	exploud	15	840
-296	makuhita	10	864
-297	hariyama	23	2538
-298	azurill	2	20
-299	nosepass	10	970
-300	skitty	6	110
-301	delcatty	11	326
-302	sableye	5	110
-303	mawile	6	115
-304	aron	4	600
-305	lairon	9	1200
-306	aggron	21	3600
-307	meditite	6	112
-308	medicham	13	315
-309	electrike	6	152
-310	manectric	15	402
-311	plusle	4	42
-312	minun	4	42
-313	volbeat	7	177
-314	illumise	6	177
-315	roselia	3	20
-316	gulpin	4	103
-317	swalot	17	800
-318	carvanha	8	208
-319	sharpedo	18	888
-320	wailmer	20	1300
-321	wailord	145	3980
-322	numel	7	240
-323	camerupt	19	2200
-324	torkoal	5	804
-325	spoink	7	306
-326	grumpig	9	715
-327	spinda	11	50
-328	trapinch	7	150
-329	vibrava	11	153
-330	flygon	20	820
-331	cacnea	4	513
-332	cacturne	13	774
-333	swablu	4	12
-334	altaria	11	206
-335	zangoose	13	403
-336	seviper	27	525
-337	lunatone	10	1680
-338	solrock	12	1540
-339	barboach	4	19
-340	whiscash	9	236
-341	corphish	6	115
-342	crawdaunt	11	328
-343	baltoy	5	215
-344	claydol	15	1080
-345	lileep	10	238
-346	cradily	15	604
-347	anorith	7	125
-348	armaldo	15	682
-349	feebas	6	74
-350	milotic	62	1620
-351	castform	3	8
-352	kecleon	10	220
-353	shuppet	6	23
-354	banette	11	125
-355	duskull	8	150
-356	dusclops	16	306
-357	tropius	20	1000
-358	chimecho	6	10
-359	absol	12	470
-360	wynaut	6	140
-361	snorunt	7	168
-362	glalie	15	2565
-363	spheal	8	395
-364	sealeo	11	876
-365	walrein	14	1506
-366	clamperl	4	525
-367	huntail	17	270
-368	gorebyss	18	226
-369	relicanth	10	234
-370	luvdisc	6	87
-371	bagon	6	421
-372	shelgon	11	1105
-373	salamence	15	1026
-374	beldum	6	952
-375	metang	12	2025
-376	metagross	16	5500
-377	regirock	17	2300
-378	regice	18	1750
-379	registeel	19	2050
-380	latias	14	400
-381	latios	20	600
-382	kyogre	45	3520
-383	groudon	35	9500
-384	rayquaza	70	2065
-385	jirachi	3	11
-386	deoxys-normal	17	608
-387	turtwig	4	102
-388	grotle	11	970
-389	torterra	22	3100
-390	chimchar	5	62
-391	monferno	9	220
-392	infernape	12	550
-393	piplup	4	52
-394	prinplup	8	230
-395	empoleon	17	845
-396	starly	3	20
-397	staravia	6	155
-398	staraptor	12	249
-399	bidoof	5	200
-400	bibarel	10	315
-401	kricketot	3	22
-402	kricketune	10	255
-403	shinx	5	95
-404	luxio	9	305
-405	luxray	14	420
-406	budew	2	12
-407	roserade	9	145
-408	cranidos	9	315
-409	rampardos	16	1025
-410	shieldon	5	570
-411	bastiodon	13	1495
-412	burmy	2	34
-413	wormadam-plant	5	65
-414	mothim	9	233
-415	combee	3	55
-416	vespiquen	12	385
-417	pachirisu	4	39
-418	buizel	7	295
-419	floatzel	11	335
-420	cherubi	4	33
-421	cherrim	5	93
-422	shellos	3	63
-423	gastrodon	9	299
-424	ambipom	12	203
-425	drifloon	4	12
-426	drifblim	12	150
-427	buneary	4	55
-428	lopunny	12	333
-429	mismagius	9	44
-430	honchkrow	9	273
-431	glameow	5	39
-432	purugly	10	438
-433	chingling	2	6
-434	stunky	4	192
-435	skuntank	10	380
-436	bronzor	5	605
-437	bronzong	13	1870
-438	bonsly	5	150
-439	mime-jr	6	130
-440	happiny	6	244
-441	chatot	5	19
-442	spiritomb	10	1080
-443	gible	7	205
-444	gabite	14	560
-445	garchomp	19	950
-446	munchlax	6	1050
-447	riolu	7	202
-448	lucario	12	540
-449	hippopotas	8	495
-450	hippowdon	20	3000
-451	skorupi	8	120
-452	drapion	13	615
-453	croagunk	7	230
-454	toxicroak	13	444
-455	carnivine	14	270
-456	finneon	4	70
-457	lumineon	12	240
-458	mantyke	10	650
-459	snover	10	505
-460	abomasnow	22	1355
-461	weavile	11	340
-462	magnezone	12	1800
-463	lickilicky	17	1400
-464	rhyperior	24	2828
-465	tangrowth	20	1286
-466	electivire	18	1386
-467	magmortar	16	680
-468	togekiss	15	380
-469	yanmega	19	515
-470	leafeon	10	255
-471	glaceon	8	259
-472	gliscor	20	425
-473	mamoswine	25	2910
-474	porygon-z	9	340
-475	gallade	16	520
-476	probopass	14	3400
-477	dusknoir	22	1066
-478	froslass	13	266
-479	rotom	3	3
-480	uxie	3	3
-481	mesprit	3	3
-482	azelf	3	3
-483	dialga	54	6830
-484	palkia	42	3360
-485	heatran	17	4300
-486	regigigas	37	4200
-487	giratina-altered	45	7500
-488	cresselia	15	856
-489	phione	4	31
-490	manaphy	3	14
-491	darkrai	15	505
-492	shaymin-land	2	21
-493	arceus	32	3200
-494	victini	4	40
-495	snivy	6	81
-496	servine	8	160
-497	serperior	33	630
-498	tepig	5	99
-499	pignite	10	555
-500	emboar	16	1500
-501	oshawott	5	59
-502	dewott	8	245
-503	samurott	15	946
-504	patrat	5	116
-505	watchog	11	270
-506	lillipup	4	41
-507	herdier	9	147
-508	stoutland	12	610
-509	purrloin	4	101
-510	liepard	11	375
-511	pansage	6	105
-512	simisage	11	305
-513	pansear	6	110
-514	simisear	10	280
-515	panpour	6	135
-516	simipour	10	290
-517	munna	6	233
-518	musharna	11	605
-519	pidove	3	21
-520	tranquill	6	150
-521	unfezant	12	290
-522	blitzle	8	298
-523	zebstrika	16	795
-524	roggenrola	4	180
-525	boldore	9	1020
-526	gigalith	17	2600
-527	woobat	4	21
-528	swoobat	9	105
-529	drilbur	3	85
-530	excadrill	7	404
-531	audino	11	310
-532	timburr	6	125
-533	gurdurr	12	400
-534	conkeldurr	14	870
-535	tympole	5	45
-536	palpitoad	8	170
-537	seismitoad	15	620
-538	throh	13	555
-539	sawk	14	510
-540	sewaddle	3	25
-541	swadloon	5	73
-542	leavanny	12	205
-543	venipede	4	53
-544	whirlipede	12	585
-545	scolipede	25	2005
-546	cottonee	3	6
-547	whimsicott	7	66
-548	petilil	5	66
-549	lilligant	11	163
-550	basculin-red-striped	10	180
-551	sandile	7	152
-552	krokorok	10	334
-553	krookodile	15	963
-554	darumaka	6	375
-555	darmanitan-standard	13	929
-556	maractus	10	280
-557	dwebble	3	145
-558	crustle	14	2000
-559	scraggy	6	118
-560	scrafty	11	300
-561	sigilyph	14	140
-562	yamask	5	15
-563	cofagrigus	17	765
-564	tirtouga	7	165
-565	carracosta	12	810
-566	archen	5	95
-567	archeops	14	320
-568	trubbish	6	310
-569	garbodor	19	1073
-570	zorua	7	125
-571	zoroark	16	811
-572	minccino	4	58
-573	cinccino	5	75
-574	gothita	4	58
-575	gothorita	7	180
-576	gothitelle	15	440
-577	solosis	3	10
-578	duosion	6	80
-579	reuniclus	10	201
-580	ducklett	5	55
-581	swanna	13	242
-582	vanillite	4	57
-583	vanillish	11	410
-584	vanilluxe	13	575
-585	deerling	6	195
-586	sawsbuck	19	925
-587	emolga	4	50
-588	karrablast	5	59
-589	escavalier	10	330
-590	foongus	2	10
-591	amoonguss	6	105
-592	frillish	12	330
-593	jellicent	22	1350
-594	alomomola	12	316
-595	joltik	1	6
-596	galvantula	8	143
-597	ferroseed	6	188
-598	ferrothorn	10	1100
-599	klink	3	210
-600	klang	6	510
-601	klinklang	6	810
-602	tynamo	2	3
-603	eelektrik	12	220
-604	eelektross	21	805
-605	elgyem	5	90
-606	beheeyem	10	345
-607	litwick	3	31
-608	lampent	6	130
-609	chandelure	10	343
-610	axew	6	180
-611	fraxure	10	360
-612	haxorus	18	1055
-613	cubchoo	5	85
-614	beartic	26	2600
-615	cryogonal	11	1480
-616	shelmet	4	77
-617	accelgor	8	253
-618	stunfisk	7	110
-619	mienfoo	9	200
-620	mienshao	14	355
-621	druddigon	16	1390
-622	golett	10	920
-623	golurk	28	3300
-624	pawniard	5	102
-625	bisharp	16	700
-626	bouffalant	16	946
-627	rufflet	5	105
-628	braviary	15	410
-629	vullaby	5	90
-630	mandibuzz	12	395
-631	heatmor	14	580
-632	durant	3	330
-633	deino	8	173
-634	zweilous	14	500
-635	hydreigon	18	1600
-636	larvesta	11	288
-637	volcarona	16	460
-638	cobalion	21	2500
-639	terrakion	19	2600
-640	virizion	20	2000
-641	tornadus-incarnate	15	630
-642	thundurus-incarnate	15	610
-643	reshiram	32	3300
-644	zekrom	29	3450
-645	landorus-incarnate	15	680
-646	kyurem	30	3250
-647	keldeo-ordinary	14	485
-648	meloetta-aria	6	65
-649	genesect	15	825
-650	chespin	4	90
-651	quilladin	7	290
-652	chesnaught	16	900
-653	fennekin	4	94
-654	braixen	10	145
-655	delphox	15	390
-656	froakie	3	70
-657	frogadier	6	109
-658	greninja	15	400
-659	bunnelby	4	50
-660	diggersby	10	424
-661	fletchling	3	17
-662	fletchinder	7	160
-663	talonflame	12	245
-664	scatterbug	3	25
-665	spewpa	3	84
-666	vivillon	12	170
-667	litleo	6	135
-668	pyroar	15	815
-669	flabebe	1	1
-670	floette	2	9
-671	florges	11	100
-672	skiddo	9	310
-673	gogoat	17	910
-674	pancham	6	80
-675	pangoro	21	1360
-676	furfrou	12	280
-677	espurr	3	35
-678	meowstic-male	6	85
-679	honedge	8	20
-680	doublade	8	45
-681	aegislash-shield	17	530
-682	spritzee	2	5
-683	aromatisse	8	155
-684	swirlix	4	35
-685	slurpuff	8	50
-686	inkay	4	35
-687	malamar	15	470
-688	binacle	5	310
-689	barbaracle	13	960
-690	skrelp	5	73
-691	dragalge	18	815
-692	clauncher	5	83
-693	clawitzer	13	353
-694	helioptile	5	60
-695	heliolisk	10	210
-696	tyrunt	8	260
-697	tyrantrum	25	2700
-698	amaura	13	252
-699	aurorus	27	2250
-700	sylveon	10	235
-701	hawlucha	8	215
-702	dedenne	2	22
-703	carbink	3	57
-704	goomy	3	28
-705	sliggoo	8	175
-706	goodra	20	1505
-707	klefki	2	30
-708	phantump	4	70
-709	trevenant	15	710
-710	pumpkaboo-average	4	50
-711	gourgeist-average	9	125
-712	bergmite	10	995
-713	avalugg	20	5050
-714	noibat	5	80
-715	noivern	15	850
-716	xerneas	30	2150
-717	yveltal	58	2030
-718	zygarde	50	3050
-719	diancie	7	88
-720	hoopa	5	90
-721	volcanion	17	1950
-10001	deoxys-attack	17	608
-10002	deoxys-defense	17	608
-10003	deoxys-speed	17	608
-10004	wormadam-sandy	5	65
-10005	wormadam-trash	5	65
-10006	shaymin-sky	4	52
-10007	giratina-origin	69	6500
-10008	rotom-heat	3	3
-10009	rotom-wash	3	3
-10010	rotom-frost	3	3
-10011	rotom-fan	3	3
-10012	rotom-mow	3	3
-10013	castform-sunny	3	8
-10014	castform-rainy	3	8
-10015	castform-snowy	3	8
-10016	basculin-blue-striped	10	180
-10017	darmanitan-zen	13	929
-10018	meloetta-pirouette	6	65
-10019	tornadus-therian	14	630
-10020	thundurus-therian	30	610
-10021	landorus-therian	13	680
-10022	kyurem-black	33	3250
-10023	kyurem-white	36	3250
-10024	keldeo-resolute	14	485
-10025	meowstic-female	6	85
-10026	aegislash-blade	17	530
-10027	pumpkaboo-small	3	35
-10028	pumpkaboo-large	5	75
-10029	pumpkaboo-super	8	150
-10030	gourgeist-small	7	95
-10031	gourgeist-large	11	140
-10032	gourgeist-super	17	390
-10033	venusaur-mega	24	1555
-10034	charizard-mega-x	17	1105
-10035	charizard-mega-y	17	1005
-10036	blastoise-mega	16	1011
-10037	alakazam-mega	12	480
-10038	gengar-mega	14	405
-10039	kangaskhan-mega	22	1000
-10040	pinsir-mega	17	590
-10041	gyarados-mega	65	3050
-10042	aerodactyl-mega	21	790
-10043	mewtwo-mega-x	23	1270
-10044	mewtwo-mega-y	15	330
-10045	ampharos-mega	14	615
-10046	scizor-mega	20	1250
-10047	heracross-mega	17	625
-10048	houndoom-mega	19	495
-10049	tyranitar-mega	25	2550
-10050	blaziken-mega	19	520
-10051	gardevoir-mega	16	484
-10052	mawile-mega	10	235
-10053	aggron-mega	22	3950
-10054	medicham-mega	13	315
-10055	manectric-mega	18	440
-10056	banette-mega	12	130
-10057	absol-mega	12	490
-10058	garchomp-mega	19	950
-10059	lucario-mega	13	575
-10060	abomasnow-mega	27	1850
-10061	floette-eternal	2	9
-10062	latias-mega	18	520
-10063	latios-mega	23	700
-10064	swampert-mega	19	1020
-10065	sceptile-mega	19	552
-10066	sableye-mega	5	1610
-10067	altaria-mega	15	206
-10068	gallade-mega	16	564
-10069	audino-mega	15	320
-10070	sharpedo-mega	25	1303
-10071	slowbro-mega	20	1200
-10072	steelix-mega	105	7400
-10073	pidgeot-mega	22	505
-10074	glalie-mega	21	3502
-10075	diancie-mega	11	278
-10076	metagross-mega	25	9429
-10077	kyogre-primal	98	4300
-10078	groudon-primal	50	9997
-10079	rayquaza-mega	108	3920
-10080	pikachu-rock-star	40	60
-10081	pikachu-belle	40	60
-10082	pikachu-pop-star	40	60
-10083	pikachu-phd	40	60
-10084	pikachu-libre	40	60
-10085	pikachu-cosplay	40	60
-10086	hoopa-unbound	65	4900
-10087	camerupt-mega	25	3205
-10088	lopunny-mega	13	283
-10089	salamence-mega	18	1126
-10090	beedrill-mega	14	405
+COPY poke_base (pokemon_id, identifier, height, weight, nature) FROM stdin;
+1	bulbasaur	7	69	lonely
+2	ivysaur	10	130	hardy
+3	venusaur	20	1000	lonely
+4	charmander	6	85	docile
+5	charmeleon	11	190	modest
+6	charizard	17	905	quirky
+7	squirtle	5	90	relaxed
+8	wartortle	10	225	hasty
+9	blastoise	16	855	adamant
+10	caterpie	3	29	lonely
+11	metapod	7	99	relaxed
+12	butterfree	11	320	sassy
+13	weedle	3	32	bold
+14	kakuna	6	100	adamant
+15	beedrill	10	295	relaxed
+16	pidgey	3	18	sassy
+17	pidgeotto	11	300	sassy
+18	pidgeot	15	395	sassy
+19	rattata	3	35	modest
+20	raticate	7	185	calm
+21	spearow	3	20	bashful
+22	fearow	12	380	lonely
+23	ekans	20	69	docile
+24	arbok	35	650	lonely
+25	pikachu	4	60	relaxed
+26	raichu	8	300	jolly
+27	sandshrew	6	120	relaxed
+28	sandslash	10	295	modest
+29	nidoran-f	4	70	adamant
+30	nidorina	8	200	hardy
+31	nidoqueen	13	600	bashful
+32	nidoran-m	5	90	hasty
+33	nidorino	9	195	hardy
+34	nidoking	14	620	calm
+35	clefairy	6	75	serious
+36	clefable	13	400	modest
+37	vulpix	6	99	bold
+38	ninetales	11	199	adamant
+39	jigglypuff	5	55	hasty
+40	wigglytuff	10	120	relaxed
+41	zubat	8	75	serious
+42	golbat	16	550	adamant
+43	oddish	5	54	hasty
+44	gloom	8	86	serious
+45	vileplume	12	186	docile
+46	paras	3	54	bold
+47	parasect	10	295	sassy
+48	venonat	10	300	jolly
+49	venomoth	15	125	hardy
+50	diglett	2	8	bashful
+51	dugtrio	7	333	serious
+52	meowth	4	42	modest
+53	persian	10	320	calm
+54	psyduck	8	196	calm
+55	golduck	17	766	docile
+56	mankey	5	280	adamant
+57	primeape	10	320	mild
+58	growlithe	7	190	modest
+59	arcanine	19	1550	jolly
+60	poliwag	6	124	serious
+61	poliwhirl	10	200	docile
+62	poliwrath	13	540	bold
+63	abra	9	195	mild
+64	kadabra	13	565	bold
+65	alakazam	15	480	modest
+66	machop	8	195	sassy
+67	machoke	15	705	jolly
+68	machamp	16	1300	mild
+69	bellsprout	7	40	mild
+70	weepinbell	10	64	bashful
+71	victreebel	17	155	jolly
+72	tentacool	9	455	docile
+73	tentacruel	16	550	quirky
+74	geodude	4	200	hardy
+75	graveler	10	1050	bold
+76	golem	14	3000	hasty
+77	ponyta	10	300	calm
+78	rapidash	17	950	sassy
+79	slowpoke	12	360	adamant
+80	slowbro	16	785	calm
+81	magnemite	3	60	lonely
+82	magneton	10	600	bold
+83	farfetchd	8	150	serious
+84	doduo	14	392	lonely
+85	dodrio	18	852	hasty
+86	seel	11	900	mild
+87	dewgong	17	1200	bold
+88	grimer	9	300	modest
+89	muk	12	300	jolly
+90	shellder	3	40	adamant
+91	cloyster	15	1325	relaxed
+92	gastly	13	1	sassy
+93	haunter	16	1	relaxed
+94	gengar	15	405	lonely
+95	onix	88	2100	quirky
+96	drowzee	10	324	bold
+97	hypno	16	756	relaxed
+98	krabby	4	65	serious
+99	kingler	13	600	calm
+100	voltorb	5	104	bashful
+101	electrode	12	666	bold
+102	exeggcute	4	25	bashful
+103	exeggutor	20	1200	hasty
+104	cubone	4	65	modest
+105	marowak	10	450	calm
+106	hitmonlee	15	498	quirky
+107	hitmonchan	14	502	lonely
+108	lickitung	12	655	relaxed
+109	koffing	6	10	adamant
+110	weezing	12	95	hardy
+111	rhyhorn	10	1150	jolly
+112	rhydon	19	1200	mild
+113	chansey	11	346	hasty
+114	tangela	10	350	bashful
+115	kangaskhan	22	800	sassy
+116	horsea	4	80	sassy
+117	seadra	12	250	calm
+118	goldeen	6	150	hasty
+119	seaking	13	390	lonely
+120	staryu	8	345	docile
+121	starmie	11	800	relaxed
+122	mr-mime	13	545	hasty
+123	scyther	15	560	lonely
+124	jynx	14	406	docile
+125	electabuzz	11	300	modest
+126	magmar	13	445	adamant
+127	pinsir	15	550	mild
+128	tauros	14	884	hardy
+129	magikarp	9	100	adamant
+130	gyarados	65	2350	hardy
+131	lapras	25	2200	lonely
+132	ditto	3	40	modest
+133	eevee	3	65	adamant
+134	vaporeon	10	290	lonely
+135	jolteon	8	245	modest
+136	flareon	9	250	jolly
+137	porygon	8	365	bold
+138	omanyte	4	75	serious
+139	omastar	10	350	lonely
+140	kabuto	5	115	calm
+141	kabutops	13	405	hardy
+142	aerodactyl	18	590	relaxed
+143	snorlax	21	4600	quirky
+144	articuno	17	554	modest
+145	zapdos	16	526	relaxed
+146	moltres	20	600	hasty
+147	dratini	18	33	hardy
+148	dragonair	40	165	lonely
+149	dragonite	22	2100	lonely
+150	mewtwo	20	1220	sassy
+151	mew	4	40	calm
+152	chikorita	9	64	hasty
+153	bayleef	12	158	bashful
+154	meganium	18	1005	bashful
+155	cyndaquil	5	79	modest
+156	quilava	9	190	serious
+157	typhlosion	17	795	adamant
+158	totodile	6	95	mild
+159	croconaw	11	250	hasty
+160	feraligatr	23	888	modest
+161	sentret	8	60	serious
+162	furret	18	325	relaxed
+163	hoothoot	7	212	bold
+164	noctowl	16	408	jolly
+165	ledyba	10	108	sassy
+166	ledian	14	356	mild
+167	spinarak	5	85	calm
+168	ariados	11	335	hasty
+169	crobat	18	750	bold
+170	chinchou	5	120	relaxed
+171	lanturn	12	225	quirky
+172	pichu	3	20	adamant
+173	cleffa	3	30	calm
+174	igglybuff	3	10	serious
+175	togepi	3	15	serious
+176	togetic	6	32	calm
+177	natu	2	20	bashful
+178	xatu	15	150	adamant
+179	mareep	6	78	modest
+180	flaaffy	8	133	serious
+181	ampharos	14	615	docile
+182	bellossom	4	58	modest
+183	marill	4	85	bold
+184	azumarill	8	285	jolly
+185	sudowoodo	12	380	hasty
+186	politoed	11	339	docile
+187	hoppip	4	5	bashful
+188	skiploom	6	10	hasty
+189	jumpluff	8	30	bashful
+190	aipom	8	115	sassy
+191	sunkern	3	18	jolly
+192	sunflora	8	85	jolly
+193	yanma	12	380	adamant
+194	wooper	4	85	relaxed
+195	quagsire	14	750	mild
+196	espeon	9	265	adamant
+197	umbreon	10	270	calm
+198	murkrow	5	21	adamant
+199	slowking	20	795	bold
+200	misdreavus	7	10	bold
+201	unown	5	50	quirky
+202	wobbuffet	13	285	bold
+203	girafarig	15	415	jolly
+204	pineco	6	72	lonely
+205	forretress	12	1258	serious
+206	dunsparce	15	140	serious
+207	gligar	11	648	relaxed
+208	steelix	92	4000	bold
+209	snubbull	6	78	hardy
+210	granbull	14	487	calm
+211	qwilfish	5	39	lonely
+212	scizor	18	1180	jolly
+213	shuckle	6	205	docile
+214	heracross	15	540	hardy
+215	sneasel	9	280	quirky
+216	teddiursa	6	88	hasty
+217	ursaring	18	1258	docile
+218	slugma	7	350	lonely
+219	magcargo	8	550	sassy
+220	swinub	4	65	jolly
+221	piloswine	11	558	hasty
+222	corsola	6	50	calm
+223	remoraid	6	120	serious
+224	octillery	9	285	calm
+225	delibird	9	160	quirky
+226	mantine	21	2200	bashful
+227	skarmory	17	505	bold
+228	houndour	6	108	lonely
+229	houndoom	14	350	mild
+230	kingdra	18	1520	lonely
+231	phanpy	5	335	hardy
+232	donphan	11	1200	calm
+233	porygon2	6	325	mild
+234	stantler	14	712	lonely
+235	smeargle	12	580	bashful
+236	tyrogue	7	210	quirky
+237	hitmontop	14	480	jolly
+238	smoochum	4	60	relaxed
+239	elekid	6	235	mild
+240	magby	7	214	hasty
+241	miltank	12	755	serious
+242	blissey	15	468	hardy
+243	raikou	19	1780	serious
+244	entei	21	1980	adamant
+245	suicune	20	1870	jolly
+246	larvitar	6	720	lonely
+247	pupitar	12	1520	calm
+248	tyranitar	20	2020	modest
+249	lugia	52	2160	bashful
+250	ho-oh	38	1990	bashful
+251	celebi	6	50	mild
+252	treecko	5	50	lonely
+253	grovyle	9	216	docile
+254	sceptile	17	522	sassy
+255	torchic	4	25	mild
+256	combusken	9	195	mild
+257	blaziken	19	520	calm
+258	mudkip	4	76	quirky
+259	marshtomp	7	280	bold
+260	swampert	15	819	calm
+261	poochyena	5	136	modest
+262	mightyena	10	370	bold
+263	zigzagoon	4	175	modest
+264	linoone	5	325	bold
+265	wurmple	3	36	modest
+266	silcoon	6	100	lonely
+267	beautifly	10	284	hasty
+268	cascoon	7	115	modest
+269	dustox	12	316	hardy
+270	lotad	5	26	bashful
+271	lombre	12	325	lonely
+272	ludicolo	15	550	quirky
+273	seedot	5	40	serious
+274	nuzleaf	10	280	hasty
+275	shiftry	13	596	quirky
+276	taillow	3	23	bashful
+277	swellow	7	198	relaxed
+278	wingull	6	95	adamant
+279	pelipper	12	280	docile
+280	ralts	4	66	hardy
+281	kirlia	8	202	mild
+282	gardevoir	16	484	relaxed
+283	surskit	5	17	relaxed
+284	masquerain	8	36	serious
+285	shroomish	4	45	quirky
+286	breloom	12	392	jolly
+287	slakoth	8	240	jolly
+288	vigoroth	14	465	hasty
+289	slaking	20	1305	bashful
+290	nincada	5	55	sassy
+291	ninjask	8	120	docile
+292	shedinja	8	12	hardy
+293	whismur	6	163	relaxed
+294	loudred	10	405	serious
+295	exploud	15	840	calm
+296	makuhita	10	864	hardy
+297	hariyama	23	2538	mild
+298	azurill	2	20	jolly
+299	nosepass	10	970	lonely
+300	skitty	6	110	docile
+301	delcatty	11	326	bold
+302	sableye	5	110	bashful
+303	mawile	6	115	hardy
+304	aron	4	600	bold
+305	lairon	9	1200	modest
+306	aggron	21	3600	quirky
+307	meditite	6	112	bold
+308	medicham	13	315	hardy
+309	electrike	6	152	hasty
+310	manectric	15	402	lonely
+311	plusle	4	42	sassy
+312	minun	4	42	relaxed
+313	volbeat	7	177	sassy
+314	illumise	6	177	sassy
+315	roselia	3	20	docile
+316	gulpin	4	103	adamant
+317	swalot	17	800	calm
+318	carvanha	8	208	bashful
+319	sharpedo	18	888	modest
+320	wailmer	20	1300	docile
+321	wailord	145	3980	modest
+322	numel	7	240	quirky
+323	camerupt	19	2200	quirky
+324	torkoal	5	804	modest
+325	spoink	7	306	jolly
+326	grumpig	9	715	docile
+327	spinda	11	50	bashful
+328	trapinch	7	150	quirky
+329	vibrava	11	153	hasty
+330	flygon	20	820	adamant
+331	cacnea	4	513	bold
+332	cacturne	13	774	mild
+333	swablu	4	12	bold
+334	altaria	11	206	bold
+335	zangoose	13	403	mild
+336	seviper	27	525	lonely
+337	lunatone	10	1680	bold
+338	solrock	12	1540	lonely
+339	barboach	4	19	calm
+340	whiscash	9	236	hasty
+341	corphish	6	115	sassy
+342	crawdaunt	11	328	sassy
+343	baltoy	5	215	adamant
+344	claydol	15	1080	calm
+345	lileep	10	238	docile
+346	cradily	15	604	calm
+347	anorith	7	125	serious
+348	armaldo	15	682	mild
+349	feebas	6	74	lonely
+350	milotic	62	1620	mild
+351	castform	3	8	bashful
+352	kecleon	10	220	hasty
+353	shuppet	6	23	calm
+354	banette	11	125	sassy
+355	duskull	8	150	quirky
+356	dusclops	16	306	jolly
+357	tropius	20	1000	sassy
+358	chimecho	6	10	docile
+359	absol	12	470	relaxed
+360	wynaut	6	140	adamant
+361	snorunt	7	168	bold
+362	glalie	15	2565	modest
+363	spheal	8	395	quirky
+364	sealeo	11	876	bold
+365	walrein	14	1506	calm
+366	clamperl	4	525	serious
+367	huntail	17	270	jolly
+368	gorebyss	18	226	docile
+369	relicanth	10	234	calm
+370	luvdisc	6	87	quirky
+371	bagon	6	421	lonely
+372	shelgon	11	1105	mild
+373	salamence	15	1026	hasty
+374	beldum	6	952	modest
+375	metang	12	2025	sassy
+376	metagross	16	5500	quirky
+377	regirock	17	2300	docile
+378	regice	18	1750	hardy
+379	registeel	19	2050	quirky
+380	latias	14	400	docile
+381	latios	20	600	adamant
+382	kyogre	45	3520	calm
+383	groudon	35	9500	lonely
+384	rayquaza	70	2065	hardy
+385	jirachi	3	11	quirky
+386	deoxys-normal	17	608	adamant
+387	turtwig	4	102	relaxed
+388	grotle	11	970	bold
+389	torterra	22	3100	mild
+390	chimchar	5	62	lonely
+391	monferno	9	220	adamant
+392	infernape	12	550	modest
+393	piplup	4	52	adamant
+394	prinplup	8	230	bold
+395	empoleon	17	845	hardy
+396	starly	3	20	jolly
+397	staravia	6	155	quirky
+398	staraptor	12	249	hardy
+399	bidoof	5	200	jolly
+400	bibarel	10	315	bashful
+401	kricketot	3	22	calm
+402	kricketune	10	255	bold
+403	shinx	5	95	lonely
+404	luxio	9	305	mild
+405	luxray	14	420	hasty
+406	budew	2	12	jolly
+407	roserade	9	145	hardy
+408	cranidos	9	315	sassy
+409	rampardos	16	1025	hasty
+410	shieldon	5	570	serious
+411	bastiodon	13	1495	serious
+412	burmy	2	34	adamant
+413	wormadam-plant	5	65	docile
+414	mothim	9	233	bashful
+415	combee	3	55	hardy
+416	vespiquen	12	385	hasty
+417	pachirisu	4	39	hardy
+418	buizel	7	295	bashful
+419	floatzel	11	335	serious
+420	cherubi	4	33	serious
+421	cherrim	5	93	serious
+422	shellos	3	63	hardy
+423	gastrodon	9	299	hardy
+424	ambipom	12	203	calm
+425	drifloon	4	12	bold
+426	drifblim	12	150	lonely
+427	buneary	4	55	hasty
+428	lopunny	12	333	calm
+429	mismagius	9	44	serious
+430	honchkrow	9	273	sassy
+431	glameow	5	39	bold
+432	purugly	10	438	hasty
+433	chingling	2	6	calm
+434	stunky	4	192	hardy
+435	skuntank	10	380	hasty
+436	bronzor	5	605	docile
+437	bronzong	13	1870	adamant
+438	bonsly	5	150	modest
+439	mime-jr	6	130	hasty
+440	happiny	6	244	adamant
+441	chatot	5	19	hardy
+442	spiritomb	10	1080	bold
+443	gible	7	205	modest
+444	gabite	14	560	serious
+445	garchomp	19	950	bashful
+446	munchlax	6	1050	quirky
+447	riolu	7	202	hasty
+448	lucario	12	540	relaxed
+449	hippopotas	8	495	adamant
+450	hippowdon	20	3000	bashful
+451	skorupi	8	120	jolly
+452	drapion	13	615	relaxed
+453	croagunk	7	230	docile
+454	toxicroak	13	444	jolly
+455	carnivine	14	270	calm
+456	finneon	4	70	serious
+457	lumineon	12	240	bashful
+458	mantyke	10	650	relaxed
+459	snover	10	505	bold
+460	abomasnow	22	1355	calm
+461	weavile	11	340	sassy
+462	magnezone	12	1800	mild
+463	lickilicky	17	1400	hasty
+464	rhyperior	24	2828	adamant
+465	tangrowth	20	1286	bold
+466	electivire	18	1386	bold
+467	magmortar	16	680	bashful
+468	togekiss	15	380	adamant
+469	yanmega	19	515	serious
+470	leafeon	10	255	quirky
+471	glaceon	8	259	quirky
+472	gliscor	20	425	bashful
+473	mamoswine	25	2910	relaxed
+474	porygon-z	9	340	sassy
+475	gallade	16	520	modest
+476	probopass	14	3400	sassy
+477	dusknoir	22	1066	jolly
+478	froslass	13	266	serious
+479	rotom	3	3	hardy
+480	uxie	3	3	docile
+481	mesprit	3	3	hardy
+482	azelf	3	3	serious
+483	dialga	54	6830	lonely
+484	palkia	42	3360	modest
+485	heatran	17	4300	serious
+486	regigigas	37	4200	hardy
+487	giratina-altered	45	7500	serious
+488	cresselia	15	856	serious
+489	phione	4	31	adamant
+490	manaphy	3	14	relaxed
+491	darkrai	15	505	lonely
+492	shaymin-land	2	21	quirky
+493	arceus	32	3200	docile
+494	victini	4	40	docile
+495	snivy	6	81	jolly
+496	servine	8	160	docile
+497	serperior	33	630	mild
+498	tepig	5	99	hasty
+499	pignite	10	555	hardy
+500	emboar	16	1500	hardy
+501	oshawott	5	59	bold
+502	dewott	8	245	hasty
+503	samurott	15	946	mild
+504	patrat	5	116	lonely
+505	watchog	11	270	docile
+506	lillipup	4	41	adamant
+507	herdier	9	147	lonely
+508	stoutland	12	610	bold
+509	purrloin	4	101	bashful
+510	liepard	11	375	serious
+511	pansage	6	105	hardy
+512	simisage	11	305	hasty
+513	pansear	6	110	quirky
+514	simisear	10	280	bashful
+515	panpour	6	135	calm
+516	simipour	10	290	serious
+517	munna	6	233	lonely
+518	musharna	11	605	mild
+519	pidove	3	21	sassy
+520	tranquill	6	150	serious
+521	unfezant	12	290	modest
+522	blitzle	8	298	adamant
+523	zebstrika	16	795	jolly
+524	roggenrola	4	180	jolly
+525	boldore	9	1020	bold
+526	gigalith	17	2600	modest
+527	woobat	4	21	jolly
+528	swoobat	9	105	quirky
+529	drilbur	3	85	lonely
+530	excadrill	7	404	bashful
+531	audino	11	310	lonely
+532	timburr	6	125	relaxed
+533	gurdurr	12	400	sassy
+534	conkeldurr	14	870	bashful
+535	tympole	5	45	serious
+536	palpitoad	8	170	calm
+537	seismitoad	15	620	lonely
+538	throh	13	555	mild
+539	sawk	14	510	serious
+540	sewaddle	3	25	mild
+541	swadloon	5	73	hardy
+542	leavanny	12	205	relaxed
+543	venipede	4	53	calm
+544	whirlipede	12	585	mild
+545	scolipede	25	2005	hardy
+546	cottonee	3	6	hardy
+547	whimsicott	7	66	jolly
+548	petilil	5	66	lonely
+549	lilligant	11	163	sassy
+550	basculin-red-striped	10	180	sassy
+551	sandile	7	152	sassy
+552	krokorok	10	334	relaxed
+553	krookodile	15	963	sassy
+554	darumaka	6	375	bashful
+555	darmanitan-standard	13	929	relaxed
+556	maractus	10	280	calm
+557	dwebble	3	145	adamant
+558	crustle	14	2000	hardy
+559	scraggy	6	118	hardy
+560	scrafty	11	300	calm
+561	sigilyph	14	140	docile
+562	yamask	5	15	quirky
+563	cofagrigus	17	765	sassy
+564	tirtouga	7	165	bold
+565	carracosta	12	810	sassy
+566	archen	5	95	hardy
+567	archeops	14	320	quirky
+568	trubbish	6	310	docile
+569	garbodor	19	1073	lonely
+570	zorua	7	125	sassy
+571	zoroark	16	811	hasty
+572	minccino	4	58	jolly
+573	cinccino	5	75	modest
+574	gothita	4	58	hasty
+575	gothorita	7	180	docile
+576	gothitelle	15	440	quirky
+577	solosis	3	10	quirky
+578	duosion	6	80	relaxed
+579	reuniclus	10	201	docile
+580	ducklett	5	55	hardy
+581	swanna	13	242	lonely
+582	vanillite	4	57	adamant
+583	vanillish	11	410	bold
+584	vanilluxe	13	575	calm
+585	deerling	6	195	quirky
+586	sawsbuck	19	925	mild
+587	emolga	4	50	bashful
+588	karrablast	5	59	docile
+589	escavalier	10	330	docile
+590	foongus	2	10	hasty
+591	amoonguss	6	105	hardy
+592	frillish	12	330	serious
+593	jellicent	22	1350	bold
+594	alomomola	12	316	sassy
+595	joltik	1	6	serious
+596	galvantula	8	143	modest
+597	ferroseed	6	188	adamant
+598	ferrothorn	10	1100	modest
+599	klink	3	210	docile
+600	klang	6	510	mild
+601	klinklang	6	810	sassy
+602	tynamo	2	3	jolly
+603	eelektrik	12	220	modest
+604	eelektross	21	805	adamant
+605	elgyem	5	90	jolly
+606	beheeyem	10	345	hardy
+607	litwick	3	31	modest
+608	lampent	6	130	mild
+609	chandelure	10	343	sassy
+610	axew	6	180	bold
+611	fraxure	10	360	jolly
+612	haxorus	18	1055	mild
+613	cubchoo	5	85	mild
+614	beartic	26	2600	hasty
+615	cryogonal	11	1480	docile
+616	shelmet	4	77	calm
+617	accelgor	8	253	hasty
+618	stunfisk	7	110	relaxed
+619	mienfoo	9	200	hasty
+620	mienshao	14	355	bold
+621	druddigon	16	1390	serious
+622	golett	10	920	bold
+623	golurk	28	3300	hardy
+624	pawniard	5	102	hardy
+625	bisharp	16	700	calm
+626	bouffalant	16	946	serious
+627	rufflet	5	105	adamant
+628	braviary	15	410	lonely
+629	vullaby	5	90	bashful
+630	mandibuzz	12	395	adamant
+631	heatmor	14	580	serious
+632	durant	3	330	bold
+633	deino	8	173	lonely
+634	zweilous	14	500	serious
+635	hydreigon	18	1600	modest
+636	larvesta	11	288	bashful
+637	volcarona	16	460	serious
+638	cobalion	21	2500	docile
+639	terrakion	19	2600	bashful
+640	virizion	20	2000	adamant
+641	tornadus-incarnate	15	630	sassy
+642	thundurus-incarnate	15	610	hardy
+643	reshiram	32	3300	relaxed
+644	zekrom	29	3450	mild
+645	landorus-incarnate	15	680	sassy
+646	kyurem	30	3250	hardy
+647	keldeo-ordinary	14	485	hasty
+648	meloetta-aria	6	65	bold
+649	genesect	15	825	mild
+650	chespin	4	90	bashful
+651	quilladin	7	290	calm
+652	chesnaught	16	900	docile
+653	fennekin	4	94	modest
+654	braixen	10	145	sassy
+655	delphox	15	390	docile
+656	froakie	3	70	calm
+657	frogadier	6	109	docile
+658	greninja	15	400	adamant
+659	bunnelby	4	50	calm
+660	diggersby	10	424	mild
+661	fletchling	3	17	mild
+662	fletchinder	7	160	jolly
+663	talonflame	12	245	docile
+664	scatterbug	3	25	mild
+665	spewpa	3	84	jolly
+666	vivillon	12	170	mild
+667	litleo	6	135	serious
+668	pyroar	15	815	hardy
+669	flabebe	1	1	bashful
+670	floette	2	9	lonely
+671	florges	11	100	modest
+672	skiddo	9	310	bashful
+673	gogoat	17	910	bashful
+674	pancham	6	80	jolly
+675	pangoro	21	1360	bashful
+676	furfrou	12	280	hardy
+677	espurr	3	35	docile
+678	meowstic-male	6	85	mild
+679	honedge	8	20	relaxed
+680	doublade	8	45	relaxed
+681	aegislash-shield	17	530	hasty
+682	spritzee	2	5	calm
+683	aromatisse	8	155	relaxed
+684	swirlix	4	35	hardy
+685	slurpuff	8	50	bold
+686	inkay	4	35	calm
+687	malamar	15	470	modest
+688	binacle	5	310	bold
+689	barbaracle	13	960	mild
+690	skrelp	5	73	adamant
+691	dragalge	18	815	mild
+692	clauncher	5	83	hardy
+693	clawitzer	13	353	bashful
+694	helioptile	5	60	mild
+695	heliolisk	10	210	lonely
+696	tyrunt	8	260	hasty
+697	tyrantrum	25	2700	serious
+698	amaura	13	252	docile
+699	aurorus	27	2250	bashful
+700	sylveon	10	235	quirky
+701	hawlucha	8	215	hasty
+702	dedenne	2	22	calm
+703	carbink	3	57	hasty
+704	goomy	3	28	mild
+705	sliggoo	8	175	modest
+706	goodra	20	1505	modest
+707	klefki	2	30	adamant
+708	phantump	4	70	adamant
+709	trevenant	15	710	hasty
+710	pumpkaboo-average	4	50	serious
+711	gourgeist-average	9	125	docile
+712	bergmite	10	995	hasty
+713	avalugg	20	5050	serious
+714	noibat	5	80	docile
+715	noivern	15	850	jolly
+716	xerneas	30	2150	lonely
+717	yveltal	58	2030	jolly
+718	zygarde	50	3050	adamant
+719	diancie	7	88	docile
+720	hoopa	5	90	sassy
+721	volcanion	17	1950	quirky
+10001	deoxys-attack	17	608	lonely
+10002	deoxys-defense	17	608	adamant
+10003	deoxys-speed	17	608	lonely
+10004	wormadam-sandy	5	65	adamant
+10005	wormadam-trash	5	65	calm
+10006	shaymin-sky	4	52	docile
+10007	giratina-origin	69	6500	hardy
+10008	rotom-heat	3	3	bashful
+10009	rotom-wash	3	3	quirky
+10010	rotom-frost	3	3	modest
+10011	rotom-fan	3	3	bold
+10012	rotom-mow	3	3	relaxed
+10013	castform-sunny	3	8	hardy
+10014	castform-rainy	3	8	adamant
+10015	castform-snowy	3	8	serious
+10016	basculin-blue-striped	10	180	adamant
+10017	darmanitan-zen	13	929	sassy
+10018	meloetta-pirouette	6	65	bashful
+10019	tornadus-therian	14	630	serious
+10020	thundurus-therian	30	610	mild
+10021	landorus-therian	13	680	relaxed
+10022	kyurem-black	33	3250	adamant
+10023	kyurem-white	36	3250	modest
+10024	keldeo-resolute	14	485	lonely
+10025	meowstic-female	6	85	adamant
+10026	aegislash-blade	17	530	hasty
+10027	pumpkaboo-small	3	35	lonely
+10028	pumpkaboo-large	5	75	serious
+10029	pumpkaboo-super	8	150	bold
+10030	gourgeist-small	7	95	lonely
+10031	gourgeist-large	11	140	calm
+10032	gourgeist-super	17	390	serious
+10033	venusaur-mega	24	1555	mild
+10034	charizard-mega-x	17	1105	hasty
+10035	charizard-mega-y	17	1005	jolly
+10036	blastoise-mega	16	1011	relaxed
+10037	alakazam-mega	12	480	bashful
+10038	gengar-mega	14	405	bold
+10039	kangaskhan-mega	22	1000	modest
+10040	pinsir-mega	17	590	bold
+10041	gyarados-mega	65	3050	modest
+10042	aerodactyl-mega	21	790	docile
+10043	mewtwo-mega-x	23	1270	lonely
+10044	mewtwo-mega-y	15	330	docile
+10045	ampharos-mega	14	615	hardy
+10046	scizor-mega	20	1250	bashful
+10047	heracross-mega	17	625	bold
+10048	houndoom-mega	19	495	modest
+10049	tyranitar-mega	25	2550	bold
+10050	blaziken-mega	19	520	bashful
+10051	gardevoir-mega	16	484	relaxed
+10052	mawile-mega	10	235	quirky
+10053	aggron-mega	22	3950	relaxed
+10054	medicham-mega	13	315	hasty
+10055	manectric-mega	18	440	quirky
+10056	banette-mega	12	130	mild
+10057	absol-mega	12	490	mild
+10058	garchomp-mega	19	950	adamant
+10059	lucario-mega	13	575	bold
+10060	abomasnow-mega	27	1850	sassy
+10061	floette-eternal	2	9	relaxed
+10062	latias-mega	18	520	quirky
+10063	latios-mega	23	700	docile
+10064	swampert-mega	19	1020	docile
+10065	sceptile-mega	19	552	sassy
+10066	sableye-mega	5	1610	relaxed
+10067	altaria-mega	15	206	calm
+10068	gallade-mega	16	564	mild
+10069	audino-mega	15	320	hardy
+10070	sharpedo-mega	25	1303	hasty
+10071	slowbro-mega	20	1200	bold
+10072	steelix-mega	105	7400	serious
+10073	pidgeot-mega	22	505	bold
+10074	glalie-mega	21	3502	relaxed
+10075	diancie-mega	11	278	docile
+10076	metagross-mega	25	9429	hardy
+10077	kyogre-primal	98	4300	calm
+10078	groudon-primal	50	9997	bashful
+10079	rayquaza-mega	108	3920	sassy
+10080	pikachu-rock-star	40	60	hasty
+10081	pikachu-belle	40	60	lonely
+10082	pikachu-pop-star	40	60	hasty
+10083	pikachu-phd	40	60	bashful
+10084	pikachu-libre	40	60	quirky
+10085	pikachu-cosplay	40	60	calm
+10086	hoopa-unbound	65	4900	adamant
+10087	camerupt-mega	25	3205	bashful
+10088	lopunny-mega	13	283	calm
+10089	salamence-mega	18	1126	hardy
+10090	beedrill-mega	14	405	relaxed
 \.
 
 
@@ -2493,7 +2496,8 @@ SELECT pg_catalog.setval('type_base_type_id_seq', 1, false);
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: vagrant
 --
 
-COPY users (user_id, email, password, first_name, last_name) FROM stdin;
+COPY users (user_id, username, email, password, first_name, last_name, user_since) FROM stdin;
+3	designsbytraina	rachel@rtg.com	5ebe2294ecd0e0f08eab7690d2a6ee69	Rachel	Traina-Grandon	2016-09-01 19:24:23
 \.
 
 
@@ -2501,7 +2505,7 @@ COPY users (user_id, email, password, first_name, last_name) FROM stdin;
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
 --
 
-SELECT pg_catalog.setval('users_user_id_seq', 1, false);
+SELECT pg_catalog.setval('users_user_id_seq', 3, true);
 
 
 --

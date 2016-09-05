@@ -1,6 +1,6 @@
-/venv/
+/env/
 *.pyc
 /DNU/
-secrets.sh
 .DS_Store
-/DS_Store
+/.DS_Store
+.coverage

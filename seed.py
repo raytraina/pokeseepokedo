@@ -84,7 +84,7 @@ def load_encounters(): #TESTED
 
     print 'Encounters'
 
-    with open('/home/vagrant/src/project/seed_data/encounters/encounter.json') as pokeloc_file:
+    with open('/home/vagrant/src/pokesee-pokedo/seed_data/encounters/encounter.json') as pokeloc_file:
         data = json.load(pokeloc_file)
         data_list = data['data']
 
@@ -109,7 +109,7 @@ def load_locations():
 
     print 'Locations'
 
-    with open('/home/vagrant/src/project/seed_data/locations/location.json') as loc_file:
+    with open('/home/vagrant/src/pokesee-pokedo/seed_data/locations/location.json') as loc_file:
         data=json.load(loc_file)
         data_list = data['data']
 
@@ -160,5 +160,3 @@ if __name__ == "__main__":
     load_encounters()
     load_locations()
     yerba_buena_gym()
-
-    # set_val_user_id() - second sprint
