@@ -2,11 +2,11 @@
 
 Pokésee Pokédo is a companion application for Pokémon GO which allows users to plan an optimized route for catching Pokémon, while visiting local points of interest and having fun with friends. Users enter a start point, an end point, desired activity, and desired departure time and the app returns the ideal route to take based on Google Maps data. As the user traverses zir path, Pokémon can be marked as “caught" and added to zir collection of Pokémon, which can later be accessed from the user’s profile page.
 
-#### Getting Started
+### Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-##### Prerequisities
+#### Prerequisities
 
 Before you begin, be sure to install all requirements within a virtual environment. To learn more about Python's virtualenv tool, [read the documentation](https://virtualenv.pypa.io/en/stable/).
 
@@ -37,10 +37,10 @@ Then, run the application with ```python server.py```:
 ```
 You should see similar success messages in the console. If you have any issues getting up and running, please contact the author on Twitter @designsbytraina, or via email.
 
-#### Running Demo
+### Running Demo
 Once it is up and running on your local machine, continue to run the demo freely, paying particular attention to the below pages.
 
-##### Let's GO
+#### Let's GO
 Users can enter a start and end point, desired activity, and departure time for zir Pokémon catching trip. Upon submission, an AJAX request is made to the server, where a query is made to the database for seed data and returns JSON to the front-end. 
 
 ![homepage](https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/readme-screenshots/home.png "Homepage")
@@ -51,7 +51,7 @@ The parsed JSON is then passed to the Google Maps API where latitude/longitude o
 
 Walking directions are rendered below the map.
 
-##### Gotta Catch 'Em All
+#### Gotta Catch 'Em All
 By clicking on any returned Pokémon, an info window displays with some details about it, including nature, type, height and weight. Within this window, users can mark Pokémon as caught by clicking the "gotcha" button.
 
 ![pokemon information](https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/readme-screenshots/infowindow.png "Pokemon Info Window")
@@ -60,25 +60,25 @@ On click, the Pokémon ID is added to the user's session and zie is brought to a
 
 ![caught page](https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/readme-screenshots/caught.png "Caught Page")
 
-##### Join In
+#### Join In
 Users can save caught Pokémon when logged in or logged out, but the only way to save those Pokémon to zir user profile is to create an account.
 
 ![registration page](https://raw.githubusercontent.com/designsbytraina/pokeseepokedo_0.5/master/readme-screenshots/registration.png "Registration Page")
 
 Registration is handled by submitting an AJAX post request to the server, where the data is processed, a new user is created, and is then added to the database.
 
-#### Running Tests
+### Running Tests
 
 The development of this application includes testing features interactively before implementation. Integration tests for all endpoints have also been included and details for running are below.
 
-##### Integration Testing
+#### Integration Testing
 
 Endpoints defined in Flask can be tested by running the test file:
 ```
 $ python test_server.py
 ```
 
-##### Test Coverage
+#### Test Coverage
 
 The current percentage of test coverage can be calculated using these steps, as long as the python ```coverage``` module has already been installed. For more details on installation and usage, [read the documentation](https://coverage.readthedocs.io/en/coverage-4.2/).
 
@@ -101,9 +101,9 @@ _Note: The above figures represent the test coverage as of September 6, 2016._
 
 It is also possible to view in alternate formats. Please refer to the ```coverage``` documentation for more options.
 
-#### General Information
+### General Information
 
-##### Technologies Used
+#### Technologies Used
 
 * Python
 * Javascript and [jQuery](https://jquery.com/)
@@ -118,7 +118,7 @@ It is also possible to view in alternate formats. Please refer to the ```coverag
 * [Yelp API](https://github.com/Yelp/yelp-api-v3)
 * [PokéAPI](https://pokeapi.co/docsv2/)
 
-##### Authors
+#### Authors
 
 **Rachel Traina-Grandon** | [@designsbytraina](https://twitter.com/designsbytraina)
 
