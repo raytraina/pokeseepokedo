@@ -120,13 +120,14 @@ It is also possible to view in alternate formats. Please refer to the ```coverag
 
 #### Authors
 
-**Rachel Traina-Grandon** | [@designsbytraina](https://twitter.com/designsbytraina)
+Rachel Traina-Grandon | [@designsbytraina](https://twitter.com/designsbytraina)
 
 ##### Future Development
 
-Additional features to implement:
-* Saving maps to user profile
 * Mobile-optimization
+* Saving maps to user profile
+* Social media components
+* Event coordinating tools
 * Incorporate integration with Niantic API/Pokemon GO API (as available)
 
 ##### Deployment
