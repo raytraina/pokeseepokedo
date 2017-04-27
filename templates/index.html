@@ -114,10 +114,16 @@
 
       $('#directions-label').toggle();
 
-      $.get('/poke-map.json', function(data) {
+      $.getJSON( "poke-map.json", function() {
+        console.log( "success" );
+      })
+
+      $.get('poke-map.json', function(data) {
         var locObject = data['locations']; // declare location object from data
         var gymObject = data['gyms']; // declare gym object
         var encObject = data['encounters']; // declare encounter object
+        console.log( "success-2" );
+
 
         $.each(locObject, function(key, value) { 
           var locLat = locObject[key]['latitude'] // get each latitude from obj

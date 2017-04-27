@@ -108,6 +108,7 @@ def results():
 
     # return jsonified dictionary that will be accessible at front-end
     return jsonify(dictionary)
+    # return "<h1>this works!</h1>"
 
 
 ###########################
