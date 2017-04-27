@@ -137,11 +137,7 @@ Rachel Traina-Grandon | [@designsbytraina](https://twitter.com/designsbytraina)
 
 ##### Future Development
 
-* Mobile-optimization
-* Saving maps to user profile
-* Social media components
-* Event coordinating tools
-* Incorporate integration with Niantic API/Pokemon GO API (as available)
+No future development or maintenance for this application is scheduled.
 
 ##### Deployment
 
