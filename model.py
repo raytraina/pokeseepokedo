@@ -1,10 +1,12 @@
 """Pokesee Pokedo - Data Model"""
 
+import os
 from flask_sqlalchemy import SQLAlchemy
 import datetime
 
 db = SQLAlchemy()
 
+SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 
 ###########################
 #DECLARE BASE MODELS
@@ -182,7 +184,7 @@ def example_data():
     db.session.commit()
 
 
-def connect_to_db(app, db_uri='postgresql:///pokeseedo'):
+def connect_to_db(app, db_uri=SQLALCHEMY_DATABASE_URI):
     """Connect the database to Flask app."""
 
     # configure to use postgreSQL database

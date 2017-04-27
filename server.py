@@ -1,5 +1,6 @@
 """Pokesee Pokedo"""
 
+import os
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
@@ -276,16 +277,12 @@ def show_caught():
 ############################################
 
 if __name__ == '__main__':
-    #must be true for debug toolbar
-    app.debug = True
 
     connect_to_db(app)
 
     #use the debug toolbar
     # DebugToolbarExtension(app)
 
-    # doesn't work on localhost - REMOVE
-    # app.run()
-
     #run application
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)

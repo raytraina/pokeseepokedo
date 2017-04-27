@@ -84,7 +84,7 @@ def load_encounters(): #TESTED
 
     print 'Encounters'
 
-    with open('/home/vagrant/src/pokesee-pokedo/seed_data/encounters/encounter.json') as pokeloc_file:
+    with open('seed_data/encounters/encounter.json') as pokeloc_file:
         data = json.load(pokeloc_file)
         data_list = data['data']
 
@@ -109,7 +109,7 @@ def load_locations():
 
     print 'Locations'
 
-    with open('/home/vagrant/src/pokesee-pokedo/seed_data/locations/location.json') as loc_file:
+    with open('seed_data/locations/location.json') as loc_file:
         data=json.load(loc_file)
         data_list = data['data']
 

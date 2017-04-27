@@ -1,10 +1,12 @@
 ## Pokésee Pokédo
 
+:point_right: VIEW DEMO :point_left:
+
 Pokésee Pokédo is a companion application for Pokémon GO which allows users to plan an optimized route for catching Pokémon, while visiting local points of interest and having fun with friends. Users enter a start point, an end point, desired activity, and desired departure time and the app returns the ideal route to take based on Google Maps data. As the user traverses zir path, Pokémon can be marked as “caught" and added to zir collection of Pokémon, which can later be accessed from the user’s profile page.
 
 ### Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+These instructions will get you a copy of the project up and running on your local machine for further development, exploration and testing.
 
 #### Prerequisities
 
@@ -12,25 +14,33 @@ Before you begin, be sure to install all requirements within a virtual environme
 
 Initiate a virtualenv:
 
-```
+```sh
 $ virtualenv venv
 ```
 
 Source the virtualenv:
 
-```
+```sh
 $ source venv/bin/activate
 ```
 
 Install requirements:
 
-```
+```sh
 (venv)$ pip install -r requirements.txt
+```
+
+Create a Postgres database named `pokeseedo`, build the model, and seed the data:
+
+```sh
+(venv)$ createdb pokeseedo
+(venv)$ python model.py
+(venv)$ python seed.py
 ```
 
 Then, run the application with ```python server.py```:
 
-```
+```sh
 (venv)$ python server.py
  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
  * Restarting with stat
@@ -74,8 +84,9 @@ The development of this application includes testing features interactively befo
 #### Integration Testing
 
 Endpoints defined in Flask can be tested by running the test file:
-```
-$ python test_server.py
+
+```sh
+$ (venv) python test_server.py
 ```
 
 #### Test Coverage
@@ -83,14 +94,16 @@ $ python test_server.py
 The current percentage of test coverage can be calculated using these steps, as long as the python ```coverage``` module has already been installed. For more details on installation and usage, [read the documentation](https://coverage.readthedocs.io/en/coverage-4.2/).
 
 To begin, simply run coverage on the test file:
-```
-$ coverage run test_server.py
+
+```sh
+$ (venv) coverage run test_server.py
  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
  * Restarting with stat
  ```
  Now it is possible to access the report in the console with:
- ```
- $ coverage report -m
+ 
+ ```sh
+ $ (venv) coverage report -m
  Name              Stmts   Miss   Cover
 ----------------------------------------
  model.py           75      3      96%
@@ -132,7 +145,7 @@ Rachel Traina-Grandon | [@designsbytraina](https://twitter.com/designsbytraina)
 
 ##### Deployment
 
-This application has not been deployed yet. Contact the author for details.
+This application has been deployed on [Heroku](https://pokeseepokedo.herokuapp.com/).
 
 ##### Permissions
 

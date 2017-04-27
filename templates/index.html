@@ -6,17 +6,27 @@
 
 <style type="text/css"> body {background-color:#ff3939;} </style>
 
+<div class="row">
+<!-- google maps -->
+<div id="map" style="height:800px" class="col-md-9 col-xs-12"></div>
+
+<div class="col-md-3 col-xs-12">
+
 <form id="dest-details" action="/poke-map.json" method="GET" class="form-inline">
   <div class="form-group">
-    <label class="index-label" for="start-point">Start Point:
-        <input id="start-point" type="text" class="form-control" name="start-point" value="samovar tea lounge sf">
+    <label class="index-label" for="user-activity">Start Point:
+      <select id="start-point" class="form-control" name="user-activity">
+          <option value="samovar tea lounge sf">samovar tea lounge sf</option>
+      </select>
     </label>
-  </div>
+  </div><br>
   <div class="form-group">
-    <label class="index-label" for="end-point">End Point:
-        <input id="end-point" type="text" class="form-control" name="end-point" value="at&amp;t park">
+    <label class="index-label" for="user-activity">End Point:
+      <select id="end-point" class="form-control" name="user-activity">
+          <option value="at&amp;t park">at&amp;t park</option>
+      </select>
     </label>
-  </div>
+  </div><br>
   <div class="form-group">
     <label class="index-label" for="user-activity">Activity:
       <select id="user-activity" class="form-control" name="user-activity">
@@ -27,7 +37,7 @@
           <option value="Making">Making</option>
       </select>
     </label>
-  </div>
+  </div><br>
   <div class="form-group">
     <label class="index-label" for="departure-time">Time of Departure:
       <select id="departure-time" class="form-control" name="departure-time">
@@ -40,18 +50,30 @@
           <option value="12:00 am">12:00 am</option>
       </select>
     </label>
-  </div>
+  </div><br>
   <input type="submit" id="submit-destination" href="#" value="Let&#39;s GO!" class="btn btn-info">
 </form>
-
-<!-- google maps -->
-<div id="map" style="height:500px"></div>
-
 <!-- directions will be hidden on page load, will display header and directions on click -->
-<h4 id="directions-label" style="text-align:center; font-family: 'Raleway Dots', cursive; font-size:30px; text-transform:uppercase; color:#fff; margin:2% 0 2% 0; display:none;">Directions</h4>
-<div id="directions-panel" style="background-color:rgba(255,255,255,.9); width:30%; margin: 0 auto; text-align:center;"></div>
+<hr class="hidden-sm hidden-xs">
+  <div class="hidden-xs hidden-sm">
+    <h4 id="directions-label" style="text-align:center; font-family: 'Raleway Dots', cursive; font-size:30px; text-transform:uppercase; color:#fff; margin:2% 0 2% 0; display:none;">Directions</h4>
+    <div id="directions-panel" style="background-color:rgba(255,255,255,.2); width: 100%;">
+    </div>
+  </div>
 
-<script src="https://code.jquery.com/jquery.js"></script>
+</div>
+
+</div>
+
+<!-- For smaller devices -->
+<!--   <div class="visible-md-* visible-lg-* visible-xl-*">
+    <h4 id="directions-label" style="text-align:center; font-family: 'Raleway Dots', cursive; font-size:30px; text-transform:uppercase; color:#fff; margin:2% 0 2% 0; display:none;">Directions</h4>
+    <div id="directions-panel" style="background-color:rgba(255,255,255,.2); width: 100%;">
+    </div>
+  </div> -->
+
+
+<!-- Google Maps JS -->
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places&key=AIzaSyDsAgJV6GObnh7-vt-hrQBm5beRdowkZxs&callback=initMap" async defer></script>
 
 <script>
