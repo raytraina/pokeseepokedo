@@ -108,23 +108,200 @@
     var waypoints = [];
     var markers = [];
 
+    // declare encounters
+      var encObject = {
+        "1": {
+          "height": 3, 
+          "latitude": 37.784988, 
+          "longitude": -122.400979, 
+          "name": "weedle", 
+          "nature": "serious", 
+          "pokemon_id": 13, 
+          "type": "water", 
+          "weight": 32
+        }, 
+        "2": {
+          "height": 3, 
+          "latitude": 37.784115, 
+          "longitude": -122.400427, 
+          "name": "rattata", 
+          "nature": "bold", 
+          "pokemon_id": 19, 
+          "type": "poison", 
+          "weight": 35
+        }, 
+        "3": {
+          "height": 8, 
+          "latitude": 37.78416, 
+          "longitude": -122.398884, 
+          "name": "zubat", 
+          "nature": "bashful", 
+          "pokemon_id": 41, 
+          "type": "ground", 
+          "weight": 75
+        }, 
+        "4": {
+          "height": 3, 
+          "latitude": 37.78286, 
+          "longitude": -122.397442, 
+          "name": "eevee", 
+          "nature": "docile", 
+          "pokemon_id": 133, 
+          "type": "water", 
+          "weight": 65
+        }, 
+        "5": {
+          "height": 10, 
+          "latitude": 37.781691, 
+          "longitude": -122.395855, 
+          "name": "venonat", 
+          "nature": "sassy", 
+          "pokemon_id": 48, 
+          "type": "poison", 
+          "weight": 300
+        }, 
+        "6": {
+          "height": 8, 
+          "latitude": 37.780923, 
+          "longitude": -122.396633, 
+          "name": "psyduck", 
+          "nature": "serious", 
+          "pokemon_id": 54, 
+          "type": "normal", 
+          "weight": 196
+        }, 
+        "7": {
+          "height": 3, 
+          "latitude": 37.779118, 
+          "longitude": -122.39339, 
+          "name": "caterpie", 
+          "nature": "hasty", 
+          "pokemon_id": 10, 
+          "type": "flying", 
+          "weight": 29
+        }, 
+        "8": {
+          "height": 5, 
+          "latitude": 37.778194, 
+          "longitude": -122.39347, 
+          "name": "jigglypuff", 
+          "nature": "sassy", 
+          "pokemon_id": 39, 
+          "type": "electric", 
+          "weight": 55
+        }, 
+        "9": {
+          "height": 3, 
+          "latitude": 37.77745, 
+          "longitude": -122.391696, 
+          "name": "pidgey", 
+          "nature": "jolly", 
+          "pokemon_id": 16, 
+          "type": "bug", 
+          "weight": 18
+        }, 
+        "10": {
+          "height": 18, 
+          "latitude": 37.778852, 
+          "longitude": -122.389963, 
+          "name": "dratini", 
+          "nature": "relaxed", 
+          "pokemon_id": 147, 
+          "type": "water", 
+          "weight": 33
+        }
+      }
+
+    // declare gyms 
+    var gymObject = {
+        "1": {
+          "latitude": 37.7848382, 
+          "longitude": -122.40267, 
+          "name": "Yerba Buena Gardens Gym"
+        }
+      }
+
+    // declare locations
+    var locObject = {
+        "1": {
+          "category": "American (Traditional)", 
+          "latitude": 37.779655456543, 
+          "longitude": -122.395233154297, 
+          "name": "Brickhouse Cafe", 
+          "rating": 4, 
+          "url": "https://www.yelp.com/biz/brickhouse-cafe-san-francisco-2"
+        }, 
+        "2": {
+          "category": "Lounges", 
+          "latitude": 37.780574798584, 
+          "longitude": -122.396392822266, 
+          "name": "Lava Lounge", 
+          "rating": 4, 
+          "url": "https://www.yelp.com/biz/lava-lounge-san-francisco"
+        }, 
+        "3": {
+          "category": "Sports Bars", 
+          "latitude": 37.7798249454073, 
+          "longitude": -122.394355908036, 
+          "name": "Local Tap", 
+          "rating": 5, 
+          "url": "https://www.yelp.com/biz/local-tap-san-francisco"
+        }, 
+        "4": {
+          "category": "Bowling", 
+          "latitude": 37.7781856, 
+          "longitude": -122.3921869, 
+          "name": "Lucky Strike", 
+          "rating": 3, 
+          "url": "https://www.yelp.com/biz/lucky-strike-san-francisco"
+        }, 
+        "5": {
+          "category": "American (New)", 
+          "latitude": 37.779842, 
+          "longitude": -122.390213, 
+          "name": "MoMo's", 
+          "rating": 3, 
+          "url": "https://www.yelp.com/biz/momos-san-francisco"
+        }, 
+        "6": {
+          "category": "Tea Rooms", 
+          "latitude": 37.7841774486315, 
+          "longitude": -122.402068620684, 
+          "name": "Samovar Tea Lounge", 
+          "rating": 4, 
+          "url": "https://www.yelp.com/biz/samovar-tea-lounge-san-francisco-2"
+        }, 
+        "7": {
+          "category": "Comfort Food", 
+          "latitude": 37.778828, 
+          "longitude": -122.394066, 
+          "name": "Victory Hall & Parlor", 
+          "rating": 4, 
+          "url": "https://www.yelp.com/biz/victory-hall-and-parlor-san-francisco"
+        }, 
+        "8": {
+          "category": "Wine Bars", 
+          "latitude": 37.7840836132872, 
+          "longitude": -122.39831333801, 
+          "name": "Wine Down SF", 
+          "rating": 5, 
+          "url": "https://www.yelp.com/biz/wine-down-sf-san-francisco"
+        }
+      }
+
     // on click, get json from server (automatically parsed)
     $('#submit-destination').click( function(evt) {
       evt.preventDefault();
 
       $('#directions-label').toggle();
 
-      $.getJSON( "poke-map.json", function() {
-        console.log( "success" );
-      })
+      // $.get('poke-map.json', function(data) {
+      //   var locObject = data['locations']; // declare location object from data
+      //   var gymObject = data['gyms']; // declare gym object
+      //   // var encObject = data['encounters']; // declare encounter object
+      //   console.log( "success-2" );
 
-      $.get('poke-map.json', function(data) {
-        var locObject = data['locations']; // declare location object from data
-        var gymObject = data['gyms']; // declare gym object
-        var encObject = data['encounters']; // declare encounter object
-        console.log( "success-2" );
-
-
+        // LOCATIONS
         $.each(locObject, function(key, value) { 
           var locLat = locObject[key]['latitude'] // get each latitude from obj
           var locLng = locObject[key]['longitude'] // get each longitude from obj
@@ -164,8 +341,10 @@
           });
 
           markers.push(marker);
+          console.log('locations added to map');
         });
 
+        // GYMS
         $.each(gymObject, function(key, value){
           var gymLat = gymObject[key]['latitude'] // get each latitude from obj
           var gymLng = gymObject[key]['longitude'] // get each longitude from obj
@@ -193,8 +372,10 @@
           });
 
           markers.push(marker);
+          console.log('gyms added to map');
         });
 
+        // ENCOUNTERS
         $.each(encObject, function(key, value){
           var encLat = encObject[key]['latitude'] // get each latitude from obj
           var encLng = encObject[key]['longitude'] // get each longitude from obj
@@ -237,13 +418,14 @@
           });
 
           markers.push(marker);
+          console.log('encounters added to map');
 
         });
 
         calculateAndDisplayRoute(directionsService, directionsDisplay, waypoints, markers); // add waypoints, markers
 
       });
-    });
+    // });
   }
 
   //////////////////////////
