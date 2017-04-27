@@ -27,90 +27,6 @@ def index():
     return render_template('index.html') # pragma: no cover
 
 
-# @app.route('/poke-map.json', methods=['GET'])
-# def results():
-#     """Show map and directions based on user input.
-
-#     This function will also jsonify data to pass pokemon and locations
-#     to front end."""
-
-#     # get form variables (not using them in demo)
-#     start_point = request.args.get('start-point')
-#     end_point = request.args.get('end-point')
-#     activity = request.args.get('user-activity')
-#     departure = request.args.get('departure')
-
-#     ##########
-
-#     # query all encounters in db
-#     encounters = Encounter.query.all() #yields a list of objects
-#     pokemon = PokeBase.query.all() #get all pokemon
-#     poke_types = PokeType.query.all() #get all poketypes for cross-ref
-#     types = TypeBase.query.all() #get all types
-
-#     # loop through encounters and add items to encounter_dict
-#     encounter_dict = {}
-#     for encounter in encounters:
-#         poke_id = encounter.pokemon_id
-#         enc_poke = pokemon[poke_id - 1] #index pokemon for encountered pokemon
-        
-#         # COME BACK TO THIS:
-#         # TODO: need to iterate through list
-#         # [type_id = enc_poke.type_id
-
-#         # join on type_id = pokemon.types(orsomething).type_id
-#         # for i in poke_types:
-#         #     type_id = poke_types[i].type_id
-#         #     poke_type = types[type_id - 1].identifier]
-
-
-#         type_id = poke_types[poke_id - 1].type_id
-#         poke_type = types[type_id - 1].identifier
-
-#         encounter_dict[encounter.encounter_id] = {"pokemon_id":poke_id,
-#                                                     "name":enc_poke.identifier,
-#                                                     "latitude":encounter.latitude,
-#                                                     "longitude":encounter.longitude,
-#                                                     "height":enc_poke.height,
-#                                                     "weight":enc_poke.weight,
-#                                                     "type":poke_type,
-#                                                     "nature":enc_poke.nature}
-
-#     ##########
-
-#     # query all locations in db
-#     locations = Location.query.all() #yields a list of objects
-
-#     # loop through locations and add items to location_dict
-#     location_dict = {}
-#     for location in locations:
-#         location_dict[location.location_id] = {"name":location.name,
-#                                                 "latitude":location.latitude,
-#                                                 "longitude":location.longitude,
-#                                                 "rating":location.rating,
-#                                                 "url":location.url,
-#                                                 "category":location.category}
-
-#     ##########
-
-#     # query all gyms in db
-#     gyms = Gym.query.all() #yields a list of objects
-
-#     # loop through gyms and add items to gym_dict
-#     gym_dict = {}
-#     for gym in gyms:
-#         gym_dict[gym.gym_id] = {"name":gym.name,
-#                                 "latitude":gym.latitude,
-#                                 "longitude":gym.longitude}
-
-#     # combine dictionaries into dictionary of dictionaries
-#     dictionary = {"encounters": encounter_dict, "locations": location_dict, "gyms": gym_dict}
-
-#     # return jsonified dictionary that will be accessible at front-end
-#     return jsonify(dictionary)
-    # return "<h1>this works!</h1>"
-
-
 ###########################
 #HANDLE LOGIN/LOGOUT
 ###########################
@@ -274,6 +190,89 @@ def show_caught():
 
     return render_template('caught.html', caught=caught, pokemon_total=pokemon_total)
 
+
+# @app.route('/poke-map.json', methods=['GET'])
+# def results():
+#     """Show map and directions based on user input.
+
+#     This function will also jsonify data to pass pokemon and locations
+#     to front end."""
+
+#     # get form variables (not using them in demo)
+#     start_point = request.args.get('start-point')
+#     end_point = request.args.get('end-point')
+#     activity = request.args.get('user-activity')
+#     departure = request.args.get('departure')
+
+#     ##########
+
+#     # query all encounters in db
+#     encounters = Encounter.query.all() #yields a list of objects
+#     pokemon = PokeBase.query.all() #get all pokemon
+#     poke_types = PokeType.query.all() #get all poketypes for cross-ref
+#     types = TypeBase.query.all() #get all types
+
+#     # loop through encounters and add items to encounter_dict
+#     encounter_dict = {}
+#     for encounter in encounters:
+#         poke_id = encounter.pokemon_id
+#         enc_poke = pokemon[poke_id - 1] #index pokemon for encountered pokemon
+        
+#         # COME BACK TO THIS:
+#         # TODO: need to iterate through list
+#         # [type_id = enc_poke.type_id
+
+#         # join on type_id = pokemon.types(orsomething).type_id
+#         # for i in poke_types:
+#         #     type_id = poke_types[i].type_id
+#         #     poke_type = types[type_id - 1].identifier]
+
+
+#         type_id = poke_types[poke_id - 1].type_id
+#         poke_type = types[type_id - 1].identifier
+
+#         encounter_dict[encounter.encounter_id] = {"pokemon_id":poke_id,
+#                                                     "name":enc_poke.identifier,
+#                                                     "latitude":encounter.latitude,
+#                                                     "longitude":encounter.longitude,
+#                                                     "height":enc_poke.height,
+#                                                     "weight":enc_poke.weight,
+#                                                     "type":poke_type,
+#                                                     "nature":enc_poke.nature}
+
+#     ##########
+
+#     # query all locations in db
+#     locations = Location.query.all() #yields a list of objects
+
+#     # loop through locations and add items to location_dict
+#     location_dict = {}
+#     for location in locations:
+#         location_dict[location.location_id] = {"name":location.name,
+#                                                 "latitude":location.latitude,
+#                                                 "longitude":location.longitude,
+#                                                 "rating":location.rating,
+#                                                 "url":location.url,
+#                                                 "category":location.category}
+
+#     ##########
+
+#     # query all gyms in db
+#     gyms = Gym.query.all() #yields a list of objects
+
+#     # loop through gyms and add items to gym_dict
+#     gym_dict = {}
+#     for gym in gyms:
+#         gym_dict[gym.gym_id] = {"name":gym.name,
+#                                 "latitude":gym.latitude,
+#                                 "longitude":gym.longitude}
+
+#     # combine dictionaries into dictionary of dictionaries
+#     dictionary = {"encounters": encounter_dict, "locations": location_dict, "gyms": gym_dict}
+
+#     # return jsonified dictionary that will be accessible at front-end
+#     return jsonify(dictionary)
+    # return "<h1>this works!</h1>"
 
 ############################################
 

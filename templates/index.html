@@ -4,15 +4,30 @@
 
 {% block content %}
 
-<style type="text/css"> body {background-color:#ff3939;} </style>
+<style type="text/css"> body {background-color:#ff3939;} 
+  #directions-panel {
+    background-color:rgba(255,255,255,.8); 
+        overflow-y: scroll;
+    max-height:400px;
+    width: 100%;
+
+  }
+  #directions-panel table {
+    line-height: 30px;
+    text-align: center;
+    /*font-size: large;*/
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+  }
+</style>
 
 <div class="row">
 <!-- google maps -->
-<div id="map" style="height:800px" class="col-md-9 col-xs-12"></div>
+<div id="map" style="height:700px" class="col-md-9 col-xs-12"></div>
 
 <div class="col-md-3 col-xs-12">
 
-<form id="dest-details" action="/poke-map.json" method="GET" class="form-inline">
+<form id="dest-details" action="#" method="GET" class="form-inline">
   <div class="form-group">
     <label class="index-label" for="user-activity">Start Point:
       <select id="start-point" class="form-control" name="user-activity">
@@ -57,8 +72,7 @@
 <hr class="hidden-sm hidden-xs">
   <div class="hidden-xs hidden-sm">
     <h4 id="directions-label" style="text-align:center; font-family: 'Raleway Dots', cursive; font-size:30px; text-transform:uppercase; color:#fff; margin:2% 0 2% 0; display:none;">Directions</h4>
-    <div id="directions-panel" style="background-color:rgba(255,255,255,.2); width: 100%;">
-    </div>
+    <div id="directions-panel"></div>
   </div>
 
 </div>
