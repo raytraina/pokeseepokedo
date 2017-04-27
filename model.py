@@ -6,7 +6,10 @@ import datetime
 
 db = SQLAlchemy()
 
-SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+try:
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+except:
+    SQLALCHEMY_DATABASE_URI = 'postgresql:///pokeseedo'
 
 ###########################
 #DECLARE BASE MODELS
