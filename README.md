@@ -1,6 +1,6 @@
 ## Pokésee Pokédo
 
-:point_right: VIEW DEMO :point_left:
+:point_right: [VIEW DEMO](https://pokeseepokedo.herokuapp.com/) :point_left:
 
 Pokésee Pokédo is a companion application for Pokémon GO which allows users to plan an optimized route for catching Pokémon, while visiting local points of interest and having fun with friends. Users enter a start point, an end point, desired activity, and desired departure time and the app returns the ideal route to take based on Google Maps data. As the user traverses zir path, Pokémon can be marked as “caught" and added to zir collection of Pokémon, which can later be accessed from the user’s profile page.
 
@@ -8,7 +8,7 @@ Pokésee Pokédo is a companion application for Pokémon GO which allows users t
 
 These instructions will get you a copy of the project up and running on your local machine for further development, exploration and testing.
 
-#### Prerequisities
+#### Prerequisites
 
 Before you begin, be sure to install all requirements within a virtual environment. To learn more about Python's virtualenv tool, [read the documentation](https://virtualenv.pypa.io/en/stable/).
 
